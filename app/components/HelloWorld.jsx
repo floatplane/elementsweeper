@@ -4,13 +4,14 @@ const UnorderedList = require('./UnorderedList');
 const dependenciesArray = [
   'express - middleware for the node server',
   'react - for generating the views of the app',
+  'react-dom - powers the rendering of elements to the DOM, typically paired with React',
   'webpack - for bundling all the javascript',
-  'webpack loaders for css and jsx'
+  'jsx-loader - allows webpack to load jsx files'
 ];
 
 const componentsMade = [
   'HelloWorld - which is the view you are seeing now',
-  'UnorderedList - which takes an array of "items" and returns a <ul> element with <li> elements of each of those items within it',
+  'UnorderedList - which takes an array of "items" and returns a <ul> element with <li>, elements of each of those items within it',
 ];
 
 class HelloWorld extends React.Component {

@@ -8,15 +8,10 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     loaders: [
-      {
-        test: /\.styl$/,
-        loaders: ['style-loader', 'css-loader'],
-        include: path.join(__dirname, 'app/css'),
-      },
       {
         test: /\.jsx?$/,
         loader: 'jsx-loader',

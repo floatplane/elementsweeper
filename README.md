@@ -1,4 +1,4 @@
-Welcome to the Glitch BETA
+Blank React App on Glitch
 =========================
 
 Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
@@ -12,7 +12,7 @@ Your Project
 ------------
 
 On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
+- edit files in `app` folder, it contains all the React stuff
 - drag in `assets`, like images or music, to add them to your project
 
 On the back-end,
