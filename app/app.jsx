@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/style.css';
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 /* Import Components */
-import HelloWorld from './components/HelloWorld';
+const HelloWorld = require('./components/HelloWorld');
 
 ReactDOM.render(<HelloWorld/>, document.getElementById('main'));

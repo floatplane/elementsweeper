@@ -8,8 +8,12 @@ var app = express();
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
+app.get("/", function(request, response) {
   response.sendFile(__dirname + '/app/index.html');
+});
+
+app.get("/app.js", function(request, response) {
+  response.sendFile(__dirname + '/app/app.jsx');
 });
 
 // listen for requests :)
