@@ -22388,11 +22388,16 @@ module.exports = ReactDOMInvalidARIAHook;
 const React = __webpack_require__(32);
 const UnorderedList = __webpack_require__(185);
 
-const technologiesArray = [
-  'express',
-  'react',
-  'webpack',
+const dependenciesArray = [
+  'express - middleware for the node server',
+  'react - for generating the views of the app',
+  'webpack - for bundling all the javascript',
   'webpack loaders for css and jsx'
+];
+
+const componentsMade = [
+  'HelloWorld - which is the view you are seeing now',
+  'UnorderedList - which takes an array of "items" and returns a <ul> element with <li> elements of each of those items within it',
 ];
 
 class HelloWorld extends React.Component {
@@ -22400,9 +22405,19 @@ class HelloWorld extends React.Component {
   render() {
     return (
       React.createElement("div", null, 
-        React.createElement("p", null, "Hello World!"), 
+        React.createElement("h1", null, "Hello World!"), 
       
-        React.createElement(UnorderedList, {items: technologiesArray})
+        React.createElement("p", null, "This is a starter ", React.createElement("a", {href: "http://glitch.com"}, "Glitch"), " app for React! It uses" + " " + 
+          "only a few dependencies to get you started on working with React:"), 
+      
+        React.createElement(UnorderedList, {items: dependenciesArray}), 
+      
+        React.createElement("p", null, "Look in ", React.createElement("code", null, "app/components/"), " for two example components:"), 
+        
+        React.createElement(UnorderedList, {items: componentsMade}), 
+        
+        React.createElement("p", null, "Note: You may not normally create a component for an unordered list," + " " + 
+          "but I did here just so I can show the power of code reuse by way of building components :)")
       )
     );
   }
@@ -22416,14 +22431,16 @@ module.exports = HelloWorld;
 
 const React = __webpack_require__(32);
 
+/* takes an array prop 'items' and returns a <ul> element 
+   with each item as <li> elements */
 class UnorderedList extends React.Component {
 
   render() {
     const items = this.props.items;
     return (
       React.createElement("ul", null, 
-        items.map(function(i) {
-          return React.createElement("li", {key: i, index: i}, items[i]);
+        items.map(function(item, i) {
+          return React.createElement("li", {key: i}, item);
         })
       )
     );
