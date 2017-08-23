@@ -3,14 +3,15 @@ const React = require('react');
 class UnorderedList extends React.Component {
 
   render() {
+    const items = this.props.items;
     return (
       <ul>
-        {this.props.items.map(function (i) {
-        return <li key={i} index={i} />;
-      })}
+        {items.map(function(i) {
+          return <li key={i}>{items[i]}</li>;
+        })}
       </ul>
     );
   }
 }
 
-module.exports = HelloWorld;
+module.exports = UnorderedList;
