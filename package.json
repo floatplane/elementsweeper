@@ -4,7 +4,7 @@
   "//3": "updating this file will download and update your packages",
   "name": "blank-node",
   "version": "0.0.1",
-  "description": "a blank react project meant as a starter for glitch (or any other) editor apps",
+  "description": "a 'blank' react project meant as a starter for glitch (or any other) editor apps",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
