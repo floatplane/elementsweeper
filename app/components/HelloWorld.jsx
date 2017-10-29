@@ -14,27 +14,25 @@ const componentsMade = [
   'UnorderedList - which takes an array of "items" and returns a <ul> element with <li>, elements of each of those items within it',
 ];
 
-class HelloWorld extends React.Component {
+/* the main page for the index route of this app */
+const HelloWorld = function() {
+  return (
+    <div>
+      <h1>Hello World!</h1>
 
-  render() {
-    return (
-      <div>
-        <h1>Hello World!</h1>
-      
-        <p>This is a starter <a href="http://glitch.com">Glitch</a> app for React! It uses 
-          only a few dependencies to get you started on working with React:</p>
-      
-        <UnorderedList items={dependenciesArray} />
-      
-        <p>Look in <code>app/components/</code> for two example components:</p>
-        
-        <UnorderedList items={componentsMade} />
-        
-        <p>Note: You may not normally create a component for an unordered list, 
-          but I did here just so I can show the power of code reuse by way of building components :)</p>
-      </div>
-    );
-  }
+      <p>This is a starter <a href="http://glitch.com">Glitch</a> app for React! It uses 
+        only a few dependencies to get you started on working with React:</p>
+
+      <UnorderedList items={dependenciesArray} />
+
+      <p>Look in <code>app/components/</code> for two example components:</p>
+
+      <UnorderedList items={componentsMade} />
+
+      <p>Note: You may not normally create a component for an unordered list, 
+        but I did here just so I can show the power of code reuse by way of building components :)</p>
+    </div>
+  );
 }
 
 module.exports = HelloWorld;
