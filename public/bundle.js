@@ -22414,10 +22414,7 @@ const HelloWorld = function() {
 
       React.createElement("p", null, "Look in ", React.createElement("code", null, "app/components/"), " for two example components:"), 
 
-      React.createElement(UnorderedList, {items: componentsMade}), 
-
-      React.createElement("p", null, "Note: You may not normally create a component for an unordered list," + " " + 
-        "but I did here just so I can show the power of code reuse by way of building components :)")
+      React.createElement(UnorderedList, {items: componentsMade})
     )
   );
 }
