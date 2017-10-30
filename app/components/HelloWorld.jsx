@@ -28,9 +28,6 @@ const HelloWorld = function() {
       <p>Look in <code>app/components/</code> for two example components:</p>
 
       <UnorderedList items={componentsMade} />
-
-      <p>Note: You may not normally create a component for an unordered list, 
-        but I did here just so I can show the power of code reuse by way of building components :)</p>
     </div>
   );
 }
