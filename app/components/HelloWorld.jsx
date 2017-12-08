@@ -10,7 +10,7 @@ const dependenciesArray = [
 ];
 
 const componentsMade = [
-  'HelloWorld - which is the view you are seeing now',
+  'HelloWorld - which is the view you are seeing now!',
   'UnorderedList - which takes an array of "items" and returns a <ul> element with <li>, elements of each of those items within it',
 ];
 
