@@ -6,6 +6,7 @@ const dependenciesArray = [
   'react - for generating the views of the app',
   'react-dom - powers the rendering of elements to the DOM, typically paired with React',
   'webpack - for bundling all the javascript',
+  'webpack-cli - command line support for webpack',
   'jsx-loader - allows webpack to load jsx files'
 ];
 
