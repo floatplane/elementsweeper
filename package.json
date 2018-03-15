@@ -11,11 +11,12 @@
     "start": "webpack && node server.js"
   },
   "dependencies": {
-    "express": "^4.15.4",
+    "express": "^4.16.3",
     "jsx-loader": "^0.13.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "webpack": "^3.5.5"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
   },
   "engines": {
     "node": "8.x"
