@@ -3,7 +3,7 @@ const React = require('react');
 
 const Alert = function(props) {
   return (
-    <div className=>
+    <div class="alert">
       {props.message}
     </div>
   );

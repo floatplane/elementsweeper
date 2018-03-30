@@ -8,12 +8,18 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.clickMine = this.clickMine.bind(this);
     this.state = {
+      alertMessage: "",
       height: props.height,
       width: props.width,
       mines: props.mines,
       board: this.buildBoard(props.height,props.width,props.mines)
     };
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    this.checkWin();  
   }
   
   buildBoard(height, width, mines) {
@@ -130,9 +136,7 @@ class Game extends React.Component {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
       this.handleClick(board[r][c]);
-    }
-    
-    
+    } 
   }
   
   handleClick(square) {
@@ -164,7 +168,22 @@ class Game extends React.Component {
     
   
   clickMine() {
-    alert("You Lose");
+    //alert("You Lose");
+    this.setState({
+      alertMessage: "You Lose"
+    });
+  }
+  
+  checkWin() {
+    var win = true;
+    for (var i in this.state.board) {
+      for (var j in this.state.board[i]) {
+        var square = this.state.board[i][j];
+        if (!square.clickStatus
+        
+        
+      }
+    }
   }
   
   
@@ -172,6 +191,9 @@ class Game extends React.Component {
     return (
       <div>
         <h1>Minesweeper</h1>
+        <Alert
+          message={this.state.alertMessage}
+        />
         <Board
           board={this.state.board}
           clickSquare={this.handleClick}

@@ -30,6 +30,7 @@ x Recursive show on click empty
 - Flexbox or CSS Grid for layout
 - Visible/Invisible style
 - Mark as flagged
+- Check for Win on click
 - Win animation
 - Lose animation
 - Story
