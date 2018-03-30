@@ -2,6 +2,7 @@ const React = require('react');
 
 /* Import Components */
 const Board = require('./Board');
+const Alert = require('./Alert');
 
 class Game extends React.Component {
   constructor(props) {
