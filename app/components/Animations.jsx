@@ -12,13 +12,17 @@ const Animations = function(props) {
       {i.icon}                  
     </div>                                                   
   );
-                                
+  
+  /*
   for (var i in props.items) {
     console.log(props.items[i]);
   }
+  */
                                 
   function place() {
-    return Math.floor(Math.random() * 120) - 10;
+    var left = Math.floor(Math.random() * 120) - 10;
+    var top = (Math.floor(Math.random() * 200) * -1) - 15;  
+    return {left: left + "vw", top: top + "vh"};
   }
   
   
