@@ -89,8 +89,7 @@ class Game extends React.Component {
       var n = absNeighbors[i];
       if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
         // row, column are reversed order as array indexes
-        console.log(n[1] + ", " + n[1] + " - " + board[n[1], n[0]].position);
-        if (board[n[1], n[0]].mineStatus) {
+        if (board[n[1]][n[0]].mineStatus) {
           neighboringMines++
         }
       }
