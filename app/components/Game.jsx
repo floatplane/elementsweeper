@@ -41,10 +41,14 @@ class Game extends React.Component {
       // Add square to one dimensional array
       oneDimBoard.push(square);     
     }
+    // Split one dimensional array into two dimensional array
     var board = [];
-    for (var i = 0; i < width; i++) {
-      board.push(oneDimBoard.slice( 
+    for (var i = 0; i < height; i++) {
+      var startSlice = width * i;
+      var endSlice = (width * (i + 1));
+      board.push(oneDimBoard.slice(startSlice, endSlice));
     }
+    console.log(board);
     return board;
   }
   
