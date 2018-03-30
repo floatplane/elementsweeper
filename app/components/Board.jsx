@@ -20,10 +20,7 @@ const Row = function(props) {
 function Board(props) {
   const rows = props.board.map((row) =>
     <li>
-                                 {/*<Row squares={row} /> */}
-      props.squares.map((square) => 
-    <Square square={square} click={props.clickSquare} />
-  );
+      <Row squares={row} clickSquare={props.clickSquare} />                             
     </li>
   );
 

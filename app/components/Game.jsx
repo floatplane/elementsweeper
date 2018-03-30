@@ -3,10 +3,6 @@ const React = require('react');
 /* Import Components */
 const Board = require('./Board');
 
-function cs(s) {
-  alert(s.colIndex);
-}
-
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -110,7 +106,9 @@ class Game extends React.Component {
   }
   
   handleClick(square) {
-    alert("Col: " + square.colIndex + ", Row: " + square.rowIndex); 
+    this.setState((prevState, props) => {
+      return {counter: prevState.counter + props.step};
+    });
   }
   
   render() {
@@ -119,7 +117,7 @@ class Game extends React.Component {
         <h1>Minesweeper</h1>
         <Board
           board={this.state.board}
-          clickSquare={cs}
+          clickSquare={this.handleClick}
         />
       </div>
     );
