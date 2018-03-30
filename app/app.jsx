@@ -13,17 +13,17 @@ To Do
 ------
 
 - Set Default Values
-  - Width
-  - Height
-  - Mines
+  x Width
+  x Height
+  x Mines
 - Draw Board
-  - Check there aren't too many mines
-  - Set State:
-    - Position
-    - Value
-      - Mine
-      - Neighbor
-      - Empty
+  x Check there aren't too many mines
+  x Set State:
+    x Position
+    x Value
+      x Mine
+      x Neighbor
+      x Empty
     - Click Status
 
 */

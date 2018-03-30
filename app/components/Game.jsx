@@ -6,6 +6,7 @@ const Board = require('./Board');
 class Game extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       height: props.height,
       width: props.width,
@@ -15,8 +16,14 @@ class Game extends React.Component {
   }
   
   buildBoard(height, width, mines) {
-    // Generate random mine positions:
     var totalSquares = height * width;
+    
+    // Make sure there aren't more mines than squares
+    if (mines > totalSquares) {
+      mines = totalSquares;
+    }
+    
+    // Generate random mine positions:
     var mineArray = [];
     for (var i = 0; i < mines; i++) {
       var position = Math.floor(Math.random() * totalSquares);
@@ -53,6 +60,7 @@ class Game extends React.Component {
       for (var j in row) {
         row[j].rowIndex = i;
         row[j].colIndex = j;
+        row[j].clickStatus = false;
       }
       board.push(row);
     }
@@ -103,6 +111,7 @@ class Game extends React.Component {
         <h1>Minesweeper</h1>
         <Board
           board={this.state.board}
+          clickSquare={this.handleClick}
         />
       </div>
     );

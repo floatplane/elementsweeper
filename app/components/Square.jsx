@@ -3,9 +3,13 @@ const React = require('react');
 
 const Square = function(props) {
   return (
-    <div>
-      <h4>{props.n}</h4>
-    </div>
+    <li onclick={props.click}>
+      <span class="info">
+        {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
+        {props.square.clickStatus ? "#" : "_"}  
+      </span>
+      <h4>{props.square.mineStatus ? "💣" : props.square.neighboring}</h4>
+    </li>
   );
 }
 

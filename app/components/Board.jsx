@@ -7,10 +7,7 @@ const Square = require('./Square');
 const Row = function(props) {
   
   const squares = props.squares.map((square) => 
-    <li>
-      <span class="info">{square.position}[{square.colIndex},{square.rowIndex}]</span>
-      <h4>{square.mineStatus ? "M" : square.neighboring}</h4>
-    </li>
+    <Square square={square} click={props.clickSquare} />
   );
   
   return (
