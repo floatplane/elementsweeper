@@ -9,8 +9,11 @@ class Game extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.clickMine = this.clickMine.bind(this);
+    //this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.state = {
       alertMessage: "",
+      win: false,
+      lose: false,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -19,7 +22,15 @@ class Game extends React.Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    this.checkWin();  
+    if (!this.state.win) {
+      var win = this.checkWin();
+      if (win) {
+        this.setState({
+          alertMessage: "You Win!",
+          win: true
+        });
+      }
+    }
   }
   
   buildBoard(height, width, mines) {
@@ -170,7 +181,8 @@ class Game extends React.Component {
   clickMine() {
     //alert("You Lose");
     this.setState({
-      alertMessage: "You Lose"
+      alertMessage: "You Lose",
+      lose: true
     });
   }
   
@@ -179,11 +191,16 @@ class Game extends React.Component {
     for (var i in this.state.board) {
       for (var j in this.state.board[i]) {
         var square = this.state.board[i][j];
-        if (!square.clickStatus
-        
-        
+        if (!square.clickStatus && !square.mineStatus) {
+          win = false;
+          break;
+        }
+      }
+      if (!win) {
+        break;
       }
     }
+    return win;
   }
   
   

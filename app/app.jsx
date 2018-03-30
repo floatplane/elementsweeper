@@ -12,11 +12,12 @@ ReactDOM.render(<Game width={7} height={7} mines={7} />, document.getElementById
 To Do
 ------
 
-- Set Default Values
+x Set Default Values
   x Width
   x Height
   x Mines
-- Draw Board
+- Change Starting Values
+x Draw Board
   x Check there aren't too many mines
   x Set State:
     x Position
@@ -30,7 +31,7 @@ x Recursive show on click empty
 - Flexbox or CSS Grid for layout
 - Visible/Invisible style
 - Mark as flagged
-- Check for Win on click
+x Check for Win on click
 - Win animation
 - Lose animation
 - Story
