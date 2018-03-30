@@ -56,7 +56,7 @@ class Game extends React.Component {
     return (
       <div>
         <h1>Minesweeper</h1>
-        <Board />
+        <Board board={this.state.board} />
       </div>
     );
   }
