@@ -3,7 +3,8 @@ const React = require('react');
 
 const Square = function(props) {
   
-  var start;
+  /*
+  // Could use this for long press on desktop instead of right click
   var touchTimer;
   
   function handleTouchStart() {
@@ -13,6 +14,7 @@ const Square = function(props) {
   function handleTouchEnd() {
     clearTimeout(touchTimer);
   }
+  */
     
   return (
     <li

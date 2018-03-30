@@ -25,8 +25,15 @@ To Do
       x Neighbor
       x Empty
     x Click Status
-    
 - Better notifications
-- Recursive show on click empty
+x Recursive show on click empty
+- Flexbox or CSS Grid for layout
+- Visible/Invisible style
+- Mark as flagged
+- Win animation
+- Lose animation
+- Story
+- Instructions
+
 
 */
