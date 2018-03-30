@@ -6,7 +6,11 @@ const Square = require('./Square');
 const Row = function(props) {
   
   const squares = props.squares.map((square) => 
-    <Square square={square} click={props.clickSquare} />
+    <Square
+      square={square}
+      click={props.clickSquare}
+      flagSquare={props.flagSquare}
+    />
   );
   
   return (
@@ -20,7 +24,11 @@ const Row = function(props) {
 function Board(props) {
   const rows = props.board.map((row) =>
     <li>
-      <Row squares={row} clickSquare={props.clickSquare} />                             
+      <Row
+        squares={row}
+        clickSquare={props.clickSquare}
+        flagSquare={props.flagSquare}
+      />                             
     </li>
   );
 

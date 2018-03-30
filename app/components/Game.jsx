@@ -156,6 +156,12 @@ class Game extends React.Component {
     }
   }
   
+  handleFlag(e, square) {
+    e.preventDefault();
+    alert(square.position);
+  }
+    
+  
   clickMine() {
     alert("You Lose");
   }
@@ -168,6 +174,7 @@ class Game extends React.Component {
         <Board
           board={this.state.board}
           clickSquare={this.handleClick}
+          flagSquare={this.handleFlag}
         />
       </div>
     );
