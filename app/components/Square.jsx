@@ -3,7 +3,7 @@ const React = require('react');
 
 const Square = function(props) {
   return (
-    <li onclick={props.click}>
+    <li onClick={() => props.click(props.square)}>
       <span class="info">
         {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
         {props.square.clickStatus ? "#" : "_"}  
