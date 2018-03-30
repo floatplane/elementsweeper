@@ -75,7 +75,7 @@ class Game extends React.Component {
     return board;
   }
   
-  countNeighboringMines(square, board, width, height) {
+  getNeighbors(square) {
     var relNeighbors = [
       [-1,-1],
       [ 0,-1],
@@ -87,11 +87,17 @@ class Game extends React.Component {
       [ 0, 1],
       [ 1, 1]
     ]
-    var neighboringMines = 0;
     var absNeighbors = relNeighbors.map(
       s => s.map(
         (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)   
     ));
+    return absNeighbors;
+  }
+  
+  countNeighboringMines(square, board, width, height) {
+    
+    var neighboringMines = 0;
+    var absNeighbors = this.getNeighbors(square);
     
     for (var i in absNeighbors) {
       var n = absNeighbors[i];
@@ -111,7 +117,12 @@ class Game extends React.Component {
       reveal (as if you clicked on it)
       (if it's also empty click functionality should start recursion)
     */
-    
+    var absNeighbors = this.getNeighbors(square);
+    for (var i in absNeighbors) {
+      nSq = absNeighbors[i];
+      if (nSq.clickStatus && !nSq.mineStatus && nSq.neighboringMines
+      this.handleClick(nSq); 
+    }  
   }
   
   handleClick(square) {
