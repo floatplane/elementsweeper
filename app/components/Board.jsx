@@ -6,11 +6,11 @@ const Square = require('./Square');
 
 const Row = function(props) {
   
-  const squares = props.squares.map((square) => {
+  const squares = props.squares.map((square) => 
     <li>
-      {square.position}
+      {square.position}: {square.mineStatus ? "M" : "_"}
     </li>
-  });
+  );
   
   return (
     <ul>
@@ -20,15 +20,12 @@ const Row = function(props) {
 }
 
 
-
 function Board(props) {
-  const n = [1,2,3]
-  //const rows = props.board.map((row) => {
-  const rows = n.map((row) => {
-    <li>
-      *{row}                                  
+  const rows = props.board.map((row) =>
+    <li class="row">
+      <Row squares={row} />                             
     </li>
-  });
+  );
 
   
   return (
@@ -39,5 +36,6 @@ function Board(props) {
     </div>
   );
 }
+
 
 module.exports = Board;
