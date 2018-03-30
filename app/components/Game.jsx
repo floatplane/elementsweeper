@@ -4,6 +4,20 @@ const React = require('react');
 const Board = require('./Board');
 
 class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      board: []
+    };
+  }
+  
+  buildBoard(height, width, mines) {
+    var oneDimBoard = []
+    for (var i = 0; i < height * width; i++) {
+      
+    }
+  }
+  
   render() {
     return (
       <div>

@@ -5,3 +5,24 @@ const ReactDOM = require('react-dom');
 const Game = require('./components/Game');
 
 ReactDOM.render(<Game/>, document.getElementById('main'));
+
+
+/*
+
+To Do
+------
+
+- Set Default Values
+  - Width
+  - Height
+  - Mines
+- Draw Board
+  - Check there aren't too many mines
+  - Set State:
+    - Value
+      - Mine
+      - Neighbor
+      - Empty
+    - Click Status
+
+*/
