@@ -14,7 +14,7 @@ class Game extends React.Component {
       alertMessage: "",
       win: false,
       lose: false,
-      animations: ["🦁","🎄","🌞","🍘"],
+      animationItems: ["🦁","🎄","🌞","🍘"],
       height: props.height,
       width: props.width,
       mines: props.mines,
