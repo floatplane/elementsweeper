@@ -59,7 +59,7 @@ class Game extends React.Component {
     
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
-        board[i][j].neighboring = this.countNeighboringMines(board[i][j]); 
+        board[i][j].neighboring = this.countNeighboringMines(board[i][j], board, width, height); 
       }
     }
     
@@ -67,7 +67,7 @@ class Game extends React.Component {
     return board;
   }
   
-  countNeighboringMines(square, board, width) {
+  countNeighboringMines(square, board, width, height) {
     var relNeighbors = [
       [-1,-1],
       [ 0,-1],
@@ -82,18 +82,20 @@ class Game extends React.Component {
     var neighboringMines = 0;
     var absNeighbors = relNeighbors.map(
       s => s.map(
-        (c, i) => i === 0 ? c + square.colIndex : c + square.rowIndex    
+        (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)   
     ));
     
     for (var i in absNeighbors) {
       var n = absNeighbors[i];
-      if (n[0] >= 0 && n[1] >= 0) {
+      if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
         // row, column are reversed order as array indexes
+        console.log(n[1] + ", " + n[1] + " - " + board[n[1], n[0]].position);
         if (board[n[1], n[0]].mineStatus) {
           neighboringMines++
         }
       }
     }
+    return neighboringMines;
   }
   
   render() {
