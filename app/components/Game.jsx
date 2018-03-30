@@ -40,7 +40,7 @@ class Game extends React.Component {
   animate() {
     this.setState((prevState, props) => {
       var newAnimationItems = prevState.animationItems;
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 300; i++) {
         newAnimationItems.push({icon: "😇", id: newAnimationItems.length});
       }
       return {

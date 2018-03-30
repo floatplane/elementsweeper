@@ -21,7 +21,7 @@ const Animations = function(props) {
                                 
   function place() {
     var left = Math.floor(Math.random() * 120) - 10;
-    var top = (Math.floor(Math.random() * 200) * -1) - 15;  
+    var top = (Math.floor(Math.random() * 400) * -1) - 15;  
     return {left: left + "vw", top: top + "vh"};
   }
   

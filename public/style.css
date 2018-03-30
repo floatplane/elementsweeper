@@ -56,7 +56,7 @@ ul {
 /* Standard syntax */
 @keyframes alertAnimation {
     0%   {}
-    100% {top: 200vh;}
+    100% {top: 400vh;}
 }
 
 
