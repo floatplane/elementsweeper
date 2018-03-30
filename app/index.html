@@ -7,9 +7,34 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   </head>
   <body>
-    
+      <h1>
+        Thimble Minesweeper 0.6
+      </h1>
+
+      <div id="setup-form">
+        <form>
+          <label>Height: </label>
+          <input id="height-form" type="number" value=10><br><br>
+          <label>Width: </label>
+          <input id="width-form" type="number" value=10><br><br>
+          <label>Mines: </label>
+          <input id="mines-form" type="number" value=10><br><br>
+        </form>
+      </div>
+
+      <div id="reset" onclick="drawBoard();">
+        Draw Board
+      </div>
+
+      <div id="board">
+
+      </div>
       <div id="main">
         <!-- the hello world app will be in here! -->
       </div>
@@ -21,4 +46,24 @@
       <!-- bundle all the scripts! thanks to webpack -->
       <script type="text/javascript" src="/bundle.js"></script>
   </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minesweeper 0.6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  
+  
+
+
+  <script src="jquery-3.1.1.min.js"></script>
+  <!--<script src="angular.min.js"></script>-->
+  <script src="script.js"></script>
+</body>
 </html>

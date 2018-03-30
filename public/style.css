@@ -1,0 +1,110 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  
+}
+
+#reset {
+  border: 2px solid #ff3333;
+  background-color: #ff6666;
+  text-align: center;
+  margin: 1em;
+  padding: .5em;
+  border-radius: 25px;
+  margin: 20px 35%;
+}
+
+#setup-form {
+  text-align: center;
+  margin: 1em;
+  padding: .5em;
+  border-radius: 25px;
+  margin: 20px 35%;
+}
+
+#board {
+  width: 480px;
+  border: 1px dashed red;
+  margin: auto;
+}
+
+.board-square {
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  margin: 2px;
+  display: inline-block;
+  color: #FFF;
+}
+
+.row {
+  height: 48px;
+}
+
+.bomb {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2Fbomb.png?1522371351774);
+  background-size: contain;
+}
+
+.one {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F1.png?1522371315746);
+  background-size: contain;
+}
+
+.two {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F2.png?1522371315814);
+  background-size: contain;
+}
+
+.three {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F3.png?1522371315995);
+  background-size: contain;
+}
+
+.four {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F4.png?1522371315933);
+  background-size: contain;
+}
+
+.five {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F5.png?1522371316066);
+  background-size: contain;
+}
+
+.six {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F6.png?1522371316150);
+  background-size: contain;
+}
+
+.seven {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F7.png?1522371316285);
+  background-size: contain;
+}
+
+.eight {
+  background: url(https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2F8.png?1522371316352);
+  background-size: contain;
+}
+
+.blank {
+  background: #DDD;
+  background-size: contain;
+}
+
+.unclickedd {
+  background: none !important;
+}
+.unclicked {
+  border: 2px solid red !important;
+}
+
+.index {
+  display: none;
+}
+
+form {
+  display: none;
+}
