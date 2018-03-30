@@ -46,6 +46,20 @@ ul {
   background-color: #ddd;
 }
 
+.alert-animation-item {
+  font-size: 300%;
+  position: absolute;
+  top: -5vh;
+  animation-name: alertAnimation;
+  animation-duration: 3s;
+}
+
+/* Standard syntax */
+@keyframes alertAnimation {
+    0%   {top: -5vh;}
+    100% {top: 1500px;}
+}
+
 
 
 

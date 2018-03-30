@@ -210,6 +210,9 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <div class="alert-animation-item">
+          ☘️
+        </div>
         <h1>Minesweeper</h1>
         <Alert
           message={this.state.alertMessage}
