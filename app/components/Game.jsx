@@ -7,7 +7,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: this.buildBoard(3,3,4)
+      board: this.buildBoard(10,10,10)
     };
   }
   
@@ -46,7 +46,12 @@ class Game extends React.Component {
     for (var i = 0; i < height; i++) {
       var startSlice = width * i;
       var endSlice = (width * (i + 1));
-      board.push(oneDimBoard.slice(startSlice, endSlice));
+      var row = oneDimBoard.slice(startSlice, endSlice);
+      for (var j in row) {
+        row[j].rowIndex = i;
+        row[j].colIndex = j;
+      }
+      board.push(row);
     }
     console.log(board);
     return board;

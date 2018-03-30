@@ -8,12 +8,12 @@ const Row = function(props) {
   
   const squares = props.squares.map((square) => 
     <li>
-      {square.position}: {square.mineStatus ? "M" : "_"}
+      {square.position}[{square.colIndex},{square.rowIndex}]: {square.mineStatus ? "M" : "_"}
     </li>
   );
   
   return (
-    <ul>
+    <ul class="row">
       {squares}
     </ul>
   );
@@ -22,7 +22,7 @@ const Row = function(props) {
 
 function Board(props) {
   const rows = props.board.map((row) =>
-    <li class="row">
+    <li>
       <Row squares={row} />                             
     </li>
   );

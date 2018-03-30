@@ -4,9 +4,39 @@ body {
 
 h1 {
   text-align: center;
-  
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#board {
+  width: 100%;
+  border: 2px solid black;
+  list-style-type: none;
+}
+
+#board > li, .row > li {
+  margin: 0;
+}
+
+.row {
+  width: 100%;
+  border: 1px solid red;
+  list-style-type: none;
+}
+
+.row > li {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid green;
+}
+
+
+
+
+/*
 #reset {
   border: 2px solid #ff3333;
   background-color: #ff6666;
@@ -108,3 +138,4 @@ h1 {
 form {
   display: none;
 }
+*/
