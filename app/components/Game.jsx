@@ -7,7 +7,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: this.buildBoard(10,10,10)
+      board: this.buildBoard(13,13,10)
     };
   }
   
@@ -53,15 +53,38 @@ class Game extends React.Component {
       }
       board.push(row);
     }
-    console.log(board);
+    
+    for (var i = 0; i < height; i++) {
+      for (var j = 0; j < width; j++) {
+        board[i][j].neighboring = this.countNeighboringMines(board[i][j]); 
+      }
+    }
+    
+    
     return board;
+  }
+  
+  countNeighboringMines(square) {
+    /*
+    
+    -1,-1||  
+    -----|-----|-----
+         |  s  | 
+    -----|-----|-----
+         |     |
+    
+    
+    */
   }
   
   render() {
     return (
       <div>
         <h1>Minesweeper</h1>
-        <Board board={this.state.board} />
+        <Board
+          board={this.state.board}
+          
+        />
       </div>
     );
   }
