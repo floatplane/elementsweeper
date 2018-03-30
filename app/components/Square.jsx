@@ -1,10 +1,10 @@
 const React = require('react');
 
 
-const Square = function() {
+const Square = function(props) {
   return (
     <div>
-      <h4>{this.props.n}</h4>
+      <h4>{props.n}</h4>
     </div>
   );
 }

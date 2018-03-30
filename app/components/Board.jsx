@@ -1,8 +1,8 @@
 const React = require('react');
 
-const Square = require('./Board');
+const Square = require('./Square');
 
-function number() {
+function numb() {
   const number = Math.ceil(Math.random() * 9);
   return number;
 }
@@ -11,7 +11,9 @@ const Board = function() {
   return (
     <div>
       <h3>Board</h3>
-      <Square n={number()} />
+      <Square n={numb()} />
+      <Square n={numb()} />
+      <Square n={numb()} />
     </div>
   );
 }
