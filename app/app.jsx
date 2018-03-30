@@ -25,5 +25,8 @@ To Do
       x Neighbor
       x Empty
     x Click Status
+    
+- Better notifications
+- Recursive show on click empty
 
 */

@@ -106,9 +106,15 @@ class Game extends React.Component {
   }
   
   handleClick(square) {
+    // If square clicked is a mine neighbor do nothing
     var callback = () => {};
-    square.mineStatus ? callback = this.clickMine: 1 + ;
-    
+    if (square.mineStatus) {
+      // If square clicked is a mine trigger lose game
+      callback = this.clickMine;
+    } else if (!square.neighboringMines) {
+      // If square clicked is not a mine neighbor start recursive reveal
+      callback = this.recursiveReveal;
+    }    
     
     this.setState((prevState, props) => {
       var updatedBoard = prevState.board;
@@ -117,6 +123,10 @@ class Game extends React.Component {
         board: updatedBoard
       };
     }, callback);
+  }
+  
+  recursiveReveal(square) {
+    alert("Reveal! " + square.position);
   }
   
   clickMine() {
