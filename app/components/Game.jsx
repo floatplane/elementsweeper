@@ -12,9 +12,31 @@ class Game extends React.Component {
   }
   
   buildBoard(height, width, mines) {
+    // Generate random mine positions:
+    var mines = [];
+    for (var i = 0; i < mines; i++) {
+      var position = Math.floor(Math.random() * mines);
+      if (mines.indexOf(position) === -1) {
+        mines.push(position); 
+      } else {
+        i--
+      }
+    }
+    
+    var oneDimBoard = [];
     var totalSquares = height * width;
-    var oneDimBoard = new Array(totalSquares).fill({});
-    oneDimBoard.fill
+    for (var i = 0; i < totalSquares; i++) {
+      // Check if square is a mine
+      var mineStatus = false;
+      if (mines.indexOf(i)) {
+        mineStatus = true;
+      }
+      // Create square obje
+      var square = {
+        position: i,
+        mineStatus: mineStatus
+      };
+      oneDimBoard.push(square);
       
     }
   }
