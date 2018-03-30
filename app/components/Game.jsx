@@ -106,8 +106,14 @@ class Game extends React.Component {
   }
   
   handleClick(square) {
+    var rowIndex = square.rowIndex;
+    var colIndex = square.colIndex;
+    
     this.setState((prevState, props) => {
-      return {counter: prevState.counter + props.step};
+      updatedBoard = prevState.board[rowIndex][colIndex].clickStatus
+      return {
+        board: 
+      };
     });
   }
   
