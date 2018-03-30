@@ -4,13 +4,30 @@ const Square = require('./Square');
 
 
 
+const Row = function(props) {
+  
+  const squares = props.squares.map((square) => {
+    <li>
+      {square.position}
+    </li>
+  });
+  
+  
+
+  return (
+    <ul>
+      {squares}
+    </ul>
+  );
+}
+
+
+
 const Board = function(props) {
   
-  const squares = props.board.map((row) => {
+  const rows = props.board.map((row) => {
     <li>
-      <ul>
-        !{row}
-      </ul>                                   
+      <Row squares={row} />                                   
     </li>
   });
   
@@ -18,8 +35,7 @@ const Board = function(props) {
     <div>
       <h3>Board</h3>
       <h4>{typeof props.board} - {props.board.length}</h4>
-      <p>{props.board}</p>
-      <ul>{squares}</ul>
+      <ul id="board">{rows}</ul>
     </div>
   );
 }
