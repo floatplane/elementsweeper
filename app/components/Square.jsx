@@ -8,7 +8,7 @@ const Square = function(props) {
         {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
         {props.square.clickStatus ? "#" : "_"}  
       </span>
-      <h4>{props.square.mineStatus ? "💣" : props.square.neighboring}</h4>
+      <h4>{props.square.mineStatus ? "💣" : props.square.neighboringMines}</h4>
     </li>
   );
 }

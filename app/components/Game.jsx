@@ -67,7 +67,7 @@ class Game extends React.Component {
     
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
-        board[i][j].neighboring = this.countNeighboringMines(board[i][j], board, width, height); 
+        board[i][j].neighboringMines = this.countNeighboringMines(board[i][j], board, width, height); 
       }
     }
     
@@ -105,7 +105,17 @@ class Game extends React.Component {
     return neighboringMines;
   }
   
+  revealEmptyNeighbors(square) {
+    /*
+    for neighbors of non mine-neighbor square:
+      reveal (as if you clicked on it)
+      (if it's also empty click functionality should start recursion)
+    */
+    
+  }
+  
   handleClick(square) {
+    console.log(square.neighboringMines);
     // If square clicked is a mine neighbor do nothing
     var callback = () => {};
     if (square.mineStatus) {
@@ -113,7 +123,7 @@ class Game extends React.Component {
       callback = this.clickMine;
     } else if (!square.neighboringMines) {
       // If square clicked is not a mine neighbor start recursive reveal
-      callback = this.recursiveReveal;
+      callback = () => this.recursiveReveal(square);
     }    
     
     this.setState((prevState, props) => {
