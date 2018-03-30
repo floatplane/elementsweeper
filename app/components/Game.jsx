@@ -10,12 +10,10 @@ class Game extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.clickMine = this.clickMine.bind(this);
-    this.animate = this.animate.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
       lose: false,
-      animationItems: [],
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -28,25 +26,12 @@ class Game extends React.Component {
       var win = this.checkWin();
       if (win) {
         console.log("You Win!!");
-        this.animate();
         this.setState({
           alertMessage: "You Win!",
           win: true
         });
       }
     }
-  }
-  
-  animate() {
-    this.setState((prevState, props) => {
-      var newAnimationItems = prevState.animationItems;
-      for (var i = 0; i < 600; i++) {
-        newAnimationItems.push({icon: "😇", id: newAnimationItems.length});
-      }
-      return {
-        animationItems: newAnimationItems
-      };
-    });
   }
   
   buildBoard(height, width, mines) {
@@ -231,7 +216,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <Animations items={this.state.animationItems} />
+        <Animations win={this.state.win} lose={this.state.lose} />
         <h1>Minesweeper</h1>
         <Alert
           message={this.state.alertMessage}

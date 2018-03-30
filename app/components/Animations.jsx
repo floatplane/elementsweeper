@@ -3,7 +3,17 @@ const React = require('react');
 
 const Animations = function(props) {
   
-  const items = props.items.map((i) =>
+  function getItems() {
+    var newAnimationItems = [];
+    if (props.win || props.lose) {
+      for (var i = 0; i < 600; i++) {
+        newAnimationItems.push({icon: "😇", id: newAnimationItems.length});
+      }
+    }
+    return newAnimationItems;
+  }
+  
+  const items = getItems().map((i) =>
     <div
       key={i.id}
       class="alert-animation-item"
@@ -12,27 +22,18 @@ const Animations = function(props) {
       {i.icon}                  
     </div>                                                   
   );
-  
-  /*
-  for (var i in props.items) {
-    console.log(props.items[i]);
-  }
-  */
                                 
   function place() {
     var left = Math.floor(Math.random() * 120) - 10;
+    var top = Math.floor((Math.random() * Math.random()) * -2800) - 10;
     /*
-    var num = 0;
-    for (var i = 0; i < bellFactor; i++) {
-        num += Math.random() * (max/bellFactor);
-    }
-    */
     var top = 0
-    for (var i = 0; i < 3; i++) {
-      top += Math.random() * (1800/3);
+    for (var i = 0; i < 2; i++) {
+      top += Math.random() * (2800/2);
     }
     top = Math.floor(top * - 1) - 10;
     console.log(top);
+    */
     return {left: left + "vw", top: top + "vh"};
   }
   
