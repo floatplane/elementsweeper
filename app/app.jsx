@@ -2,6 +2,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 /* Import Components */
-const Board = require('./components/Board');
+const Game = require('./components/Game');
 
-ReactDOM.render(<Board/>, document.getElementById('main'));
+ReactDOM.render(<Game/>, document.getElementById('main'));
