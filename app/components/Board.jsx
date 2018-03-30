@@ -6,9 +6,14 @@ const Square = require('./Square');
 
 const Row = function(props) {
   
+  function countMineNeighbors(s) {
+    return Math.floor(Math.random() * 100);
+  }
+  
   const squares = props.squares.map((square) => 
     <li>
-      {square.position}[{square.colIndex},{square.rowIndex}]: {square.mineStatus ? "M" : "_"}
+      <span class="info">{square.position}[{square.colIndex},{square.rowIndex}]</span>
+      <h4>{square.mineStatus ? "M" : countMineNeighbors(square)}</h4>
     </li>
   );
   
