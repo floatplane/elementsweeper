@@ -111,30 +111,43 @@ class Game extends React.Component {
     return neighboringMines;
   }
   
-  revealEmptyNeighbors(square) {
+  onEachNeighbor(square, func) {
+    var absNeighbors = this.getNeighbors(square);
+    for (var i in absNeighbors) {
+      var n = absNeighbors[i];
+      if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
+        // row, column are reversed order as array indexes
+        nSq = board[n[1]][n[0]];
+        if (board[n[1]][n[0]].mineStatus) {
+          neighboringMines++
+        }
+      }
+    }
+  }
+  
+  revealNeighbors(square) {
     /*
     for neighbors of non mine-neighbor square:
       reveal (as if you clicked on it)
       (if it's also empty click functionality should start recursion)
     */
-    var absNeighbors = this.getNeighbors(square);
-    for (var i in absNeighbors) {
-      nSq = absNeighbors[i];
-      if (nSq.clickStatus && !nSq.mineStatus && nSq.neighboringMines
-      this.handleClick(nSq); 
-    }  
+    
+    console.log(absNeighbors);
+    
+    
+    
   }
   
   handleClick(square) {
-    console.log(square.neighboringMines);
-    // If square clicked is a mine neighbor do nothing
+
+    // If square clicked is a mine neighbor do nothing except reveal
     var callback = () => {};
     if (square.mineStatus) {
       // If square clicked is a mine trigger lose game
       callback = this.clickMine;
     } else if (!square.neighboringMines) {
       // If square clicked is not a mine neighbor start recursive reveal
-      callback = () => this.recursiveReveal(square);
+      callback = () => this.revealNeighbors(square);
     }    
     
     this.setState((prevState, props) => {
