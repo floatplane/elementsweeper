@@ -7,6 +7,9 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      height: props.height,
+      width: props.width,
+      mines: props.mines,
       board: this.buildBoard(props.height,props.width,props.mines)
     };
   }
@@ -64,16 +67,28 @@ class Game extends React.Component {
     return board;
   }
   
-  countNeighboringMines(square) {
-
-    
-    
-    
-    
+  countNeighboringMines(square, board) {
+    var neighbors = [
+      [-1,-1],
+      [ 0,-1],
+      [ 1,-1],
+      [-1, 0],
+//not [ 0, 0]
+      [ 1, 0],
+      [-1, 1],
+      [ 0, 1],
+      [ 1, 1]
+    ]
+    var neighboringMines = 0;
+    for (var i in neighbors) {
+      var n = neighbors[i];
+      var pos = 
+      board[getNeighborPosition 
+    }
     
   }
   
-  getNeighborPosition(colIndex, rowIndex) {
+  getNeighborPosition(square) {
     /*
     position = width * rowIndex + colIndex
     
@@ -86,9 +101,7 @@ class Game extends React.Component {
     -1, 1| 0, 1| 1, 1   
     */
     
-    return width
-    
-    
+    return this.state.width * square.rowIndex + square.colIndex;   
   }
   
   render() {
