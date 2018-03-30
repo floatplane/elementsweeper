@@ -49,15 +49,15 @@ ul {
 .alert-animation-item {
   font-size: 300%;
   position: absolute;
-  top: -5vh;
+  top: -15vh;
   animation-name: alertAnimation;
-  animation-duration: 3s;
+  animation-duration: 4s;
 }
 
 /* Standard syntax */
 @keyframes alertAnimation {
-    0%   {top: -5vh;}
-    100% {top: 1500px;}
+    0%   {top: -15vh;}
+    100% {top: 115vh;}
 }
 
 

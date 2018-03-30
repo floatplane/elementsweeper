@@ -3,17 +3,18 @@ const React = require('react');
 /* Import Components */
 const Board = require('./Board');
 const Alert = require('./Alert');
+const Animations = require('./Animations');
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.clickMine = this.clickMine.bind(this);
-    //this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
       lose: false,
+      animations: ["🦁","🎄","🌞","🍘"],
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -210,9 +211,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <div class="alert-animation-item">
-          ☘️
-        </div>
+        <Animations items={this.state.animationItems} />
         <h1>Minesweeper</h1>
         <Alert
           message={this.state.alertMessage}

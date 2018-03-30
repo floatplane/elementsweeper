@@ -39,6 +39,7 @@ x Check for Win on click
 - Lose animation
 - Story
 - Instructions
+- Add indexes to board squares
 
 
 */
