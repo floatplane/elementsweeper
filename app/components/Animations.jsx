@@ -21,7 +21,18 @@ const Animations = function(props) {
                                 
   function place() {
     var left = Math.floor(Math.random() * 120) - 10;
-    var top = (Math.floor(Math.random() * 400) * -1) - 15;  
+    /*
+    var num = 0;
+    for (var i = 0; i < bellFactor; i++) {
+        num += Math.random() * (max/bellFactor);
+    }
+    */
+    var top = 0
+    for (var i = 0; i < 3; i++) {
+      top += Math.random() * (1800/3);
+    }
+    top = Math.floor(top * - 1) - 10;
+    console.log(top);
     return {left: left + "vw", top: top + "vh"};
   }
   
