@@ -29,6 +29,8 @@ const Square = function(props) {
           return "\u00A0";
         }
       }
+    } else {
+      console.log("No");
     }
   }
   
