@@ -10,6 +10,7 @@ class Game extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.clickMine = this.clickMine.bind(this);
+    this.animate = this.animate.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
@@ -26,6 +27,7 @@ class Game extends React.Component {
     if (!this.state.win) {
       var win = this.checkWin();
       if (win) {
+        console.log("You Win!!");
         var animationInterval = setInterval(this.animate, 100);
         setTimeout(() => {clearInterval(animationInterval)}, 1000);
         this.setState({
@@ -174,12 +176,17 @@ class Game extends React.Component {
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
-      this.handleClick(board[r][c]);
+      if (!board[r][c].clickStatus) {
+        this.handleClick(false, board[r][c], "reveal");
+      }
     } 
   }
   
   handleClick(e, square, type) {
-    e.preventDefault();
+    console.log(e);
+    if (e) {
+      e.preventDefault();
+    }
     if (type === "reveal") {
       if (!square.clickStatus) {
         // If square clicked is a mine neighbor do nothing except reveal
