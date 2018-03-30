@@ -118,7 +118,7 @@ class Game extends React.Component {
     return neighboringMines;
   }
   
-  revealNeighbors(square) {
+  revealNeighbors(square, board) {
     /*
     for neighbors of non mine-neighbor square:
       reveal (as if you clicked on it)
@@ -128,7 +128,7 @@ class Game extends React.Component {
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
-      var nSq = board[r][c];
+      this.handleClick(board[r][c]);
     }
     
     
@@ -145,14 +145,14 @@ class Game extends React.Component {
         // If square clicked is not a mine neighbor start recursive reveal
         callback = (board) => this.revealNeighbors(square, board);
       }    
-
+      var updatedBoard;
       this.setState((prevState, props) => {
-        var updatedBoard = prevState.board;
+        updatedBoard = prevState.board;
         updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
         return {
           board: updatedBoard
         };
-      },() callback);
+      },() => callback(updatedBoard));
     }
   }
   

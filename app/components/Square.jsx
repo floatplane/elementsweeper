@@ -3,12 +3,12 @@ const React = require('react');
 
 const Square = function(props) {
   return (
-    <li onClick={() => props.click(props.square)}>
+    <li onClick={() => props.click(props.square)} className={props.square.clickStatus ? "clicked" : "unclicked"}>
       <span class="info">
         {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
         {props.square.clickStatus ? "#" : "_"}  
       </span>
-      <h4>{props.square.mineStatus ? "💣" : props.square.neighboringMines}</h4>
+      <h4>{props.square.mineStatus ? "💣" : props.square.neighboringMines > 0 ? props.}</h4>
     </li>
   );
 }

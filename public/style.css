@@ -38,6 +38,14 @@ ul {
   font-size: 50%;
 }
 
+.clicked {
+  background-color: #ffd;
+}
+
+.unclicked {
+  background-color: #ddd;
+}
+
 
 
 
