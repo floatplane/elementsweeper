@@ -12,8 +12,6 @@ const Row = function(props) {
     </li>
   });
   
-  
-
   return (
     <ul>
       {squares}
@@ -23,13 +21,15 @@ const Row = function(props) {
 
 
 
-const Board = function(props) {
-  
-  const rows = props.board.map((row) => {
+function Board(props) {
+  const n = [1,2,3]
+  //const rows = props.board.map((row) => {
+  const rows = n.map((row) => {
     <li>
-      <Row squares={row} />                                   
+      *{row}                                  
     </li>
   });
+
   
   return (
     <div>
