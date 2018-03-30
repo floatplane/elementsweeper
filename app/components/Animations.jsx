@@ -3,17 +3,21 @@ const React = require('react');
 
 const Animations = function(props) {
   
-  const items = props.items.map((i, index) =>
+  const items = props.items.map((i) =>
     <div
-      key={index}
+      key={i.id}
       class="alert-animation-item"
-      style={{left: placeHorizontally() + "vw"}}
+      style={place()}
     >
-      {i}                  
+      {i.icon}                  
     </div>                                                   
   );
                                 
-  function placeHorizontally() {
+  for (var i in props.items) {
+    console.log(props.items[i]);
+  }
+                                
+  function place() {
     return Math.floor(Math.random() * 120) - 10;
   }
   

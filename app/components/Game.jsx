@@ -28,8 +28,8 @@ class Game extends React.Component {
       var win = this.checkWin();
       if (win) {
         console.log("You Win!!");
-        var animationInterval = setInterval(this.animate, 100);
-        setTimeout(() => {clearInterval(animationInterval)}, 1000);
+        var animationInterval = setInterval(this.animate, 1000);
+        setTimeout(() => {clearInterval(animationInterval)}, 10000);
         this.setState({
           alertMessage: "You Win!",
           win: true
@@ -41,7 +41,7 @@ class Game extends React.Component {
   animate() {
     this.setState((prevState, props) => {
       var newAnimationItems = prevState.animationItems;
-      newAnimationItems.push("😇");
+      newAnimationItems.push({icon: "😇", id: newAnimationItems.length});
       return {
         animationItems: newAnimationItems
       };
