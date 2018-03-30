@@ -13,7 +13,7 @@ class Game extends React.Component {
   
   buildBoard(height, width, mines) {
     var totalSquares = height * width;
-    var oneDimBoard = new Array(totalSquares);
+    var oneDimBoard = new Array(totalSquares).fill({});
     oneDimBoard.fill
       
     }

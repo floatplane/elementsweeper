@@ -19,6 +19,7 @@ To Do
 - Draw Board
   - Check there aren't too many mines
   - Set State:
+    - Position
     - Value
       - Mine
       - Neighbor
