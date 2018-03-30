@@ -75,7 +75,8 @@ class Game extends React.Component {
     return board;
   }
   
-  getNeighbors(square) {
+  getNeighbors(square, width, height) {
+    var boardIndexNeighbors = [];
     var relNeighbors = [
       [-1,-1],
       [ 0,-1],
@@ -91,38 +92,32 @@ class Game extends React.Component {
       s => s.map(
         (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)   
     ));
-    return absNeighbors;
+    //return absNeighbors;
+    for (var i in absNeighbors) {
+      var n = absNeighbors[i];
+      if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
+        // row, column are reversed order as array indexes
+        boardIndexNeighbors.push({colIndex: n[1], rowIndex: n[0]});
+      }
+    }
+    return boardIndexNeighbors;
   }
   
   countNeighboringMines(square, board, width, height) {
     
     var neighboringMines = 0;
-    var absNeighbors = this.getNeighbors(square);
-    
-    for (var i in absNeighbors) {
-      var n = absNeighbors[i];
-      if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
-        // row, column are reversed order as array indexes
-        if (board[n[1]][n[0]].mineStatus) {
-          neighboringMines++
-        }
-      }
+    var boardIndexNeighbors = this.getNeighbors(square, width, height);
+    for (var i in boardIndexNeighbors) {
+      var r = boardIndexNeighbors[i].rowIndex;
+      
+      var nSq = board[boardIndexNeighbors[ 
     }
     return neighboringMines;
   }
   
-  onEachNeighbor(square, func) {
+  onEachNeighbor(square, width, height, func) {
     var absNeighbors = this.getNeighbors(square);
-    for (var i in absNeighbors) {
-      var n = absNeighbors[i];
-      if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
-        // row, column are reversed order as array indexes
-        nSq = board[n[1]][n[0]];
-        if (board[n[1]][n[0]].mineStatus) {
-          neighboringMines++
-        }
-      }
-    }
+    
   }
   
   revealNeighbors(square) {
