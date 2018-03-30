@@ -79,6 +79,7 @@ class Game extends React.Component {
         row[j].rowIndex = i;
         row[j].colIndex = j;
         row[j].clickStatus = false;
+        row[j].flagStatus = false;
       }
       board.push(row);
     }
@@ -150,31 +151,33 @@ class Game extends React.Component {
     } 
   }
   
-  handleClick(square) {
-    if (!square.clickStatus) {
-      // If square clicked is a mine neighbor do nothing except reveal
-      var callback = () => {};
-      if (square.mineStatus) {
-        // If square clicked is a mine trigger lose game
-        callback = this.clickMine;
-      } else if (!square.neighboringMines) {
-        // If square clicked is not a mine neighbor start recursive reveal
-        callback = (board) => this.revealNeighbors(square, board);
-      }    
-      var updatedBoard;
-      this.setState((prevState, props) => {
-        updatedBoard = prevState.board;
-        updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
-        return {
-          board: updatedBoard
-        };
-      },() => callback(updatedBoard));
-    }
-  }
-  
-  handleFlag(e, square) {
+  handleClick(e, square, type) {
     e.preventDefault();
-    alert(square.position);
+    if (type === "reveal") {
+      if (!square.clickStatus) {
+        // If square clicked is a mine neighbor do nothing except reveal
+        var callback = () => {};
+        if (square.mineStatus) {
+          // If square clicked is a mine trigger lose game
+          callback = this.clickMine;
+        } else if (!square.neighboringMines) {
+          // If square clicked is not a mine neighbor start recursive reveal
+          callback = (board) => this.revealNeighbors(square, board);
+        }    
+        var updatedBoard;
+        this.setState((prevState, props) => {
+          updatedBoard = prevState.board;
+          updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
+          return {
+            board: updatedBoard
+          };
+        },() => callback(updatedBoard));
+      }
+    } else {
+      
+      
+      
+    }
   }
     
   
@@ -214,7 +217,7 @@ class Game extends React.Component {
         <Board
           board={this.state.board}
           clickSquare={this.handleClick}
-          flagSquare={this.handleFlag}
+          //flagSquare={this.handleFlag}
         />
       </div>
     );

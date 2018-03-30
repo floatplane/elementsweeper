@@ -9,7 +9,7 @@ const Row = function(props) {
     <Square
       square={square}
       click={props.clickSquare}
-      flagSquare={props.flagSquare}
+      //flagSquare={props.flagSquare}
     />
   );
   
@@ -27,7 +27,7 @@ function Board(props) {
       <Row
         squares={row}
         clickSquare={props.clickSquare}
-        flagSquare={props.flagSquare}
+        //flagSquare={props.flagSquare}
       />                             
     </li>
   );

@@ -27,6 +27,9 @@ x Draw Board
       x Empty
     x Click Status
 - Better notifications
+  x DOM notifications
+  - Style notifications
+  - Write better notification copy
 x Recursive show on click empty
 - Flexbox or CSS Grid for layout
 - Visible/Invisible style

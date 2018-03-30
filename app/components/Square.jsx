@@ -18,8 +18,8 @@ const Square = function(props) {
     
   return (
     <li
-      onClick={() => props.click(props.square)}
-      onContextMenu={(e) => props.flagSquare(e, props.square)}
+      onClick={(e) => props.click(e, props.square, "reveal")}
+      onContextMenu={(e) => props.click(e, props.square, "flag")}
       /*onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleTouchStart}
