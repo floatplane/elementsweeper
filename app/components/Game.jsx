@@ -106,16 +106,23 @@ class Game extends React.Component {
   }
   
   handleClick(square) {
-    var rowIndex = square.rowIndex;
-    var colIndex = square.colIndex;
+    var callback = () => {};
+    square.mineStatus ? callback = this.clickMine: 1 + ;
+    
     
     this.setState((prevState, props) => {
-      updatedBoard = prevState.board[rowIndex][colIndex].clickStatus
+      var updatedBoard = prevState.board;
+      updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
       return {
-        board: 
+        board: updatedBoard
       };
-    });
+    }, callback);
   }
+  
+  clickMine() {
+    alert("You Lose");
+  }
+  
   
   render() {
     return (

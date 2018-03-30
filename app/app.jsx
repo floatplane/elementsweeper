@@ -24,6 +24,6 @@ To Do
       x Mine
       x Neighbor
       x Empty
-    - Click Status
+    x Click Status
 
 */

@@ -31,6 +31,7 @@ ul {
   display: inline-block;
   padding: 10px;
   border: 1px solid green;
+  min-width: 90px;
 }
 
 .info {
