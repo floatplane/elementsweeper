@@ -97,7 +97,7 @@ class Game extends React.Component {
       var n = absNeighbors[i];
       if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
         // row, column are reversed order as array indexes
-        boardIndexNeighbors.push({colIndex: n[1], rowIndex: n[0]});
+        boardIndexNeighbors.push({colIndex: n[0], rowIndex: n[1]});
       }
     }
     return boardIndexNeighbors;
@@ -109,15 +109,13 @@ class Game extends React.Component {
     var boardIndexNeighbors = this.getNeighbors(square, width, height);
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
-      
-      var nSq = board[boardIndexNeighbors[ 
+      var c = boardIndexNeighbors[i].colIndex;
+      var nSq = board[r][c];
+      if (nSq.mineStatus) {
+        neighboringMines++; 
+      }
     }
     return neighboringMines;
-  }
-  
-  onEachNeighbor(square, width, height, func) {
-    var absNeighbors = this.getNeighbors(square);
-    
   }
   
   revealNeighbors(square) {
@@ -126,8 +124,6 @@ class Game extends React.Component {
       reveal (as if you clicked on it)
       (if it's also empty click functionality should start recursion)
     */
-    
-    console.log(absNeighbors);
     
     
     
@@ -152,10 +148,6 @@ class Game extends React.Component {
         board: updatedBoard
       };
     }, callback);
-  }
-  
-  recursiveReveal(square) {
-    alert("Reveal! " + square.position);
   }
   
   clickMine() {
