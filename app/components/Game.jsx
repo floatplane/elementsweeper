@@ -86,25 +86,14 @@ class Game extends React.Component {
     ));
     
     for (var i in absNeighbors) {
-      var pos = this.state.width * square.rowIndex + square.colIndex;
-      
+      var n = absNeighbors[i];
+      if (n[0] >= 0 && n[1] >= 0) {
+        // row, column are reversed order as array indexes
+        if (board[n[1], n[0]].mineStatus) {
+          neighboringMines++
+        }
+      }
     }
-  }
-  
-  getNeighborPosition(square) {
-    /*
-    position = width * rowIndex + colIndex
-    
-    colIndex, rowIndex
-    
-    -1,-1| 0,-1| 1,-1  
-    -----|-----|-----
-    -1, 0|  s  | 1, 0  
-    -----|-----|-----
-    -1, 1| 0, 1| 1, 1   
-    */
-    
-    return    
   }
   
   render() {
@@ -113,7 +102,6 @@ class Game extends React.Component {
         <h1>Minesweeper</h1>
         <Board
           board={this.state.board}
-          
         />
       </div>
     );
