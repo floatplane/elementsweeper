@@ -7,38 +7,45 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: []
+      board: this.buildBoard(3,3,4)
     };
   }
   
   buildBoard(height, width, mines) {
     // Generate random mine positions:
-    var mines = [];
+    var totalSquares = height * width;
+    var mineArray = [];
     for (var i = 0; i < mines; i++) {
-      var position = Math.floor(Math.random() * mines);
-      if (mines.indexOf(position) === -1) {
-        mines.push(position); 
+      var position = Math.floor(Math.random() * totalSquares);
+      if (mineArray.indexOf(position) === -1) {
+        mineArray.push(position); 
       } else {
         i--
       }
     }
     
+    // Create one dimensional array
     var oneDimBoard = [];
-    var totalSquares = height * width;
+
     for (var i = 0; i < totalSquares; i++) {
       // Check if square is a mine
       var mineStatus = false;
-      if (mines.indexOf(i)) {
+      if (mineArray.indexOf(i) >= 0) {
         mineStatus = true;
       }
-      // Create square obje
+      // Create square object
       var square = {
         position: i,
         mineStatus: mineStatus
       };
-      oneDimBoard.push(square);
-      
+      // Add square to one dimensional array
+      oneDimBoard.push(square);     
     }
+    var board = [];
+    for (var i = 0; i < width; i++) {
+      board.push(oneDimBoard.slice( 
+    }
+    return board;
   }
   
   render() {
