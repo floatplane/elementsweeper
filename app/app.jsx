@@ -35,8 +35,8 @@ x Recursive show on click empty
 - Visible/Invisible style
 - Mark as flagged
 x Check for Win on click
-- Win animation
-- Lose animation
+x Win animation
+x Lose animation
 - Story
 - Instructions
 - Add indexes to board squares

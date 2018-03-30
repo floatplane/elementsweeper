@@ -3,20 +3,19 @@ const React = require('react');
 
 const Animations = function(props) {
   
-  getIcon(i, type) {
+  function getIcon(i) {
     var winIcons = ["👒","🎩","🎓","🥇","👑","🕶","🐣","☘️","🌈","⚡️","🎈","🎏","🎉","🎊","📎","💯","🐬"];
-    var loseIcons = ["🍃","🥀","☄️","🌩","💦","🎭","🔮","❌","🌀♣️🏁];
-    
-    
+    var loseIcons = ["🍃","🥀","☄️","🌩","💦","🎭","🔮","❌","🌀","♣️","🏁"];
+    var set = props.win ? winIcons : loseIcons;
+    return set[i % set.length];
   }
   
   
   function getItems() {
     var newAnimationItems = [];
     if (props.win || props.lose) {
-      var type = props.win ? "win" : "lose";
       for (var i = 0; i < 600; i++) {
-        newAnimationItems.push({icon: getIcon(i, type), id: newAnimationItems.length});
+        newAnimationItems.push({icon: getIcon(i), id: newAnimationItems.length});
       }
     }
     return newAnimationItems;
