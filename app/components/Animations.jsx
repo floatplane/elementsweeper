@@ -3,8 +3,9 @@ const React = require('react');
 
 const Animations = function(props) {
   
-  const items = props.items.map((i) =>
+  const items = props.items.map((i, index) =>
     <div
+      key={index}
       class="alert-animation-item"
       style={{left: placeHorizontally() + "vw"}}
     >

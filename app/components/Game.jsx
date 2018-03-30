@@ -14,7 +14,7 @@ class Game extends React.Component {
       alertMessage: "",
       win: false,
       lose: false,
-      animationItems: ["🦁","🎄","🌞","🍘"],
+      animationItems: [],
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -26,12 +26,38 @@ class Game extends React.Component {
     if (!this.state.win) {
       var win = this.checkWin();
       if (win) {
+        var animationInterval = setInterval(this.animate, 100);
+        setTimeout(() => {clearInterval(animationInterval)}, 1000);
         this.setState({
           alertMessage: "You Win!",
           win: true
         });
       }
     }
+  }
+  
+  animate() {
+    this.setState((prevState, props) => {
+      var newAnimationItems = prevState.animationItems;
+      newAnimationItems.push("😇");
+      return {
+        animationItems: newAnimationItems
+      };
+    }); 
+    
+    /*
+    
+    this.setState((prevState, props) => {
+          updatedBoard = prevState.board;
+          updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
+          return {
+            board: updatedBoard
+          };
+        },() => callback(updatedBoard));
+        
+    */
+    
+    
   }
   
   buildBoard(height, width, mines) {
