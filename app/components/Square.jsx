@@ -39,7 +39,9 @@ const Square = function(props) {
     <li
       onClick={() => props.click(false, props.square, "reveal")}
       onContextMenu={(e) => {
-        props.click(e, props.square, "flag")
+        e.preventDefault();
+        props.click(false, props.square, "flag");
+        
       }}
       /*onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
