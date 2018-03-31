@@ -19,6 +19,7 @@ class Game extends React.Component {
       alertMessage: "",
       win: false,
       lose: false,
+      revealed: false,
       flagClick: false,
       flagCount: 0,
       height: props.height,
@@ -41,28 +42,38 @@ class Game extends React.Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
+    var updatedBoard = prevState.board;
+    var newWinState = false;
+    var newBoardState = false;
+       
     if (!this.state.win) {
       var win = this.checkWin();
       if (win) {
         console.log("You Win!!");
-        this.setState({
+        newWinState = {
           alertMessage: "You Win!",
           win: true
-        });
+        };
       }
     }
     
-    if (this.state.win || this.state.lose) {
-      var updatedBoard = prevState.board;
+    if ((this.state.win || this.state.lose) && !this.state.revealed) {  
       updatedBoard.forEach(row => {
         row.forEach(square => {
-           console.log(square.position);
+          if (square.mineStatus) {
+            square.clickStatus = true;
+          }
         });
       });
       
-      this.setState({
-        board: updatedBoard
-      });
+      newBoardState = {
+        board: updatedBoard,
+        revealed: true
+      };
+    }
+    
+    if (newWinState || newBoardState) {
+      this.setState(Object.assign({}, newWinState, newBoardState));
     }
   }
   
@@ -196,6 +207,7 @@ class Game extends React.Component {
         var callback = () => {};
         if (square.mineStatus) {
           // If square clicked is a mine trigger lose game
+          square.
           callback = this.clickMine;
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
