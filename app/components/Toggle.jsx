@@ -9,8 +9,8 @@ const Toggle = function(props) {
     border: "2px solid black",
     borderRadius: "1.5em",
     display: "flex",
-    margin: "1.25em 0",
-    height: "2em",
+    margin: "1.25em 0 1.25em .25em",
+    //height: "2em",
     //padding: "2px"
   }
   
@@ -20,7 +20,7 @@ const Toggle = function(props) {
   const statusOrder = props.status ? "0" : "2";
   const statusStyle = {
     textAlign: align,
-    padding: ".25em",
+    padding: "0 .25em",
     fontSize: "150%",
     //width: "100%",
     order: statusOrder
@@ -29,16 +29,18 @@ const Toggle = function(props) {
   
   const handleContainerStyle = {
     height: "auto",
-    width: "100%",
-    display: "inline-block"
+    width: "2em",
+    display: "inline-block",
+    //padding: "5%"
   }
   
   
   const handleStyle = {
     backgroundColor: "green",
     borderRadius: "50%",
-    width: "100%",
-    paddingTop: "100%",
+    width: "80%",
+    paddingTop: "80%",
+    margin: "10%",
     order: "1"
   }
   
