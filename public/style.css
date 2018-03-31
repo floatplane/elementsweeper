@@ -13,19 +13,23 @@ ul {
 
 #board {
   width: 100%;
+  height: 100%;
   border: 2px solid black;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
 }
 
 #board > li, .row > li {
   margin: 0;
+  flex-grow: 1;
 }
 
 .row {
   width: 100%;
   border: 2px dashed red;
   list-style-type: none;
-  display: grid;
+  display: flex;
   
 }
 
@@ -33,8 +37,6 @@ ul {
   padding: 10px;
   border: 1px solid green;
   min-width: 90px;
-  /*flex-grow: 1;*/
-  grid-auto-columns: 50px;
 }
 
 .info {
