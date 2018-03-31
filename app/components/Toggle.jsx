@@ -2,13 +2,22 @@ const React = require('react');
 
 
 const Toggle = function(props) {
-  
+
   const text = props.status ? props.on : props.off;
   
-  const toggleStyle = {
-    padding: ".1em",
-    lineHeight: "130%",
+  const toggleContainerStyle = {
     display: "flex"
+    
+  }
+  
+  const toggleStyle = {
+    padding: ".2em",
+    lineHeight: "130%",
+    display: "flex",
+    border: "2px solid black",
+    borderRadius: "1.5em",
+    width: "5em",
+    margin: ".5em 0"
   }
   
   // Using this in Counter also, should merge
@@ -29,21 +38,30 @@ const Toggle = function(props) {
     order: statusOrder
   }
   
-  const labelAlign = props.status ? "right" : "left";
   
+  const handleContainerStyle = {
+    height: "100%",
+    width: "100%",
+    display: "inline-block"
+  }
+  
+  
+  const labelAlign = props.status ? "right" : "left";
   const handleStyle = {
     backgroundColor: "green",
     borderRadius: "50%",
     width: "100%",
-    height: "auto",
-    paddingTop: "50%",
-    textAlign: labelAlign,
+    paddingTop: "100%",
+    //textAlign: labelAlign,
     order: "1"
   }
   
   
   return (
-    <div class="toggle-container">
+    <div
+      class="toggle-container"
+      style={toggleContainerStyle}  
+    >
     <h5 style={labelStyle}>Flag Toggle:</h5>
       <div
         class="toggle"

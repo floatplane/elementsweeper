@@ -56,21 +56,13 @@ li {
   padding: .5em 0;
 }
 
-.toggle-container {
-  display: inline-block;
-}
-
 .toggle {
-  border: 2px solid black;
-  border-radius: 1.5em;
-  width: 5em;
-  margin: .5em 0;
+  /* In component */
 }
 
 #board {
   display: inline-block;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 #board > li {
