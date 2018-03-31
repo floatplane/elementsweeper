@@ -1,9 +1,11 @@
 const React = require('react');
 
-
 const Alert = function(props) {
+  
+  const hideStatus = props.message ? "" : "hide-alert";
+
   return (
-    <div class="alert">
+    <div className={hideStatus + " alert"}>
       {props.message}
     </div>
   );

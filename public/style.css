@@ -33,22 +33,27 @@ li {
 #game-container {
   margin: 0 auto;
   display: inline-block;
+  position: relative;
 }
 
 .counter {
+  /*display: inline-block;*/
   border: 2px solid black;
   border-radius: 5px;
   width: 5em;
   margin: .5em auto;
   padding: .5em;
+  float: left;
 }
 
 .toggle {
+  /*display: inline-block;*/
   border: 2px solid black;
-  border-radius: 15px;
-  width: 3em;
+  border-radius: 1.5em;
+  width: 5em;
   margin: .5em auto;
   padding: .5em;
+  float: right;
 }
 
 #board {
@@ -87,9 +92,22 @@ li {
 }
 
 .alert {
-  padding: 2em;
+  padding: 1em;
   border: 3px solid pink;
-  background-color: 
+  border-radius: 15px;
+  background-color: #fbd;
+  position: absolute;
+  font-size: 200%;
+  font-weight: bold;
+  top: 5em;
+  float: left;
+  width: 80%;
+  margin: 0 10%;
+  
+}
+
+.hide-alert {
+  display: none;
 }
 
 .alert-animation-item {
@@ -97,6 +115,7 @@ li {
   position: absolute;
   animation-name: alertAnimation;
   animation-duration: 10s;
+  z-index: 1000;
 }
 
 @keyframes alertAnimation {

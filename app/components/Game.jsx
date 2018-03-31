@@ -266,16 +266,20 @@ class Game extends React.Component {
           <Alert
             message={this.state.alertMessage}
           />
-          <Counter
-            count={this.state.flagCount}
-            label={"Flags"}
-          />
-          <Toggle
-            status={this.state.flagClick}
-            off={"👁"}
-            on={"🎏"}
-            click={this.handleToggle}
-          />
+          
+          <div id="controls-container">
+            <Counter
+              count={this.state.flagCount}
+              label={"Flags"}
+            />
+            <Toggle
+              status={this.state.flagClick}
+              off={"👁"}
+              on={"🎏"}
+              click={this.handleToggle}
+            />
+          </div>
+
           <Board
             board={this.state.board}
             clickSquare={this.handleClick}
