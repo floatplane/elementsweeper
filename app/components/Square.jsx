@@ -58,15 +58,13 @@ const Square = function(props) {
     } 
   }
   
+  const label = props.square.clickStatus ? <h4 style={positionLabel()}>{getLabel()}</h4> : false;
+  
     
   return (
     <li
       onClick={() => props.click(false, props.square, "reveal")}
-      onContextMenu={(e) => {
-        e.preventDefault();
-        props.click(false, props.square, "flag");
-        
-      }}
+      onContextMenu={(e) => props.click(e, props.square, "flag")}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleTouchStart}
@@ -74,7 +72,7 @@ const Square = function(props) {
       style={getStyle()}
     >
       <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
-        <h4 style={positionLabel()}>{getLabel()}</h4>
+        {label}
       </div>
     </li>
   );
