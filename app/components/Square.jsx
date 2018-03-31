@@ -34,16 +34,30 @@ const Square = function(props) {
     }
   }
   
-  function getStyle() {
+  function gridSize() {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
-    var size;
-    size = (w / props.width) > (h / props.height) ? h * .85 / props.height + "px" : w * .85 / props.width + "px";
-    
+    return (w / props.width) > (h / props.height) ? h * .85 / props.height : w * .85 / props.width;
+  }
+  
+  
+  function getStyle() {  
+    var size = gridSize();
     return {
-      height: size,
-      width: size
+      height: size + "px",
+      width: size + "px"
     }
+  }
+  
+  function positionLabel() {
+    var size = gridSize();
+    return {
+      lineHeight: (size / 2) + "px",
+      fontSize: (size / 2) + "px",
+      margin: (size / 4) + ", 0",
+      border: "1px dashed pink",
+      color: "green"
+    } 
   }
   
     
@@ -62,7 +76,7 @@ const Square = function(props) {
       style={getStyle()}
     >
       <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
-        <h4>{getLabel()}</h4>
+        <h4 style={positionLabel()}>{getLabel()}</h4>
       </div>
     </li>
   );
