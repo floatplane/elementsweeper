@@ -98,6 +98,10 @@ li {
   border: 0px solid white;
 }
 
+.mine-triggered {
+  background-color: #ccf; 
+}
+
 .alert-container {
   border: 3px solid red;
   border-radius: 15px;

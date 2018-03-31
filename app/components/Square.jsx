@@ -56,7 +56,10 @@ const Square = function(props) {
       onContextMenu={(e) => props.click(e, props.square, "flag")}
       style={getStyle()}
     >
-      <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
+      <div className={
+          (props.square.clickStatus ? "clicked" : "unclicked")
+          + (props.square.mineTriggered ? " mine-triggered" : "")
+          + " square-inner"}>
         {labelHeader}
       </div>
     </li>

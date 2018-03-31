@@ -124,6 +124,7 @@ class Game extends React.Component {
         row[j].colIndex = j;
         row[j].clickStatus = false;
         row[j].flagStatus = false;
+        row[j].mineTriggered = false;
       }
       board.push(row);
     }
@@ -207,7 +208,7 @@ class Game extends React.Component {
         var callback = () => {};
         if (square.mineStatus) {
           // If square clicked is a mine trigger lose game
-          square.
+          square.mineTriggered = true;
           callback = this.clickMine;
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
