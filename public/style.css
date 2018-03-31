@@ -48,8 +48,8 @@ li {
 
 .counter {
   display: inline-block;
-  background-color: #33F;
-  color: yellow;
+  background-color: #8CF;
+  color: black;
   border-radius: 5px;
   width: 7em;
   margin: .5em 0;
@@ -63,7 +63,7 @@ li {
   border-radius: 1.5em;
   width: 5em;
   margin: .5em 0;
-  padding: .5em;
+  padding: .1em;
   line-height: 130%;
 }
 

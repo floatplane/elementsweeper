@@ -20,8 +20,14 @@ const Toggle = function(props) {
     width: "100%"
   }
   
+  const labelFloat = props.status ? "right" : "left";
+  
   const handleStyle = {
-     
+    backgroundColor: "green",
+    borderRadius: "100%",
+    height: "1em",
+    width: "1em",
+    float: labelFloat
   }
   
   
