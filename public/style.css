@@ -16,6 +16,11 @@ h4 {
   text-align: center;
 }
 
+h5 {
+  font-weight: normal;
+  font-size: 100%;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -43,11 +48,13 @@ li {
 
 .counter {
   display: inline-block;
-  border: 2px solid black;
+  background-color: #33F;
+  color: yellow;
   border-radius: 5px;
-  width: 5em;
+  width: 7em;
   margin: .5em 0;
-  padding: .5em;
+  padding: .5em 0;
+  
 }
 
 .toggle {

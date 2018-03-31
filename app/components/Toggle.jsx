@@ -5,11 +5,16 @@ const Toggle = function(props) {
   
   const text = props.status ? props.on : props.off;
   
-  
+  // Using this in Counter also, should merge
+  const labelStyle = {
+    display: "inline-block",
+    width: "auto",
+    margin: "0 1em"
+  }
     
   
   const align = props.status ? "left" : "right";
-  const labelStyle = {
+  const statusStyle = {
     textAlign: align,
     padding: "0 .25em",
     width: "100%"
@@ -22,12 +27,12 @@ const Toggle = function(props) {
   
   return (
     <div class="toggle-container">
-    <h4>Flag</h4>
+    <h5 style={labelStyle}>Flag Toggle:</h5>
       <div
         class="toggle"
         onClick={props.click}
       >
-        <div style={labelStyle}>{text}</div>
+        <div style={statusStyle}>{text}</div>
         <div style={handleStyle}></div>
       </div>
     </div>
