@@ -8,8 +8,6 @@ const Counter = function(props) {
     {},
     controlItem.containerStyle,
     {
-      backgroundColor: "#8CF",
-      borderRadius: "5px",
       width: "7em",
     }
   )

@@ -70,6 +70,7 @@ li {
 #board {
   display: inline-block;
   margin: 0 auto;
+  background:radial-gradient(ellipse at center, rgba(247,234,178,1) 66%, rgba(248,234,179,0) 100%);
 }
 
 #board > li {
