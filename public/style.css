@@ -37,11 +37,13 @@ li {
 }
 
 #controls-container {
-  position: absolute;
-  left: 0
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   border: 1px dashed orange;
+}
+
+#controls-wrapper {
+ 
 }
 
 .counter {

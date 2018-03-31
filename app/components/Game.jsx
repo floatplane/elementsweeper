@@ -268,6 +268,7 @@ class Game extends React.Component {
           />
           
           <div id="controls-container">
+            
             <Counter
               count={this.state.flagCount}
               label={"Flags"}
@@ -278,6 +279,7 @@ class Game extends React.Component {
               on={"🎏"}
               click={this.handleToggle}
             />
+              
           </div>
 
           <Board
