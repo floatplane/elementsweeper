@@ -34,6 +34,14 @@ const Square = function(props) {
     }
   }
   
+  function getStyle() {
+    
+    
+    return {
+      border: "3px dotted orange"
+    }
+  }
+  
     
   return (
     <li
@@ -48,6 +56,7 @@ const Square = function(props) {
       onMouseDown={handleTouchStart}
       onMouseUp={handleTouchEnd}*/
       className={props.square.clickStatus ? "clicked" : "unclicked"}
+      style={getStyle()}
     >
       <span class="info">
         {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />

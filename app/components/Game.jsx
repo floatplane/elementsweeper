@@ -231,6 +231,8 @@ class Game extends React.Component {
         <Board
           board={this.state.board}
           clickSquare={this.handleClick}
+          height={this.state.height}
+          width={this.state.width}
           //flagSquare={this.handleFlag}
         />
       </div>

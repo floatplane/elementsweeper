@@ -10,6 +10,8 @@ const Row = function(props) {
       key={square.position.toString()}
       square={square}
       click={props.clickSquare}
+      height={props.height}
+      width={props.width}
       //flagSquare={props.flagSquare}
     />
   );
@@ -29,6 +31,9 @@ function Board(props) {
         key={index}
         squares={row}
         clickSquare={props.clickSquare}
+        height={props.height}
+        width={props.width}
+        
         //flagSquare={props.flagSquare}
       />                             
     </li>
