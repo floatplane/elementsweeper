@@ -40,6 +40,19 @@ li {
   padding: 5px;
 }
 
+.square-inner {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.clicked {
+  background-color: #ffd;
+}
+
+.unclicked {
+  background-color: #ddd;
+}
 
 
 /*
@@ -82,13 +95,7 @@ li {
   display: none;
 }
 
-.clicked {
-  background-color: #ffd;
-}
 
-.unclicked {
-  background-color: #ddd;
-}
 
 .alert-animation-item {
   font-size: 300%;

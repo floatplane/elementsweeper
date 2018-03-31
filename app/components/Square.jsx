@@ -37,20 +37,14 @@ const Square = function(props) {
   function getStyle() {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
-    var style = {
-      border: "3px dotted orange"
-    }
     var size;
-   size = w > h
-       h * .75 / props.height + "px"
-      style.height = size;
-      style.width = size;
-      
-    } else {
-      
-    }
+    size = (w / props.width) > (h / props.height) ? h * .75 / props.height + "px" : w * .75 / props.width + "px";
     
-    return style;
+    return {
+      height: size,
+      width: size,
+      padding: "5px"
+    }
   }
   
     
@@ -66,15 +60,16 @@ const Square = function(props) {
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleTouchStart}
       onMouseUp={handleTouchEnd}*/
-      className={props.square.clickStatus ? "clicked" : "unclicked"}
       style={getStyle()}
     >
-      <span class="info">
-        {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
-        {props.square.clickStatus ? "#" : "_"} / {props.square.flagStatus ? "~" : "-"}  
-      </span>
-      {/*<h4>{props.square.mineStatus ? "💣" : props.square.neighboringMines > 0 ? props.square.neighboringMines : "\u00A0"}</h4>*/}
-      <h4>{getLabel()}</h4>
+      <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
+        <span class="info">
+          {props.square.position}[{props.square.colIndex},{props.square.rowIndex}]<br />
+          {props.square.clickStatus ? "#" : "_"} / {props.square.flagStatus ? "~" : "-"}  
+        </span>
+        {/*<h4>{props.square.mineStatus ? "💣" : props.square.neighboringMines > 0 ? props.square.neighboringMines : "\u00A0"}</h4>*/}
+        <h4>{getLabel()}</h4>
+      </div>
     </li>
   );
 }
