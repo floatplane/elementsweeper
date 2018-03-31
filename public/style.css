@@ -39,11 +39,6 @@ li {
 #controls-container {
   display: flex;
   justify-content:space-between;
-  border: 1px dashed orange;
-}
-
-#controls-wrapper {
- 
 }
 
 .counter {
@@ -62,6 +57,7 @@ li {
   width: 5em;
   margin: .5em 0;
   padding: .5em;
+  line-height: 130%;
 }
 
 #board {
