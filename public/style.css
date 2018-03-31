@@ -1,5 +1,10 @@
+html, body{
+  height: 100vh;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
+  text-align: center;
 }
 
 h1 {
@@ -13,12 +18,12 @@ ul {
 }
 
 li {
-  margin: 0;
+  margin: 0 !important;
 }
 
 #board {
   display: inline-block;
-  margin: 0 50%;
+  margin: 0 auto;
   padding: 5px;
   border: 1px solid black;
 }
@@ -38,6 +43,7 @@ li {
   display: inline-block;
   padding: 5px;
   border: 2px dashed green;
+  width: 100%;
 }
 
 
