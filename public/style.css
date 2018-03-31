@@ -42,8 +42,8 @@ li {
 }
 
 #controls-container {
-  display: flex;
-  justify-content:space-between;
+  /*display: flex;
+  justify-content:space-between;*/
 }
 
 .counter {

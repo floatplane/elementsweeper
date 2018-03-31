@@ -9,9 +9,9 @@ const childBaseStyle = {
 }
 
 const childLabelContainerStyle = {
-  height: "100%",
+  height: "200px",
   width: "100%",
-  lineHeight: "1em",
+  lineHeight: "20px",
   display: "block"
 }
 
