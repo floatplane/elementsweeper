@@ -25,8 +25,11 @@ const Square = function(props) {
   
   function gridSize() {
     var w = document.documentElement.clientWidth;
-    var h = document.documentElement.clientHeight;
-    return (w / props.width) > (h / props.height) ? h * .85 / props.height : w * .85 / props.width;
+    var h = document.documentElement.clientHeight; 
+    var size = (w / props.width) > (h / props.height) ? h * .85 / props.height : w * .85 / props.width;
+    var fullSize = (w / props.width) > (h / props.height) ? h * .85  : w * .85 ;
+    props.liftSize(fullSize);
+    return size;
   }
   
   
