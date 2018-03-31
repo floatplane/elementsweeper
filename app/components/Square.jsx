@@ -63,7 +63,7 @@ const Square = function(props) {
     return {
       lineHeight: (size / 2) + "px",
       fontSize: (size / 2) + "px",
-      margin: (size / 4) + "px auto"
+      margin: ((size / 4) - 2) + "px auto"
     } 
   }
   

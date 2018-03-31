@@ -9,6 +9,7 @@ const Toggle = require('./Toggle');
 class Game extends React.Component {
   constructor(props) {
     super(props);
+    this.resize = this.resize.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.clickMine = this.clickMine.bind(this);
@@ -22,6 +23,18 @@ class Game extends React.Component {
       mines: props.mines,
       board: this.buildBoard(props.height,props.width,props.mines)
     };
+  }
+  
+  resize() {
+    this.forceUpdate();
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.resize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize)
   }
   
   componentDidUpdate(prevProps, prevState) {
@@ -240,7 +253,7 @@ class Game extends React.Component {
     return (
       <div>
         <Animations win={this.state.win} lose={this.state.lose} />
-        <h1>Beachcomber</h1>
+        <h1 id="site-title">Beachcomber</h1>
         <h2>Win: {this.state.win.toString()}  Lose: {this.state.lose.toString()}</h2>
         <Alert
           message={this.state.alertMessage}
