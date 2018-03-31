@@ -10,7 +10,8 @@ const Toggle = function(props) {
     borderRadius: "1.5em",
     display: "flex",
     margin: "1.25em 0 1.25em .25em",
-    maxHeight: "2.25em"
+    maxHeight: "2.25em",
+    backgroundColor: "white"
   }
   
   var labelStyle = controlItem.childLabelStyle

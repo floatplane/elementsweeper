@@ -17,12 +17,14 @@ h1, h2, h3, h4 {
   margin: 0 auto;
   display: inline-block;
   width: 100%;
+  color: black !important;
 }
 
 h1 {
-  margin: 0 10% .25em;
-  width: 80%;
-  background: rgba(255, 255, 255, .8);
+  margin: 1em auto .25em;
+  width: auto;
+  padding: 5px 15px;
+  background: rgba(255, 255, 255, .9);
   border-radius: 5px;
 }
 
@@ -97,12 +99,13 @@ li {
 }
 
 .clicked {
-  background-color: #ffd;
-  border: 1px solid #ddd;
+  background-color: #ddd;
+  border: 1px solid #bbb;
 }
 
 .unclicked {
-  background-color: #ddd;
+  background-color: #f8eab3;
+  border: 1px solid #e8
   border: 0px solid white;
 }
 

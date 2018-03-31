@@ -4,7 +4,7 @@ const containerStyle = {
   display: "flex",
   margin: "0 .5em .5em",
   padding: "0 .5em",
-  backgroundColor: "#8CF",
+  background: "rgba(143, 207, 255, .9)",
   borderRadius: "5px"
 }
 

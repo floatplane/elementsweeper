@@ -295,7 +295,7 @@ class Game extends React.Component {
       <div>
         <Animations win={this.state.win} lose={this.state.lose} />
         <div id="game-container">
-          <h1 id="site-title">Beachcomber</h1>
+          <h1 id="site-title">Beachcomber!</h1>
           <Alert
             message={this.state.alertMessage}
             close={this.handleCloseAlert}
