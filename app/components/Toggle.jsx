@@ -1,24 +1,27 @@
 const React = require('react');
-const controlItem = require('./ControlItem');
+const controlItem = require('./controlItem');
 
 const Toggle = function(props) {
 
   const text = props.status ? props.on : props.off;
   
   const toggleStyle = {
-    padding: ".2em",
-    lineHeight: "130%",
-    display: "flex",
     border: "2px solid black",
     borderRadius: "1.5em",
+    display: "flex",
+    
+    /*
+    padding: ".2em",
+    lineHeight: "130%",
+    
+    
     //width: "5em",
     margin: ".5em 0"
+    */
   }
   
-  // Using this in Counter also, should merge
   var labelStyle = controlItem.childLabelStyle
     
-  
   const align = props.status ? "left" : "right";
   const statusOrder = props.status ? "0" : "2";
   const statusStyle = {
@@ -62,7 +65,6 @@ const Toggle = function(props) {
           Flag Toggle:
         </h5>
       </div>
-      {/*
       <div
         class="toggle"
         style={toggleStyle}
@@ -83,7 +85,6 @@ const Toggle = function(props) {
           </div>
         </div>
       </div>
-      */}
     </div>
   );
 }

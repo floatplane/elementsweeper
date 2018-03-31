@@ -1,7 +1,7 @@
 const React = require('react');
 
 const containerStyle = {
-  //display: "flex"
+  display: "flex"
 }
 
 const childBaseStyle = {
@@ -17,7 +17,7 @@ const childLabelContainerStyle = {
 const childLabelStyle = {
   display: "inline-block",
   width: "100%",
-  margin: "0",
+  margin: "0 .5em",
   lineHeight: "normal",
   verticalAlign: "middle",
   border: "1px solid red"

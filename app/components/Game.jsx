@@ -259,31 +259,27 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        {/*<Animations win={this.state.win} lose={this.state.lose} />*/}
+        <Animations win={this.state.win} lose={this.state.lose} />
         <div id="game-container">
           <h1 id="site-title">Beachcomber</h1>
-          {/*
           <Alert
             message={this.state.alertMessage}
           />
-          */}
           <div id="controls-container">
             
             <Counter
               count={this.state.flagCount}
               label={"Flags"}
             />
-            {/*
             <Toggle
               status={this.state.flagClick}
               off={"👁"}
               on={"🎏"}
               click={this.handleToggle}
             />
-            */}
               
           </div>
-          {/*
+          
           <Board
             board={this.state.board}
             clickSquare={this.handleClick}
@@ -291,7 +287,7 @@ class Game extends React.Component {
             width={this.state.width}
             //flagSquare={this.handleFlag}
           />
-          */}
+
         </div>
       </div>
     );

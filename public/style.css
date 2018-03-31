@@ -7,7 +7,6 @@ body {
   text-align: center;
 }
 
-/*
 
 h1, h2, h3, h4 {
   text-align: center;
@@ -45,11 +44,11 @@ li {
   display: inline-block;
   position: relative;
 }
-*/
+
 
 #controls-container {
-  /*display: flex;
-  justify-content:space-between;*/
+  display: flex;
+  justify-content: space-between;
 }
 
 .counter {
@@ -60,7 +59,7 @@ li {
   /* In component */
 }
 
-/*
+
 #board {
   display: inline-block;
   margin: 0 auto;

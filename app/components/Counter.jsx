@@ -1,5 +1,5 @@
 const React = require('react');
-const controlItem = require('./ControlItem');
+const controlItem = require('./controlItem');
 
 
 const Counter = function(props) {
@@ -14,7 +14,6 @@ const Counter = function(props) {
     }
   )
   
-  // Using this in Toggle also, should merge
   var labelStyle = controlItem.childLabelStyle
   
   return (
@@ -26,7 +25,7 @@ const Counter = function(props) {
         class="counter-label-container"
         style={controlItem.childLabelContainerStyle}
       >
-        <div style={labelStyle}>{props.label}: {props.count}</div>
+        <h5 style={labelStyle}>{props.label}: {props.count}</h5>
       </div>
     </div>
   );
