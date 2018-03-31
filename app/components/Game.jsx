@@ -21,7 +21,7 @@ class Game extends React.Component {
       lose: false,
       revealed: false,
       flagClick: false,
-      flagCount: 0,
+      flagCount: props.mines,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -226,10 +226,10 @@ class Game extends React.Component {
     } else {
       if (!square.clickStatus) {
         var flagStatus = true;
-        var flagChange = 1;
+        var flagChange = -1;
         if (square.flagStatus) {
           flagStatus = false;
-          flagChange = -1;
+          flagChange = 1;
         }
         this.setState((prevState, props) => {
           updatedBoard = prevState.board;
@@ -296,6 +296,9 @@ class Game extends React.Component {
         <Animations win={this.state.win} lose={this.state.lose} />
         <div id="game-container">
           <h1 id="site-title">Beachcomber!</h1>
+          <h5 class="instructions">
+          You a beach comber on the hunt for treasure! You can dig to try to find some hints, but don't reveal the treasure now while the beach is full, put a flag on all of the treasure you find so you can come back for it later. Right click to place a flag or click the flag/reveal toggle at the top-right. Good luck!
+          </h5>
           <Alert
             message={this.state.alertMessage}
             close={this.handleCloseAlert}

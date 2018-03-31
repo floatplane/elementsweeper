@@ -40,14 +40,14 @@ x Lose animation
   - Story
   - Instructions
   - Write better notification copy
-  - Background Pattern
-  - Change colors
+  x Background Pattern
+  x Change colors
   x Add more varied emojis
 x Add indexes to board squares
 - Move setState in handleClick into function
 ~ Fix longpress
 x Toggle for flags
-- Reveal mines after win or lose
+x Reveal mines after win or lose
 - Can't lose on first click
 x Flag Counter
 x Can't flag clicked square

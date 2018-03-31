@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 !important;
   font-family: "Open Sans", sans-serif;
   text-align: center;
   background-image: url("https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2Fbeachcollage2.png?1522526077265");
@@ -50,6 +50,14 @@ li {
 
 #main {
   margin-bottom: 1em;
+}
+
+.instructions {
+  text-align: left;
+  margin: .5em 5% 1em;
+  padding: 5px 15px;
+  background: rgba(255, 255, 255, .9);
+  border-radius: 5px;
 }
 
 #game-container {
@@ -105,8 +113,7 @@ li {
 
 .unclicked {
   background-color: #f8eab3;
-  border: 1px solid #e8
-  border: 0px solid white;
+  border: 1px solid #d8ca93;
 }
 
 .mine-triggered {
