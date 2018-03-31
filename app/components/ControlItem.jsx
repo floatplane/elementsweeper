@@ -8,6 +8,10 @@ const childBaseStyle = {
   
 }
 
+const childLabelContainerStyle = {
+  height: "100%" 
+}
+
 const childLabelStyle = {
   display: "inline-block",
   width: "auto",
@@ -17,5 +21,6 @@ const childLabelStyle = {
 module.exports = {
   containerStyle: containerStyle,
   childBaseStyle: childBaseStyle,
+  childLabelContainerStyle: childLabelContainerStyle,
   childLabelStyle: childLabelStyle
 }

@@ -51,12 +51,18 @@ const Toggle = function(props) {
       class="control-item-container"
       style={controlItem.containerStyle}  
     >
-      <h5
-        class="toggle-label"
-        style={labelStyle}
+      <div
+        class="toggle-label-container"
+        style={controlItem.childLabelContainerStyle}
       >
-        Flag Toggle:
-      </h5>
+        <h5
+          class="toggle-label"
+          style={labelStyle}
+        >
+          Flag Toggle:
+        </h5>
+      </div>
+      
       <div
         class="toggle"
         style={toggleStyle}

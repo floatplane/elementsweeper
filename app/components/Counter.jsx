@@ -4,30 +4,29 @@ const controlItem = require('./ControlItem');
 
 const Counter = function(props) {
   
-  const counterStyle = {
-    display: "inline-block",
-    backgroundColor: "#8CF",
-    color: "black",
-    borderRadius: "5px",
-    width: "7em",
-    margin: ".5em 0",
-    padding: ".5em 0",
-  }
+  const counterStyle = Object.assign(
+    {},
+    controlItem.containerStyle,
+    {
+      backgroundColor: "#8CF",
+      borderRadius: "5px",
+      width: "7em",
+    }
+  )
   
   // Using this in Toggle also, should merge
   var labelStyle = controlItem.childLabelStyle
   
   return (
     <div
-      class="control-item-container"
-      style={controlItem.containerStyle}  
+      class="control-item-container counter"
+      style={counterStyle}  
     >
       <div
-        class="counter"
-        style={counterStyle}
+        class="toggle-label-container"
+        style={controlItem.childLabelContainerStyle}
       >
         <h5 style={labelStyle}>{props.label}: {props.count}</h5>
-      </div>
     </div>
   );
 }
