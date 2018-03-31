@@ -1,7 +1,7 @@
 const React = require('react');
 
 const containerStyle = {
-  display: "flex"
+  //display: "flex"
 }
 
 const childBaseStyle = {
@@ -20,7 +20,8 @@ const childLabelStyle = {
   width: "100%",
   margin: "0",
   lineHeight: "normal",
-  verticalAlign: "middle"
+  verticalAlign: "middle",
+  border: "1px solid red"
 }
 
 module.exports = {

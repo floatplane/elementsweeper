@@ -62,7 +62,7 @@ const Toggle = function(props) {
           Flag Toggle:
         </h5>
       </div>
-      
+      {/*
       <div
         class="toggle"
         style={toggleStyle}
@@ -83,6 +83,7 @@ const Toggle = function(props) {
           </div>
         </div>
       </div>
+      */}
     </div>
   );
 }

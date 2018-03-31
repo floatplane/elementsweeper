@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   text-align: center;
-  -webkit-user-select: none !important;
 }
+
+/*
 
 h1, h2, h3, h4 {
   text-align: center;
@@ -40,6 +45,7 @@ li {
   display: inline-block;
   position: relative;
 }
+*/
 
 #controls-container {
   /*display: flex;
@@ -54,6 +60,7 @@ li {
   /* In component */
 }
 
+/*
 #board {
   display: inline-block;
   margin: 0 auto;
@@ -128,3 +135,4 @@ li {
   h5 {
   }
 }
+*/
