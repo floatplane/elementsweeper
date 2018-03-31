@@ -5,6 +5,7 @@ const Board = require('./Board');
 const Alert = require('./Alert');
 const Animations = require('./Animations');
 const Toggle = require('./Toggle');
+const Counter = require('./Counter');
 
 class Game extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Game extends React.Component {
       win: false,
       lose: false,
       flagClick: false,
+      flagCount: 0,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -253,24 +255,30 @@ class Game extends React.Component {
     return (
       <div>
         <Animations win={this.state.win} lose={this.state.lose} />
-        <h1 id="site-title">Beachcomber</h1>
-        <h2>Win: {this.state.win.toString()}  Lose: {this.state.lose.toString()}</h2>
-        <Alert
-          message={this.state.alertMessage}
-        />
-        <Toggle
-          status={this.state.flagClick}
-          off={"👁"}
-          on={"🎏"}
-          click={this.handleToggle}
-        />
-        <Board
-          board={this.state.board}
-          clickSquare={this.handleClick}
-          height={this.state.height}
-          width={this.state.width}
-          //flagSquare={this.handleFlag}
-        />
+        <div id="game-container">
+          <h1 id="site-title">Beachcomber</h1>
+          <h2>Win: {this.state.win.toString()}  Lose: {this.state.lose.toString()}</h2>
+          <Alert
+            message={this.state.alertMessage}
+          />
+          <Counter
+            count={this.state.flagCount}
+            label={"Flags"}
+          />
+          <Toggle
+            status={this.state.flagClick}
+            off={"👁"}
+            on={"🎏"}
+            click={this.handleToggle}
+          />
+          <Board
+            board={this.state.board}
+            clickSquare={this.handleClick}
+            height={this.state.height}
+            width={this.state.width}
+            //flagSquare={this.handleFlag}
+          />
+        </div>
       </div>
     );
   }

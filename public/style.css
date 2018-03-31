@@ -4,15 +4,15 @@ body {
   -webkit-user-select: none !important;
 }
 
-h1, h4 {
+h1, h2, h3, h4 {
   text-align: center;
   margin: 0 auto;
   display: inline-block;
+  width: 100%;
 }
 
 h4 {
   padding: 0;
-  width: 100%;
   text-align: center;
 }
 
@@ -30,9 +30,22 @@ li {
   margin-bottom: 1em;
 }
 
+#game-container {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.counter {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 5em;
+  margin: .5em auto;
+  padding: .5em;
+}
+
 .toggle {
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 3em;
   margin: .5em auto;
 }
@@ -79,8 +92,14 @@ li {
   animation-duration: 10s;
 }
 
-/* Standard syntax */
 @keyframes alertAnimation {
     0%   {}
     100% {top: 400vh; display: none;}
+}
+
+
+@media (max-width: 500px) {
+  h1 {
+    margin-top: 50px;
+  }
 }
