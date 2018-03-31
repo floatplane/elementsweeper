@@ -9,13 +9,18 @@ const childBaseStyle = {
 }
 
 const childLabelContainerStyle = {
-  height: "100%" 
+  height: "100%",
+  width: "100%",
+  lineHeight: "1em",
+  display: "block"
 }
 
 const childLabelStyle = {
   display: "inline-block",
-  width: "auto",
-  margin: "0 1em"
+  width: "100%",
+  margin: "0",
+  lineHeight: "normal",
+  verticalAlign: "middle"
 }
 
 module.exports = {
