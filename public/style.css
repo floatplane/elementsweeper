@@ -15,9 +15,16 @@ ul {
   margin: 0 auto;
   border: 2px solid black;
   list-style-type: none;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  /*display: flex;
+  flex-direction: column;*/
 }
+
+#board > li {
+  display: block;
+  border: 2px dotted blue;
+  margin: 3px;
+}  
 
 #board > li, .row > li {
   margin: 0;
