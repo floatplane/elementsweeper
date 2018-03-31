@@ -10,7 +10,7 @@ const Square = function(props) {
       return "🎏"; 
     } else if (props.square.clickStatus) {
       if (props.square.mineStatus) {
-        return treasures[Math.floor(Math.random() * treasures.length)];
+        return treasures[props.square.position % treasures.length];
       } else {
         if (props.square.neighboringMines) {
           return props.square.neighboringMines;

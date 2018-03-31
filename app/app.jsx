@@ -42,7 +42,7 @@ x Lose animation
   - Write better notification copy
   - Background Pattern
   - Change colors
-  - Add more varied emojis
+  x Add more varied emojis
 x Add indexes to board squares
 - Move setState in handleClick into function
 ~ Fix longpress

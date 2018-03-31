@@ -51,6 +51,19 @@ class Game extends React.Component {
         });
       }
     }
+    
+    if (this.state.win || this.state.lose) {
+      var updatedBoard = prevState.board;
+      updatedBoard.forEach(row => {
+        row.forEach(square => {
+           console.log(square.position);
+        });
+      });
+      
+      this.setState({
+        board: updatedBoard
+      });
+    }
   }
   
   buildBoard(height, width, mines) {
@@ -174,7 +187,6 @@ class Game extends React.Component {
   }
   
   handleClick(e, square, type) {
-    console.log(e);
     if (e) {
       e.preventDefault();
     }
@@ -226,7 +238,7 @@ class Game extends React.Component {
         alertMessage: "You Lose",
         lose: true
       });
-    }.bind(this), 500);
+    }.bind(this), 300);
   }
   
   checkWin() {
