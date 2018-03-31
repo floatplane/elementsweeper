@@ -40,6 +40,7 @@ x Lose animation
 - Story
 - Instructions
 - Add indexes to board squares
+- Move setState in handleClick into function
 
 
 */

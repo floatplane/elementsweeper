@@ -36,6 +36,7 @@ ul {
 
 .info {
   font-size: 50%;
+  display: none;
 }
 
 .clicked {

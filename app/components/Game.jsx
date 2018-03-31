@@ -155,12 +155,11 @@ class Game extends React.Component {
   }
   
   handleClick(e, square, type) {
-    console.log(e);
     if (e) {
       e.preventDefault();
     }
     if (type === "reveal") {
-      if (!square.clickStatus) {
+      if (!square.clickStatus && !square.flagStatus) {
         // If square clicked is a mine neighbor do nothing except reveal
         var callback = () => {};
         if (square.mineStatus) {
@@ -180,9 +179,17 @@ class Game extends React.Component {
         },() => callback(updatedBoard));
       }
     } else {
-      
-      
-      
+      var flagStatus = true;
+      if (square.flagStatus) {
+        flagStatus = false;
+      }
+      this.setState((prevState, props) => {
+        updatedBoard = prevState.board;
+        updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
+        return {
+          board: updatedBoard
+        };
+      });
     }
   }
     
