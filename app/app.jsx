@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 /* Import Components */
 const Game = require('./components/Game');
 
-ReactDOM.render(<Game width={17} height={7} mines={1} />, document.getElementById('main'));
+ReactDOM.render(<Game width={9} height={9} mines={10} />, document.getElementById('main'));
 
 
 /*
@@ -31,7 +31,7 @@ x Draw Board
   - Style notifications
   - Write better notification copy
 x Recursive show on click empty
-- Flexbox or CSS Grid for layout
+x Flexbox or CSS Grid for layout
 - Visible/Invisible style
 - Mark as flagged
 x Check for Win on click
@@ -43,6 +43,7 @@ x Add indexes to board squares
 - Move setState in handleClick into function
 - Fix longpress
 - Reveal mines after win
+- Can't lose on first click
 
 
 */

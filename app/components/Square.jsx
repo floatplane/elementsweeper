@@ -38,7 +38,7 @@ const Square = function(props) {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
     var size;
-    size = (w / props.width) > (h / props.height) ? h * .75 / props.height + "px" : w * .75 / props.width + "px";
+    size = (w / props.width) > (h / props.height) ? h * .85 / props.height + "px" : w * .85 / props.width + "px";
     
     return {
       height: size,
