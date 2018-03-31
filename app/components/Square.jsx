@@ -37,17 +37,20 @@ const Square = function(props) {
   function getStyle() {
     var w = document.documentElement.clientWidth;
     var h = document.documentElement.clientHeight;
-    
-    if (w > h) {
-      
+    var style = {
+      border: "3px dotted orange"
+    }
+    var size;
+   size = w > h
+       h * .75 / props.height + "px"
+      style.height = size;
+      style.width = size;
       
     } else {
       
     }
     
-    return {
-      border: "3px dotted orange"
-    }
+    return style;
   }
   
     
