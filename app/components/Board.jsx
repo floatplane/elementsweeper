@@ -12,7 +12,6 @@ const Row = function(props) {
       click={props.clickSquare}
       height={props.height}
       width={props.width}
-      liftSize={props.liftSize}
     />
   );
   
@@ -33,7 +32,6 @@ function Board(props) {
         clickSquare={props.clickSquare}
         height={props.height}
         width={props.width}
-        liftSize={props.liftSize}
       />                             
     </li>
   );
