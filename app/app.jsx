@@ -26,10 +26,9 @@ x Draw Board
       x Neighbor
       x Empty
     x Click Status
-- Better notifications
+x Better notifications
   x DOM notifications
-  - Style notifications
-  - Write better notification copy
+  x Style notifications  
 x Recursive show on click empty
 x Flexbox or CSS Grid for layout
 x Visible/Invisible style
@@ -37,8 +36,13 @@ x Mark as flagged
 x Check for Win on click
 x Win animation
 x Lose animation
-- Story
-- Instructions
+- Theme
+  - Story
+  - Instructions
+  - Write better notification copy
+  - Background Pattern
+  - Change colors
+  - Add more varied emojis
 x Add indexes to board squares
 - Move setState in handleClick into function
 ~ Fix longpress

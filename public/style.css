@@ -99,7 +99,7 @@ li {
 }
 
 .alert-container {
-  border: 3px solid blue;
+  border: 3px solid red;
   border-radius: 15px;
   background-color: #fbd;
   position: absolute;
@@ -114,11 +114,7 @@ li {
   width: 100%;
   height: 100%;
   position: relative;
-  left: 12px;
   padding: 1em;
-  border: 3px dotted orange;
-  border-radius: 15px;
-  margin: -6px -12px;
 }
 
 .close-alert {
