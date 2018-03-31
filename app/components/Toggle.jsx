@@ -16,7 +16,7 @@ const Toggle = function(props) {
     display: "flex",
     border: "2px solid black",
     borderRadius: "1.5em",
-    width: "5em",
+    //width: "5em",
     margin: ".5em 0"
   }
   
@@ -24,7 +24,7 @@ const Toggle = function(props) {
   const labelStyle = {
     display: "inline-block",
     width: "auto",
-    margin: "0 1em"
+    margin: "1em"
   }
     
   
@@ -40,7 +40,7 @@ const Toggle = function(props) {
   
   
   const handleContainerStyle = {
-    height: "100%",
+    height: "auto",
     width: "100%",
     display: "inline-block"
   }
@@ -50,7 +50,7 @@ const Toggle = function(props) {
   const handleStyle = {
     backgroundColor: "green",
     borderRadius: "50%",
-    width: "100%",
+    width: "2em",
     paddingTop: "100%",
     //textAlign: labelAlign,
     order: "1"
@@ -62,7 +62,12 @@ const Toggle = function(props) {
       class="toggle-container"
       style={toggleContainerStyle}  
     >
-    <h5 style={labelStyle}>Flag Toggle:</h5>
+      <h5
+        class="toggle-label"
+        style={labelStyle}
+      >
+        Flag Toggle:
+      </h5>
       <div
         class="toggle"
         style={toggleStyle}
@@ -76,7 +81,7 @@ const Toggle = function(props) {
           class="toggle-handle-container"
           style={handleContainerStyle}
         >
-          
+
           <div
             class="toggle-handle"
             style={handleStyle}>
