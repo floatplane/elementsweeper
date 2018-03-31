@@ -198,17 +198,22 @@ class Game extends React.Component {
         },() => callback(updatedBoard));
       }
     } else {
-      var flagStatus = true;
-      if (square.flagStatus) {
-        flagStatus = false;
+      if (!square.clickStatus) {
+        var flagStatus = true;
+        var flagChange = 1;
+        if (square.flagStatus) {
+          flagStatus = false;
+          flagChange = -1;
+        }
+        this.setState((prevState, props) => {
+          updatedBoard = prevState.board;
+          updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
+          return {
+            board: updatedBoard,
+            flagCount: prevState.flagCount + flagChange
+          };
+        });
       }
-      this.setState((prevState, props) => {
-        updatedBoard = prevState.board;
-        updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
-        return {
-          board: updatedBoard
-        };
-      });
     }
   }
     

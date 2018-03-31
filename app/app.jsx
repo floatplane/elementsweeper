@@ -45,6 +45,7 @@ x Add indexes to board squares
 x Toggle for flags
 - Reveal mines after win or lose
 - Can't lose on first click
-- Flag Counter
+x Flag Counter
+x Can't flag clicked square
 
 */

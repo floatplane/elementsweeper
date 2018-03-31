@@ -48,6 +48,7 @@ li {
   border-radius: 15px;
   width: 3em;
   margin: .5em auto;
+  padding: .5em;
 }
 
 #board {
@@ -83,6 +84,12 @@ li {
 .unclicked {
   background-color: #ddd;
   border: 0px solid white;
+}
+
+.alert {
+  padding: 2em;
+  border: 3px solid pink;
+  background-color: 
 }
 
 .alert-animation-item {
