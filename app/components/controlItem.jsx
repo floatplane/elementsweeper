@@ -3,6 +3,7 @@ const React = require('react');
 const containerStyle = {
   display: "flex",
   margin: "0 .5em .5em",
+  padding: "0 .5em",
   backgroundColor: "#8CF",
   borderRadius: "5px"
 }

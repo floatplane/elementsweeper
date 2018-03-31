@@ -3,6 +3,7 @@
 }
 
 body {
+  margin: 0;
   font-family: "Open Sans", sans-serif;
   text-align: center;
   background-image: url("https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2Fbeachcollage2.png?1522526077265");
@@ -19,7 +20,10 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  margin: .25em;
+  margin: 0 10% .25em;
+  width: 80%;
+  background: rgba(255, 255, 255, .8);
+  border-radius: 5px;
 }
 
 h4 {
