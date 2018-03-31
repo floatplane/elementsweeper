@@ -33,8 +33,10 @@ const Toggle = function(props) {
   
   const handleStyle = {
     backgroundColor: "green",
-    borderRadius: "100%",
-    padding: ".8em",
+    borderRadius: "50%",
+    width: "100%",
+    height: "auto",
+    paddingTop: "50%",
     textAlign: labelAlign,
     order: "1"
   }
@@ -53,8 +55,14 @@ const Toggle = function(props) {
           style={statusStyle}>{text}
         </div>
         <div
-          class="toggle-handle"
-          style={handleStyle}>
+          class="toggle-handle-container"
+          style={handleContainerStyle}
+        >
+          
+          <div
+            class="toggle-handle"
+            style={handleStyle}>
+          </div>
         </div>
       </div>
     </div>
