@@ -1,5 +1,5 @@
 const React = require('react');
-const controlItemContainerStyle = require('./ControlItem');
+const controlItem = require('./ControlItem');
 
 
 const Counter = function(props) {
@@ -15,20 +15,16 @@ const Counter = function(props) {
   }
   
   // Using this in Toggle also, should merge
-  const labelStyle = {
-    display: "inline-block",
-    width: "auto",
-    margin: "0 1em"
-  }
+  var labelStyle = controlItem.childLabelStyle
   
   return (
     <div
       class="control-item-container"
-      style={controlItemContainerStyle}  
+      style={controlItem.containerStyle}  
     >
       <div
         class="counter"
-        style={
+        style={counterStyle}
       >
         <h5 style={labelStyle}>{props.label}: {props.count}</h5>
       </div>

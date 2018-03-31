@@ -1,8 +1,21 @@
 const React = require('react');
 
-const ControlItem = {
-  display: "flex",
-  border: "2px solid pink"
+const containerStyle = {
+  display: "flex"
 }
 
-module.exports = ControlItem;
+const childBaseStyle = {
+  
+}
+
+const childLabelStyle = {
+  display: "inline-block",
+  width: "auto",
+  margin: "0 1em"
+}
+
+module.exports = {
+  containerStyle: containerStyle,
+  childBaseStyle: childBaseStyle,
+  childLabelStyle: childLabelStyle
+}

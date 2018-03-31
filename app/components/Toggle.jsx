@@ -1,5 +1,5 @@
 const React = require('react');
-const controlItemContainerStyle = require('./ControlItem');
+const controlItem = require('./ControlItem');
 
 const Toggle = function(props) {
 
@@ -16,11 +16,7 @@ const Toggle = function(props) {
   }
   
   // Using this in Counter also, should merge
-  const labelStyle = {
-    display: "inline-block",
-    width: "auto",
-    margin: "1em"
-  }
+  var labelStyle = controlItem.childLabelStyle
     
   
   const align = props.status ? "left" : "right";
@@ -41,13 +37,11 @@ const Toggle = function(props) {
   }
   
   
-  const labelAlign = props.status ? "right" : "left";
   const handleStyle = {
     backgroundColor: "green",
     borderRadius: "50%",
     width: "2em",
     paddingTop: "100%",
-    //textAlign: labelAlign,
     order: "1"
   }
   
@@ -55,7 +49,7 @@ const Toggle = function(props) {
   return (
     <div
       class="control-item-container"
-      style={controlItemContainerStyle}  
+      style={controlItem.containerStyle}  
     >
       <h5
         class="toggle-label"
