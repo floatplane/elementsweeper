@@ -155,7 +155,7 @@ class Game extends React.Component {
   }
   
   handleClick(e, square, type) {
-    alert(type);
+    console.log(e);
     if (e) {
       e.preventDefault();
     }
