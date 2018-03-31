@@ -155,6 +155,7 @@ class Game extends React.Component {
   }
   
   handleClick(e, square, type) {
+    alert(type);
     if (e) {
       e.preventDefault();
     }
@@ -225,6 +226,7 @@ class Game extends React.Component {
       <div>
         <Animations win={this.state.win} lose={this.state.lose} />
         <h1>Minesweeper</h1>
+        <h2>Win: {this.state.win.toString()}  Lose: {this.state.lose.toString()}</h2>
         <Alert
           message={this.state.alertMessage}
         />
