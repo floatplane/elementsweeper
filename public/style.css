@@ -15,7 +15,6 @@ ul {
   width: 100%;
   border: 2px solid black;
   list-style-type: none;
-  display: grid;
 }
 
 #board > li, .row > li {
@@ -26,13 +25,14 @@ ul {
   width: 100%;
   border: 1px solid red;
   list-style-type: none;
+  display: grid;
 }
 
 .row > li {
-  display: inline-block;
   padding: 10px;
   border: 1px solid green;
   min-width: 90px;
+  /*flex-grow: 1;*/
 }
 
 .info {
