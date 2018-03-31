@@ -42,8 +42,7 @@ const Square = function(props) {
     
     return {
       height: size,
-      width: size,
-      padding: "5px"
+      width: size
     }
   }
   

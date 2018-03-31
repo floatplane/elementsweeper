@@ -28,7 +28,6 @@ li {
 }
 
 #board > li {
-  padding: 5px;
 }
 
 .row {
@@ -37,7 +36,7 @@ li {
 
 .row > li {
   display: inline-block;
-  padding: 5px;
+  /*padding: 2px;*/
 }
 
 .square-inner {
@@ -48,10 +47,12 @@ li {
 
 .clicked {
   background-color: #ffd;
+  border: 1px solid black;
 }
 
 .unclicked {
   background-color: #ddd;
+  border: 1px solid white;
 }
 
 
