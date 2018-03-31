@@ -31,6 +31,8 @@ li {
 .toggle {
   border: 2px solid black;
   border-radius: 5px;
+  width: 3em;
+  margin: 0 auto;
 }
 
 #board {

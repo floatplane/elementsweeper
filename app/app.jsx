@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 /* Import Components */
 const Game = require('./components/Game');
 
-ReactDOM.render(<Game width={3} height={3} mines={10} />, document.getElementById('main'));
+ReactDOM.render(<Game width={2} height={2} mines={1} />, document.getElementById('main'));
 
 
 /*
