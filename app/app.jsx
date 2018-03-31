@@ -42,7 +42,7 @@ x Lose animation
 x Add indexes to board squares
 - Move setState in handleClick into function
 - Fix longpress
-- Reveal mines after win
+- Reveal mines after win or lose
 - Can't lose on first click
 
 

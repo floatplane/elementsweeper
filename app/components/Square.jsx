@@ -3,7 +3,7 @@ const React = require('react');
 
 const Square = function(props) {
   
-  /*
+  
   // Could use this for long press on desktop instead of right click
   var touchTimer;
   
@@ -14,7 +14,7 @@ const Square = function(props) {
   function handleTouchEnd() {
     clearTimeout(touchTimer);
   }
-  */
+  
   
   function getLabel() {
     if (props.square.flagStatus) {
@@ -54,9 +54,7 @@ const Square = function(props) {
     return {
       lineHeight: (size / 2) + "px",
       fontSize: (size / 2) + "px",
-      margin: (size / 4) + ", 0",
-      border: "1px dashed pink",
-      color: "green"
+      margin: (size / 4) + "px auto"
     } 
   }
   
@@ -69,10 +67,10 @@ const Square = function(props) {
         props.click(false, props.square, "flag");
         
       }}
-      /*onTouchStart={handleTouchStart}
+      onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseDown={handleTouchStart}
-      onMouseUp={handleTouchEnd}*/
+      onMouseUp={handleTouchEnd}
       style={getStyle()}
     >
       <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
