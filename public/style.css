@@ -23,9 +23,10 @@ ul {
 
 .row {
   width: 100%;
-  border: 1px solid red;
+  border: 2px dashed red;
   list-style-type: none;
   display: grid;
+  
 }
 
 .row > li {
@@ -33,6 +34,7 @@ ul {
   border: 1px solid green;
   min-width: 90px;
   /*flex-grow: 1;*/
+  grid-auto-columns: 50px;
 }
 
 .info {
