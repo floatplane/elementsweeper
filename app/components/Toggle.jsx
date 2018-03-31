@@ -1,14 +1,9 @@
 const React = require('react');
-
+const controlItemContainerStyle = require('./ControlItem');
 
 const Toggle = function(props) {
 
   const text = props.status ? props.on : props.off;
-  
-  const toggleContainerStyle = {
-    display: "flex"
-    
-  }
   
   const toggleStyle = {
     padding: ".2em",
@@ -59,8 +54,8 @@ const Toggle = function(props) {
   
   return (
     <div
-      class="toggle-container"
-      style={toggleContainerStyle}  
+      class="control-item-container"
+      style={controlItemContainerStyle}  
     >
       <h5
         class="toggle-label"
