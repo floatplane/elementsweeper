@@ -10,16 +10,16 @@ const Square = function(props) {
   
   function handleTouchStart() {
     click = true;
-    var touchTimer = setTimeout(() => {
+    touchTimer = setTimeout(() => {
       click = false;
-      props.click(false, props.square, "flag")
+      //props.click(false, props.square, "flag")
     }, 1500);
   }
   
   function handleTouchEnd() {
     clearTimeout(touchTimer);
     if (click) {
-      props.click(false, props.square, "reveal");
+      //props.click(false, props.square, "reveal");
       click = false;
     }
   }
@@ -72,8 +72,9 @@ const Square = function(props) {
     
   return (
     <li
-      //onClick={() => props.click(false, props.square, "reveal")}
+      onClick={(e) => props.click(e, props.square, "reveal")}
       onContextMenu={(e) => props.click(e, props.square, "flag")}
+      //onContextMenu={(e) => e.preventDefault()}
       
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
