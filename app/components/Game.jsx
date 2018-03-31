@@ -221,10 +221,12 @@ class Game extends React.Component {
   
   clickMine() {
     //alert("You Lose");
-    this.setState({
-      alertMessage: "You Lose",
-      lose: true
-    });
+    setTimeout(function() {
+      this.setState({
+        alertMessage: "You Lose",
+        lose: true
+      });
+    }.bind(this), 500);
   }
   
   checkWin() {

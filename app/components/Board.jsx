@@ -24,10 +24,10 @@ const Row = function(props) {
 
 
 function Board(props) {
-  const rows = props.board.map((row, index) =>
+  const rows = props.board.map((row) =>
     <li>
       <Row
-        key={index}
+        key={row[0].position.toString()}
         squares={row}
         clickSquare={props.clickSquare}
         height={props.height}

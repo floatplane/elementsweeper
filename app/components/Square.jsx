@@ -3,12 +3,14 @@ const React = require('react');
 
 const Square = function(props) {
   
+  const treasures = ["🕰","📻","💰","💎","🔮","🔑","🏐","🏅","🎷","💍","🎟","📟","💵","📷","📱"]
+  
   function getLabel() {
     if (props.square.flagStatus) {
       return "🎏"; 
     } else if (props.square.clickStatus) {
       if (props.square.mineStatus) {
-        return "🔑";
+        return treasures[Math.floor(Math.random() * treasures.length)];
       } else {
         if (props.square.neighboringMines) {
           return props.square.neighboringMines;
