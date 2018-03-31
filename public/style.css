@@ -8,27 +8,58 @@ h1 {
 
 ul {
   list-style-type: none;
+  margin: 0;
   padding: 0;
 }
+
+li {
+  margin: 0;
+}
+
+#board {
+  display: inline-block;
+  margin: 0 50%;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#board > li {
+  padding: 5px;
+  border: 2px dashed blue;
+}
+
+.row {
+  display: flex;
+  padding: 5px;
+  border: 1px solid red;
+}
+
+.row > li {
+  display: inline-block;
+  padding: 5px;
+  border: 2px dashed green;
+}
+
+
+
+/*
 
 #board {
   margin: 0 auto;
   border: 2px solid black;
   list-style-type: none;
   display: block;
-  /*display: flex;
-  flex-direction: column;*/
+
 }
 
 #board > li {
-  display: block;
+  display: inline;
   border: 2px dotted blue;
   margin: 3px;
 }  
 
 #board > li, .row > li {
-  margin: 0;
-  flex-grow: 1;
+  
 }
 
 .row {
@@ -42,7 +73,9 @@ ul {
   padding: 10px;
   border: 1px solid green;
   max-width: 50px;
+  flex-grow: 1;
 }
+*/
 
 .info {
   font-size: 50%;
