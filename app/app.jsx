@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 /* Import Components */
 const Game = require('./components/Game');
 
-ReactDOM.render(<Game width={2} height={2} mines={1} />, document.getElementById('main'));
+ReactDOM.render(<Game width={9} height={9} mines={10} />, document.getElementById('main'));
 
 
 /*
@@ -41,9 +41,10 @@ x Lose animation
 - Instructions
 x Add indexes to board squares
 - Move setState in handleClick into function
-- Fix longpress
+~ Fix longpress
+x Toggle for flags
 - Reveal mines after win or lose
 - Can't lose on first click
-
+- Flag Counter
 
 */

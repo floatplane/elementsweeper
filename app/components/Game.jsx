@@ -183,7 +183,6 @@ class Game extends React.Component {
         },() => callback(updatedBoard));
       }
     } else {
-      console.log("Flag! " + square.flagStatus);
       var flagStatus = true;
       if (square.flagStatus) {
         flagStatus = false;
@@ -191,7 +190,6 @@ class Game extends React.Component {
       this.setState((prevState, props) => {
         updatedBoard = prevState.board;
         updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
-        console.log(updatedBoard);
         return {
           board: updatedBoard
         };

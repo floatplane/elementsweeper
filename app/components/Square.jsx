@@ -39,7 +39,7 @@ const Square = function(props) {
         }
       }
     } else {
-      console.log("No");
+      return false;
     }
   }
   
@@ -67,7 +67,8 @@ const Square = function(props) {
     } 
   }
   
-  const label = props.square.clickStatus ? <h4 style={positionLabel()}>{getLabel()}</h4> : false;
+  var label = getLabel();
+  const labelHeader = label ? <h4 style={positionLabel()}>{label}</h4> : false;
     
   return (
     <li
@@ -83,7 +84,7 @@ const Square = function(props) {
       style={getStyle()}
     >
       <div className={(props.square.clickStatus ? "clicked" : "unclicked") + " square-inner"}>
-        {label}
+        {labelHeader}
       </div>
     </li>
   );

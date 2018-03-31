@@ -42,7 +42,6 @@ function Board(props) {
   
   return (
     <div>
-      <h3>Board</h3>
       <ul id="board">{rows}</ul>
     </div>
   );

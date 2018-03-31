@@ -30,9 +30,9 @@ li {
 
 .toggle {
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 3em;
-  margin: 0 auto;
+  margin: .5em auto;
 }
 
 #board {
@@ -57,6 +57,7 @@ li {
   display: inline-block;
   height: 100%;
   width: 100%;
+  border-radius: 5px;
 }
 
 .clicked {
