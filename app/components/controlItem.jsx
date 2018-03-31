@@ -10,14 +10,14 @@ const childBaseStyle = {
 
 const childLabelContainerStyle = {
   width: "100%",
-  lineHeight: "5em",
+  lineHeight: "3em",
   display: "block"
 }
 
 const childLabelStyle = {
   display: "inline-block",
   width: "100%",
-  margin: "0 .5em",
+  padding: "0 .5em",
   lineHeight: "normal",
   verticalAlign: "middle",
   border: "1px solid red"

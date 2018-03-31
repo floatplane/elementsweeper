@@ -9,15 +9,9 @@ const Toggle = function(props) {
     border: "2px solid black",
     borderRadius: "1.5em",
     display: "flex",
-    
-    /*
-    padding: ".2em",
-    lineHeight: "130%",
-    
-    
-    //width: "5em",
-    margin: ".5em 0"
-    */
+    margin: "1.25em 0",
+    height: "2em",
+    //padding: "2px"
   }
   
   var labelStyle = controlItem.childLabelStyle
@@ -28,7 +22,7 @@ const Toggle = function(props) {
     textAlign: align,
     padding: ".25em",
     fontSize: "150%",
-    width: "100%",
+    //width: "100%",
     order: statusOrder
   }
   
@@ -43,7 +37,7 @@ const Toggle = function(props) {
   const handleStyle = {
     backgroundColor: "green",
     borderRadius: "50%",
-    width: "2em",
+    width: "100%",
     paddingTop: "100%",
     order: "1"
   }
