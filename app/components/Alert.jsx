@@ -7,7 +7,12 @@ const Alert = function(props) {
   return (
     <div className={hideStatus + " alert-container"}>
       <div className="alert">
-        <div className="close-alert">x</div>
+        <div
+          className="close-alert"
+          onClick={props.close}
+        >
+          x
+        </div>
         {props.message}
       </div>
     </div>

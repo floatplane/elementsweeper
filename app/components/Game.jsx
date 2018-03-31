@@ -12,8 +12,9 @@ class Game extends React.Component {
     super(props);
     this.resize = this.resize.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
     this.clickMine = this.clickMine.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleCloseAlert = this.handleCloseAlert.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
@@ -255,6 +256,12 @@ class Game extends React.Component {
     });
   }
   
+  handleCloseAlert() {
+    this.setState({
+      alertMessage: ""
+    });
+  }
+  
   
   render() {
     return (
@@ -264,6 +271,7 @@ class Game extends React.Component {
           <h1 id="site-title">Beachcomber</h1>
           <Alert
             message={this.state.alertMessage}
+            close={this.handleCloseAlert}
           />
           <div id="controls-container">
             
@@ -285,7 +293,6 @@ class Game extends React.Component {
             clickSquare={this.handleClick}
             height={this.state.height}
             width={this.state.width}
-            //flagSquare={this.handleFlag}
           />
 
         </div>
