@@ -47,6 +47,6 @@ x Toggle for flags
 - Can't lose on first click
 x Flag Counter
 x Can't flag clicked square
-- Style Toggle
+x Style Toggle
 
 */

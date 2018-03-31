@@ -21,7 +21,7 @@ const Toggle = function(props) {
   const statusStyle = {
     textAlign: align,
     padding: "0 .25em",
-    fontSize: "150%",
+    fontSize: "130%",
     //width: "100%",
     order: statusOrder
   }
