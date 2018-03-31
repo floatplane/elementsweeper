@@ -38,8 +38,8 @@ class Game extends React.Component {
     var totalSquares = height * width;
     
     // Make sure there aren't more mines than squares
-    if (mines > totalSquares) {
-      mines = totalSquares;
+    if (mines >= totalSquares) {
+      mines = totalSquares - 1;
     }
     
     // Generate random mine positions:
@@ -204,20 +204,24 @@ class Game extends React.Component {
   }
   
   checkWin() {
-    var win = true;
-    for (var i in this.state.board) {
-      for (var j in this.state.board[i]) {
-        var square = this.state.board[i][j];
-        if (!square.clickStatus && !square.mineStatus) {
-          win = false;
+    if (!this.state.lose) {
+      var win = true;
+      for (var i in this.state.board) {
+        for (var j in this.state.board[i]) {
+          var square = this.state.board[i][j];
+          if (!square.clickStatus && !square.mineStatus) {
+            win = false;
+            break;
+          }
+        }
+        if (!win) {
           break;
         }
       }
-      if (!win) {
-        break;
-      }
+      return win;
+    } else {
+      return false;
     }
-    return win;
   }
   
   

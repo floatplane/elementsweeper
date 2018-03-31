@@ -63,7 +63,7 @@ const Square = function(props) {
     
   return (
     <li
-      onClick={() => props.click(false, props.square, "reveal")}
+      //onClick={() => props.click(false, props.square, "reveal")}
       onContextMenu={(e) => props.click(e, props.square, "flag")}
       /*
       onTouchStart={handleTouchStart}
