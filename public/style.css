@@ -28,6 +28,11 @@ li {
   margin-bottom: 1em;
 }
 
+.toggle {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
 #board {
   display: inline-block;
   margin: 0 auto;

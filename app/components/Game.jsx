@@ -4,16 +4,19 @@ const React = require('react');
 const Board = require('./Board');
 const Alert = require('./Alert');
 const Animations = require('./Animations');
+const Toggle = require('./Toggle');
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.clickMine = this.clickMine.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
       lose: false,
+      flagClick: false,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -159,7 +162,7 @@ class Game extends React.Component {
     if (e) {
       e.preventDefault();
     }
-    if (type === "reveal") {
+    if (type === "reveal" && !this.state.flagClick) {
       if (!square.clickStatus && !square.flagStatus) {
         // If square clicked is a mine neighbor do nothing except reveal
         var callback = () => {};
@@ -224,15 +227,29 @@ class Game extends React.Component {
     }
   }
   
+  handleToggle() {
+    this.setState((prevState, props) => {
+      return {
+        flagClick: !prevState.flagClick
+      };
+    });
+  }
+  
   
   render() {
     return (
       <div>
         <Animations win={this.state.win} lose={this.state.lose} />
-        <h1>Minesweeper</h1>
+        <h1>Beachcomber</h1>
         <h2>Win: {this.state.win.toString()}  Lose: {this.state.lose.toString()}</h2>
         <Alert
           message={this.state.alertMessage}
+        />
+        <Toggle
+          status={this.state.flagClick}
+          on={"👁"}
+          off={"🎏"}
+          click={this.handleToggle}
         />
         <Board
           board={this.state.board}
