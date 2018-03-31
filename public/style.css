@@ -5,6 +5,9 @@
 body {
   font-family: "Open Sans", sans-serif;
   text-align: center;
+  background-image: url("https://cdn.glitch.com/f9f0590d-99f0-40a1-86c1-9fba254d0aef%2Fbeachcollage2.png?1522526077265");
+  background-repeat: repeat;
+  background-size: 150px 150px;
 }
 
 
