@@ -125,9 +125,9 @@ li {
   border-radius: 15px;
   background-color: #fbd;
   position: absolute;
-  font-size: 200%;
+  font-size: 125%;
   font-weight: bold;
-  top: 5em;
+  top: 15em;
   width: 80%;
   margin: 0 10%;
 }

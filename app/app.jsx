@@ -37,8 +37,8 @@ x Check for Win on click
 x Win animation
 x Lose animation
 - Theme
-  - Story
-  - Instructions
+  x Story
+  x Instructions
   - Write better notification copy
   x Background Pattern
   x Change colors
