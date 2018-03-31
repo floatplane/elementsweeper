@@ -43,7 +43,6 @@ function Board(props) {
   return (
     <div>
       <h3>Board</h3>
-      <h4>{typeof props.board} - {props.board.length}</h4>
       <ul id="board">{rows}</ul>
     </div>
   );
