@@ -1,6 +1,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   text-align: center;
+  -webkit-user-select: none !important;
 }
 
 h1, h4 {
