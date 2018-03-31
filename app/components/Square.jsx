@@ -35,7 +35,15 @@ const Square = function(props) {
   }
   
   function getStyle() {
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
     
+    if (w > h) {
+      
+      
+    } else {
+      
+    }
     
     return {
       border: "3px dotted orange"
