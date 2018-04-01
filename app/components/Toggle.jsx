@@ -23,7 +23,8 @@ const Toggle = function(props) {
     padding: "0 .25em",
     fontSize: "130%",
     order: statusOrder,
-    lineHeight: "1.7em"
+    lineHeight: "1.7em",
+    minWidth: "40px"
   }
   
   
