@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "starter-react",
-  "version": "0.0.1",
-  "description": "A small scaffold to get you started using React with Webpack",
+  "name": "beachcomber",
+  "version": "1.0.0",
+  "description": "A beach themeed minesweeper clone built with React",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
@@ -22,7 +19,7 @@
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/starter-react"
+    "url": "https://glitch.com/edit/#!/beachcomber"
   },
   "license": "MIT",
   "keywords": [

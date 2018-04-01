@@ -35,7 +35,7 @@ const Toggle = function(props) {
   
   
   const handleStyle = {
-    backgroundColor: "green",
+    backgroundColor: "#db3f92",
     borderRadius: "50%",
     width: "80%",
     paddingTop: "80%",

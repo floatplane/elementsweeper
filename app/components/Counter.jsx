@@ -23,7 +23,7 @@ const Counter = function(props) {
         class="counter-label-container"
         style={controlItem.childLabelContainerStyle}
       >
-        <h5 style={labelStyle}>{props.label}: {props.count}</h5>
+        <h5 style={labelStyle}>{props.label}: <strong>{props.count}</strong></h5>
       </div>
     </div>
   );
