@@ -52,7 +52,7 @@ class Game extends React.Component {
       if (win) {
         console.log("You Win!!");
         newWinState = {
-          alertMessage: "You flagged all of the treasure! You win the game!",
+          alertMessage: "Good Job! You flagged all of the treasure! You win the game!",
           win: true
         };
       }
@@ -249,7 +249,7 @@ class Game extends React.Component {
     //alert("You Lose");
     setTimeout(function() {
       this.setState({
-        alertMessage: "You revealed the treasure too soon! The lifeguard confiscates it. Better luck next time.",
+        alertMessage: "You revealed the treasure too soon! The police confiscates it. Better luck next time.",
         lose: true
       });
     }.bind(this), 300);

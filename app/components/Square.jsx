@@ -3,7 +3,7 @@ const React = require('react');
 
 const Square = function(props) {
   
-  const treasures = ["🕰","📻","💰","💎","🔮","🔑","🏐","🏅","🎷","💍","🎟","📟","💵","📷","📱"]
+  const treasures = ["🕰","📻","💰","💎","🔮","🔑","🏐","🏅","🎷","💍","🎟","📟","💵","📷","📱","💲"]
   
   function getLabel() {
     if (props.square.flagStatus) {
