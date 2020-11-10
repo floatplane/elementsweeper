@@ -38,7 +38,7 @@ function Board(props) {
 
   
   return (
-    <div>
+    <div id="board_container">
       <ul id="board">{rows}</ul>
     </div>
   );
