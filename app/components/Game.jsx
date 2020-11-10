@@ -3,9 +3,6 @@ const React = require('react');
 /* Import Components */
 const Board = require('./Board');
 const Alert = require('./Alert');
-const Animations = require('./Animations');
-const Toggle = require('./Toggle');
-const Counter = require('./Counter');
 
 class Game extends React.Component {
   constructor(props) {
@@ -293,7 +290,6 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <Animations win={this.state.win} lose={this.state.lose} />
         <div
           id="game-container"
         >

@@ -88,7 +88,7 @@ li {
 #board {
   display: inline-block;
   margin: 0 auto;
-  background:radial-gradient(ellipse at center, rgba(247,234,178,1) 66%, rgba(248,234,179,0) 100%);
+  /* background:radial-gradient(ellipse at center, rgba(247,234,178,1) 66%, rgba(248,234,179,0) 100%); */
 }
 
 #board > li {
@@ -117,11 +117,15 @@ li {
 
 .unclicked {
   background-color: #ccccdf;
-  border: 1px solid #d8ca93;
+  border: 1px solid #f00;
 }
 
 .mine-triggered {
   background-color: #ccf; 
+}
+
+.mine-flagged {
+  background-color: #cfc; 
 }
 
 .alert-container {
