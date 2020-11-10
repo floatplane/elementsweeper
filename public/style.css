@@ -118,11 +118,11 @@ li {
 }
 
 .mine-triggered {
-  background-color: #fcc; 
+  background-color: #fcc;
 }
 
 .mine-flagged {
-  background-color: #cfc; 
+  background-color: #cfc;
 }
 
 .alert-container {
@@ -159,20 +159,6 @@ li {
 .hide-alert {
   display: none;
 }
-
-.alert-animation-item {
-  font-size: 300%;
-  position: absolute;
-  animation-name: alertAnimation;
-  animation-duration: 10s;
-  z-index: 1000;
-}
-
-@keyframes alertAnimation {
-    0%   {}
-    100% {top: 400vh; display: none;}
-}
-
 
 @media (max-width: 500px) {
   h1 {
