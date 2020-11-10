@@ -20,7 +20,7 @@ const Square = function(props) {
         if (props.square.neighboringMines) {
           return props.square.neighboringMines;
         } else {
-          return "&nbsp;";
+          return "\u00A0"; // non-breaking space
         }
       }
     } else {
@@ -57,7 +57,19 @@ const Square = function(props) {
 
   var label = getLabel();
   const labelHeader = label ? <h4 style={positionLabel()}>{label}</h4> : false;
-  var className = ["square-inner"]
+  const {square} = props;
+  const {clicked, flagged, mineTriggered} = square;
+  var className = "square-inner";
+  if (clicked) {
+    if (flagged) {
+      className = "mine-flagged " + className;
+    } else {
+      className = "clicked " + className;
+    }
+  }
+  if (mineTriggered) {
+    className = "mine-triggered " + className;
+  }
 
   return (
     <li
@@ -66,11 +78,7 @@ const Square = function(props) {
       style={getStyle()}
     >
       <div
-        className={
-          (props.square.clicked ? "clicked" : "unclicked") +
-          (props.square.mineTriggered ? " mine-triggered" : "") +
-          " square-inner"
-        }
+        className={className}
       >
         {labelHeader}
       </div>

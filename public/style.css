@@ -108,16 +108,13 @@ li {
   height: 100%;
   width: 100%;
   border-radius: 5px;
+  background-color: #ccccdf;
+  border: 1px solid #f00;
 }
 
 .clicked {
   background-color: #ddd;
   border: 1px solid #bbb;
-}
-
-.unclicked {
-  background-color: #ccccdf;
-  border: 1px solid #f00;
 }
 
 .mine-triggered {
