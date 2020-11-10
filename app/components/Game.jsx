@@ -26,7 +26,7 @@ class Game extends React.Component {
       boardSize: 0
     };
   }
-  
+
   resize() {
     this.forceUpdate();
   }
@@ -38,12 +38,12 @@ class Game extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize)
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     var updatedBoard = prevState.board;
     var newWinState = false;
     var newBoardState = false;
-       
+
     if (!this.state.win) {
       var win = this.checkWin();
       if (win) {
@@ -54,62 +54,62 @@ class Game extends React.Component {
         };
       }
     }
-    
-    if ((this.state.win || this.state.lose) && !this.state.revealed) {  
+
+    if ((this.state.win || this.state.lose) && !this.state.revealed) {
       updatedBoard.forEach(row => {
         row.forEach(square => {
-          if (square.mineStatus) {
-            square.clickStatus = true;
+          if (square.hasMine) {
+            square.clicked = true;
           }
         });
       });
-      
+
       newBoardState = {
         board: updatedBoard,
         revealed: true
       };
     }
-    
+
     if (newWinState || newBoardState) {
       this.setState(Object.assign({}, newWinState, newBoardState));
     }
   }
-  
+
   buildBoard(height, width, mines) {
     var totalSquares = height * width;
-    
+
     // Make sure there aren't more mines than squares
     if (mines >= totalSquares) {
       mines = totalSquares - 1;
     }
-    
+
     // Generate random mine positions:
     var mineArray = [];
     for (var i = 0; i < mines; i++) {
       var position = Math.floor(Math.random() * totalSquares);
       if (mineArray.indexOf(position) === -1) {
-        mineArray.push(position); 
+        mineArray.push(position);
       } else {
         i--
       }
     }
-    
+
     // Create one dimensional array
     var oneDimBoard = [];
 
     for (var i = 0; i < totalSquares; i++) {
       // Check if square is a mine
-      var mineStatus = false;
+      var hasMine = false;
       if (mineArray.indexOf(i) >= 0) {
-        mineStatus = true;
+        hasMine = true;
       }
       // Create square object
       var square = {
         position: i,
-        mineStatus: mineStatus
+        hasMine: hasMine
       };
       // Add square to one dimensional array
-      oneDimBoard.push(square);     
+      oneDimBoard.push(square);
     }
     // Split one dimensional array into two dimensional array
     var board = [];
@@ -120,23 +120,23 @@ class Game extends React.Component {
       for (var j in row) {
         row[j].rowIndex = i;
         row[j].colIndex = j;
-        row[j].clickStatus = false;
-        row[j].flagStatus = false;
+        row[j].clicked = false;
+        row[j].flagged = false;
         row[j].mineTriggered = false;
       }
       board.push(row);
     }
-    
+
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
-        board[i][j].neighboringMines = this.countNeighboringMines(board[i][j], board, width, height); 
+        board[i][j].neighboringMines = this.countNeighboringMines(board[i][j], board, width, height);
       }
     }
-    
-    
+
+
     return board;
   }
-  
+
   getNeighbors(square, width, height) {
     var boardIndexNeighbors = [];
     var relNeighbors = [
@@ -152,7 +152,7 @@ class Game extends React.Component {
     ]
     var absNeighbors = relNeighbors.map(
       s => s.map(
-        (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)   
+        (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)
     ));
     //return absNeighbors;
     for (var i in absNeighbors) {
@@ -164,22 +164,22 @@ class Game extends React.Component {
     }
     return boardIndexNeighbors;
   }
-  
+
   countNeighboringMines(square, board, width, height) {
-    
+
     var neighboringMines = 0;
     var boardIndexNeighbors = this.getNeighbors(square, width, height);
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
       var nSq = board[r][c];
-      if (nSq.mineStatus) {
-        neighboringMines++; 
+      if (nSq.hasMine) {
+        neighboringMines++;
       }
     }
     return neighboringMines;
   }
-  
+
   revealNeighbors(square, board) {
     /*
     for neighbors of non mine-neighbor square:
@@ -190,48 +190,48 @@ class Game extends React.Component {
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
-      if (!board[r][c].clickStatus) {
+      if (!board[r][c].clicked) {
         this.handleClick(false, board[r][c], "autoReveal");
       }
-    } 
+    }
   }
-  
+
   handleClick(e, square, type) {
     if (e) {
       e.preventDefault();
     }
     if ((type === "reveal"  && !this.state.flagClick) || type === "autoReveal") {
-      if (!square.clickStatus && !square.flagStatus) {
+      if (!square.clicked && !square.flagged) {
         // If square clicked is a mine neighbor do nothing except reveal
         var callback = () => {};
-        if (square.mineStatus) {
+        if (square.hasMine) {
           // If square clicked is a mine trigger lose game
           square.mineTriggered = true;
           callback = this.clickMine;
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
           callback = (board) => this.revealNeighbors(square, board);
-        }    
+        }
         var updatedBoard;
         this.setState((prevState, props) => {
           updatedBoard = prevState.board;
-          updatedBoard[square.rowIndex][square.colIndex].clickStatus = true;
+          updatedBoard[square.rowIndex][square.colIndex].clicked = true;
           return {
             board: updatedBoard
           };
         },() => callback(updatedBoard));
       }
     } else {
-      if (!square.clickStatus) {
-        var flagStatus = true;
+      if (!square.clicked) {
+        var flagged = true;
         var flagChange = -1;
-        if (square.flagStatus) {
-          flagStatus = false;
+        if (square.flagged) {
+          flagged = false;
           flagChange = 1;
         }
         this.setState((prevState, props) => {
           updatedBoard = prevState.board;
-          updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
+          updatedBoard[square.rowIndex][square.colIndex].flagged = flagged;
           return {
             board: updatedBoard,
             flagCount: prevState.flagCount + flagChange
@@ -240,8 +240,8 @@ class Game extends React.Component {
       }
     }
   }
-    
-  
+
+
   clickMine() {
     //alert("You Lose");
     setTimeout(function() {
@@ -251,14 +251,14 @@ class Game extends React.Component {
       });
     }.bind(this), 300);
   }
-  
+
   checkWin() {
     if (!this.state.lose) {
       var win = true;
       for (var i in this.state.board) {
         for (var j in this.state.board[i]) {
           var square = this.state.board[i][j];
-          if (!square.clickStatus && !square.mineStatus) {
+          if (!square.clicked && !square.hasMine) {
             win = false;
             break;
           }
@@ -272,7 +272,7 @@ class Game extends React.Component {
       return false;
     }
   }
-  
+
   handleToggle() {
     this.setState((prevState, props) => {
       return {
@@ -280,20 +280,20 @@ class Game extends React.Component {
       };
     });
   }
-  
+
   handleCloseAlert() {
     this.setState({
       alertMessage: ""
     });
   }
-  
+
   render() {
     return (
       <div>
         <div
           id="game-container"
         >
-         
+
           <Alert
             message={this.state.alertMessage}
             close={this.handleCloseAlert}

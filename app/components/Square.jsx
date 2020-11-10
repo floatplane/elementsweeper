@@ -2,8 +2,8 @@ const React = require("react");
 
 const Square = function(props) {
   function getLabel() {
-    if (props.square.flagStatus) {
-      if (props.square.clickStatus) {
+    if (props.square.flagged) {
+      if (props.square.clicked) {
         return (
           <span>
             <span style={{ fontSize: "30%" }}>🚩</span>
@@ -13,8 +13,8 @@ const Square = function(props) {
       } else {
         return "🚩";
       }
-    } else if (props.square.clickStatus) {
-      if (props.square.mineStatus) {
+    } else if (props.square.clicked) {
+      if (props.square.hasMine) {
         return "💣";
       } else {
         if (props.square.neighboringMines) {
@@ -66,7 +66,7 @@ const Square = function(props) {
     >
       <div
         className={
-          (props.square.clickStatus ? "clicked" : "unclicked") +
+          (props.square.clicked ? "clicked" : "unclicked") +
           (props.square.mineTriggered ? " mine-triggered" : "") +
           " square-inner"
         }
