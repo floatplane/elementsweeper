@@ -109,12 +109,12 @@ li {
   width: 100%;
   border-radius: 5px;
   background-color: #ccccdf;
-  border: 1px solid #f00;
+  border: 1px solid #66a;
 }
 
 .clicked {
   background-color: #ddd;
-  border: 1px solid #bbb;
+  border: 1px solid #333;
 }
 
 .mine-triggered {
