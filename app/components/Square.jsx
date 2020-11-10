@@ -4,12 +4,7 @@ const Square = function(props) {
   function getLabel() {
     if (props.square.flagged) {
       if (props.square.clicked) {
-        return (
-          <span>
-            <span style={{ fontSize: "30%" }}>🚩</span>
-            <span style={{ fontSize: "75%" }}>💣</span>
-          </span>
-        );
+        return "💣";
       } else {
         return "🚩";
       }
