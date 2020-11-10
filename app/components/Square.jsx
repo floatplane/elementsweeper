@@ -20,7 +20,7 @@ const Square = function(props) {
         if (props.square.neighboringMines) {
           return props.square.neighboringMines;
         } else {
-          return "\u00A0";
+          return "&nbsp;";
         }
       }
     } else {
@@ -57,6 +57,7 @@ const Square = function(props) {
 
   var label = getLabel();
   const labelHeader = label ? <h4 style={positionLabel()}>{label}</h4> : false;
+  var className = ["square-inner"]
 
   return (
     <li
