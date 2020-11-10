@@ -7,7 +7,7 @@ const Square = function(props) {
         return (
           <span>
             <span style={{ fontSize: "30%" }}>🚩</span>
-            <span style={{ fontSize: "75%" }}>"💣"</span>
+            <span style={{ fontSize: "75%" }}>💣</span>
           </span>
         );
       } else {
