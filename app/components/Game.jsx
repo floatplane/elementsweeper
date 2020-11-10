@@ -3,6 +3,9 @@ const React = require('react');
 /* Import Components */
 const Board = require('./Board');
 const Alert = require('./Alert');
+const Animations = require('./Animations');
+const Toggle = require('./Toggle');
+const Counter = require('./Counter');
 
 class Game extends React.Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class Game extends React.Component {
       lose: false,
       revealed: false,
       flagClick: false,
+      flagCount: props.mines,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -233,6 +237,7 @@ class Game extends React.Component {
           updatedBoard[square.rowIndex][square.colIndex].flagStatus = flagStatus;
           return {
             board: updatedBoard,
+            flagCount: prevState.flagCount + flagChange
           };
         });
       }
@@ -288,6 +293,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <Animations win={this.state.win} lose={this.state.lose} />
         <div
           id="game-container"
         >
@@ -298,6 +304,10 @@ class Game extends React.Component {
           />
           <div id="controls-container">
             
+            <Counter
+              count={this.state.flagCount}
+              label={"Flags"}
+            />
             <Toggle
               status={this.state.flagClick}
               off={"👁"}
