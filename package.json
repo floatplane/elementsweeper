@@ -1,7 +1,7 @@
 {
-  "name": "beachcomber",
+  "name": "pay-to-win",
   "version": "1.0.0",
-  "description": "A beach themeed minesweeper clone built with React",
+  "description": "A minesweeper game you can't lose, if you've got money",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
@@ -13,13 +13,15 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12"
+    "webpack-cli": "^2.0.12",
+    "sqlite3": "^5.0.0",
+    "express-session": "^1.17.1"
   },
   "engines": {
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/beachcomber"
+    "url": "https://glitch.com/edit/#!/pay-to-win"
   },
   "license": "MIT",
   "keywords": [
