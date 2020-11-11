@@ -11,6 +11,11 @@ const {
 
 const Buy = function(props) {
   const { onClose, open } = props;
+  const [succeeded, setSucceeded] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const [processing, setProcessing] = React.useState('');
+  const [disabled, setDisabled] = React.useState(true);
+  const [clientSecret, setClientSecret] = React.useState('');
 
   return (
     <Dialog onClose={onClose} open={open}>

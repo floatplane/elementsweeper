@@ -1,8 +1,8 @@
 const React = require("react");
 const { Button, Grid } = require("@material-ui/core");
 const { bindAll, cloneDeep, merge } = require("lodash");
-const { loadStripe } = require("@stripe/stripe-js");
-const { Elements } = require("@stripe/react-stripe-js");
+//const { loadStripe } = require("@stripe/stripe-js");
+//const { Elements } = require("@stripe/react-stripe-js");
 
 /* Import Components */
 const Board = require("./Board");
@@ -14,7 +14,7 @@ const LoseDialog = require("./dialogs/Lose");
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // loadStripe is initialized with your real test publishable API key.
-const stripeLoadPromise = loadStripe("pk_test_4ecaXEp3ioNREv9EGB5osFxx");
+//const stripeLoadPromise = loadStripe("pk_test_4ecaXEp3ioNREv9EGB5osFxx");
 
 class Game extends React.Component {
   constructor(props) {
@@ -303,12 +303,12 @@ class Game extends React.Component {
               onBuy={this.buy}
             />
             <WinDialog open={this.state.win} onClose={this.reset} />
-            <Elements stripe={stripeLoadPromise}>
+            {/*<Elements stripe={stripeLoadPromise}>*/}
               <BuyDialog
                 open={this.state.selling}
                 onClose={() => this.setState({ selling: false })}
               />
-            </Elements>
+            {/*</Elements>*/}
             <Board
               board={this.state.board}
               updateSquare={this.updateSquare}
