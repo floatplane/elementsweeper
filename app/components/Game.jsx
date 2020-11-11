@@ -12,7 +12,6 @@ class Game extends React.Component {
     bindAll(this, [
       "resize",
       "updateSquare",
-      "clickMine",
       "handleCloseAlert",
       "undo"
     ]);
