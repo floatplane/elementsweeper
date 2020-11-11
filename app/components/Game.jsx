@@ -122,7 +122,8 @@ class Game extends React.Component {
       var startSlice = width * i;
       var endSlice = width * (i + 1);
       var row = oneDimBoard.slice(startSlice, endSlice);
-      for (var j in row) {
+      console.log("row", i, row)
+      for (var j = 0; j < row.length; j++) {
         row[j].rowIndex = i;
         row[j].colIndex = j;
         row[j].clicked = false;
@@ -324,7 +325,7 @@ class Game extends React.Component {
           />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
-            <button onClick={this.undo} enabled={this.state.undoAttempts > 0}>
+            <button onClick={this.undo} disabled={this.state.undoAttempts <= 0}>
               Undo
             </button>
           </div>
