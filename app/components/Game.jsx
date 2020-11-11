@@ -1,5 +1,5 @@
 const React = require("react");
-const { Button } = require("@material-ui/core");
+const { Button, Grid } = require("@material-ui/core");
 const { bindAll, cloneDeep, merge } = require("lodash");
 
 /* Import Components */
@@ -293,25 +293,25 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <TitleBar />
-        <div id="game-container">
-          <LoseDialog
-            open={this.state.lose}
-            canUndo={this.canUndo()}
-            onClose={this.reset}
-            onUndo={this.undo}
-          />
-          <WinDialog open={this.state.win} onClose={this.reset} />
-          <div id="undo-section">
-            Lives remaining: <span>{this.state.undoAttempts}</span>
+        <TitleBar livesRemaining={this.state.undoAttempts} onBuy={this.buy} />
+        <Grid container direction="row" justify="center" alignItems="center">
+          <div id="game-container">
+            <LoseDialog
+              open={this.state.lose}
+              canUndo={this.canUndo()}
+              onClose={this.reset}
+              onUndo={this.undo}
+              onBuy={this.buy}
+            />
+            <WinDialog open={this.state.win} onClose={this.reset} />
+            <Board
+              board={this.state.board}
+              updateSquare={this.updateSquare}
+              height={this.state.height}
+              width={this.state.width}
+            />
           </div>
-          <Board
-            board={this.state.board}
-            updateSquare={this.updateSquare}
-            height={this.state.height}
-            width={this.state.width}
-          />
-        </div>
+        </Grid>
       </div>
     );
   }

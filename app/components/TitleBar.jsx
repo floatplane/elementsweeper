@@ -13,17 +13,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function TitleBar() {
+function TitleBar(props) {
   const classes = useStyles();
+  const {livesRemaining} = props;
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="title" className={classes.title}>
-            Elements demo
+          <Typography variant="h4" className={classes.title}>
+            Elementsweeper
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Typography variant="title">
+            Lives: {livesRemaining}
+          </Typography>
+          <Button color="inherit">Buy more lives</Button>
         </Toolbar>
       </AppBar>
     </div>
