@@ -23,7 +23,6 @@ class Game extends React.Component {
       width: props.width,
       mines: props.mines,
       board: this.buildBoard(props.height,props.width,props.mines),
-      boardSize: 0
     };
     console.log(this.state);
   }
