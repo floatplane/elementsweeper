@@ -1,8 +1,8 @@
-const React = require('react');
+const React = require("react");
 
 /* Import Components */
-const Board = require('./Board');
-const Alert = require('./Alert');
+const Board = require("./Board");
+const Alert = require("./Alert");
 
 class Game extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class Game extends React.Component {
     this.clickMine = this.clickMine.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleCloseAlert = this.handleCloseAlert.bind(this);
+    this.undo = this.undo.bind(this);
     this.state = {
       alertMessage: "",
       win: false,
@@ -22,13 +23,13 @@ class Game extends React.Component {
       height: props.height,
       width: props.width,
       mines: props.mines,
-      board: this.buildBoard(props.height,props.width,props.mines),
+      board: this.buildBoard(props.height, props.width, props.mines)
     };
     console.log(this.state);
-    
-    fetch('/undoAttempts')
+
+    fetch("/undoAttempts")
       .then(response => response.json())
-      .then(data => this.setState({undoAttempts: data.undoAttempts}));
+      .then(data => this.setState({ undoAttempts: data.undoAttempts }));
   }
 
   resize() {
@@ -36,11 +37,11 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.resize)
+    window.addEventListener("resize", this.resize);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resize)
+    window.removeEventListener("resize", this.resize);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -94,7 +95,7 @@ class Game extends React.Component {
       if (mineArray.indexOf(position) === -1) {
         mineArray.push(position);
       } else {
-        i--
+        i--;
       }
     }
 
@@ -119,7 +120,7 @@ class Game extends React.Component {
     var board = [];
     for (var i = 0; i < height; i++) {
       var startSlice = width * i;
-      var endSlice = (width * (i + 1));
+      var endSlice = width * (i + 1);
       var row = oneDimBoard.slice(startSlice, endSlice);
       for (var j in row) {
         row[j].rowIndex = i;
@@ -133,10 +134,14 @@ class Game extends React.Component {
 
     for (var i = 0; i < height; i++) {
       for (var j = 0; j < width; j++) {
-        board[i][j].neighboringMines = this.countNeighboringMines(board[i][j], board, width, height);
+        board[i][j].neighboringMines = this.countNeighboringMines(
+          board[i][j],
+          board,
+          width,
+          height
+        );
       }
     }
-
 
     return board;
   }
@@ -144,33 +149,33 @@ class Game extends React.Component {
   getNeighbors(square, width, height) {
     var boardIndexNeighbors = [];
     var relNeighbors = [
-      [-1,-1],
-      [ 0,-1],
-      [ 1,-1],
+      [-1, -1],
+      [0, -1],
+      [1, -1],
       [-1, 0],
-//not [ 0, 0]
-      [ 1, 0],
+      //not [ 0, 0]
+      [1, 0],
       [-1, 1],
-      [ 0, 1],
-      [ 1, 1]
-    ]
-    var absNeighbors = relNeighbors.map(
-      s => s.map(
-        (c, i) => i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)
-    ));
+      [0, 1],
+      [1, 1]
+    ];
+    var absNeighbors = relNeighbors.map(s =>
+      s.map((c, i) =>
+        i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)
+      )
+    );
     //return absNeighbors;
     for (var i in absNeighbors) {
       var n = absNeighbors[i];
       if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
         // row, column are reversed order as array indexes
-        boardIndexNeighbors.push({colIndex: n[0], rowIndex: n[1]});
+        boardIndexNeighbors.push({ colIndex: n[0], rowIndex: n[1] });
       }
     }
     return boardIndexNeighbors;
   }
 
   countNeighboringMines(square, board, width, height) {
-
     var neighboringMines = 0;
     var boardIndexNeighbors = this.getNeighbors(square, width, height);
     for (var i in boardIndexNeighbors) {
@@ -190,7 +195,11 @@ class Game extends React.Component {
       reveal (as if you clicked on it)
       (if it's also empty click functionality should start recursion)
     */
-    var boardIndexNeighbors = this.getNeighbors(square, this.state.width, this.state.height);
+    var boardIndexNeighbors = this.getNeighbors(
+      square,
+      this.state.width,
+      this.state.height
+    );
     for (var i in boardIndexNeighbors) {
       var r = boardIndexNeighbors[i].rowIndex;
       var c = boardIndexNeighbors[i].colIndex;
@@ -204,7 +213,7 @@ class Game extends React.Component {
     if (e) {
       e.preventDefault();
     }
-    if ((type === "reveal"  && !this.state.flagClick) || type === "autoReveal") {
+    if ((type === "reveal" && !this.state.flagClick) || type === "autoReveal") {
       if (!square.clicked && !square.flagged) {
         // If square clicked is a mine neighbor do nothing except reveal
         var callback = () => {};
@@ -214,16 +223,19 @@ class Game extends React.Component {
           callback = this.clickMine;
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
-          callback = (board) => this.revealNeighbors(square, board);
+          callback = board => this.revealNeighbors(square, board);
         }
         var updatedBoard;
-        this.setState((prevState, props) => {
-          updatedBoard = prevState.board;
-          updatedBoard[square.rowIndex][square.colIndex].clicked = true;
-          return {
-            board: updatedBoard
-          };
-        },() => callback(updatedBoard));
+        this.setState(
+          (prevState, props) => {
+            updatedBoard = prevState.board;
+            updatedBoard[square.rowIndex][square.colIndex].clicked = true;
+            return {
+              board: updatedBoard
+            };
+          },
+          () => callback(updatedBoard)
+        );
       }
     } else {
       if (!square.clicked) {
@@ -245,15 +257,17 @@ class Game extends React.Component {
     }
   }
 
-
   clickMine() {
     //alert("You Lose");
-    setTimeout(function() {
-      this.setState({
-        alertMessage: "You took an L. Sorry.",
-        lose: true
-      });
-    }.bind(this), 300);
+    setTimeout(
+      function() {
+        this.setState({
+          alertMessage: "You took an L. Sorry.",
+          lose: true
+        });
+      }.bind(this),
+      300
+    );
   }
 
   checkWin() {
@@ -291,19 +305,28 @@ class Game extends React.Component {
     });
   }
 
+  undo() {
+    fetch("/undo", {method: 'POST'})
+      .then(response => response.json())
+      .then(data => this.setState({ undoAttempts: data.undoAttempts }))
+      .then(() => {
+        console.log("actually undo");
+      });
+  }
+
   render() {
     return (
       <div>
-        <div
-          id="game-container"
-        >
-
+        <div id="game-container">
           <Alert
             message={this.state.alertMessage}
             close={this.handleCloseAlert}
           />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
+            <button onClick={this.undo} enabled={this.state.undoAttempts > 0}>
+              Undo
+            </button>
           </div>
           <Board
             board={this.state.board}
@@ -311,7 +334,6 @@ class Game extends React.Component {
             height={this.state.height}
             width={this.state.width}
           />
-
         </div>
       </div>
     );
