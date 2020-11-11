@@ -1,4 +1,5 @@
 const React = require("react");
+const { Button } = require('@material-ui/core');
 
 /* Import Components */
 const Board = require("./Board");
@@ -324,9 +325,9 @@ class Game extends React.Component {
           />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
-            <button onClick={this.undo} disabled={this.state.undoAttempts <= 0}>
+            <Button onClick={this.undo} disabled={this.state.undoAttempts <= 0}>
               Undo
-            </button>
+            </Button>
           </div>
           <Board
             board={this.state.board}

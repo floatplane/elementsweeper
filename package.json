@@ -10,8 +10,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "jsx-loader": "^0.13.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
     "sqlite3": "^5.0.0",
