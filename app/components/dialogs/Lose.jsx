@@ -32,7 +32,7 @@ const Lose = function(props) {
           Use 1 life
         </Button>
         <Button onClick={onClose} color="primary" autoFocus>
-          Start new game
+          New game
         </Button>
       </DialogActions>
     </Dialog>

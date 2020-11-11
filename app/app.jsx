@@ -5,7 +5,7 @@ const CssBaseline = require("@material-ui/core/CssBaseline").default;
 
 const theme = createMuiTheme({
   palette: {
-    type: "light"
+    type: "dark"
   }
 });
 
@@ -13,7 +13,7 @@ const theme = createMuiTheme({
 const Game = require("./components/Game");
 
 ReactDOM.render(
-  <ThemeProvider>
+  <ThemeProvider theme={theme}>
     <CssBaseline />
     <Game width={9} height={9} mines={10} />
   </ThemeProvider>,

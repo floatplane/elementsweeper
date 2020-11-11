@@ -4,12 +4,7 @@
 
 body {
   margin: 0 !important;
-  font-family: "Open Sans", sans-serif;
-  text-align: center;
-}
-
-
-h1.label, h2.label, h3.label, h4.label {
+  /*text-align: center;*/
 }
 
 h4.label {
@@ -17,7 +12,7 @@ h4.label {
   margin: 0 auto;
   display: inline-block;
   width: 100%;
-  color: black !important;
+  /*color: black !important;*/
   padding: 0;
   text-align: center;
 }
@@ -49,20 +44,6 @@ li {
   margin: 0 auto;
   display: inline-block;
   position: relative;
-}
-
-
-#controls-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.counter {
-  /* In component */
-}
-
-.toggle {
-  /* In component */
 }
 
 #board_container {
