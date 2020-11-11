@@ -1,7 +1,6 @@
 const React = require("react");
-const { Button } = require('@material-ui/core');
-const cloneDeep = require('lodash.clonedeep');
-const bindAll = require('lodash.bindall');
+const { Button } = require("@material-ui/core");
+const { bindAll, cloneDeep } = require("lodash");
 
 /* Import Components */
 const Board = require("./Board");
@@ -10,9 +9,15 @@ const Alert = require("./Alert");
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ['resize', 'updateSquare', 'clickMine', 'handleCloseAlert', 'undo']);
+    bindAll(this, [
+      "resize",
+      "updateSquare",
+      "clickMine",
+      "handleCloseAlert",
+      "undo"
+    ]);
 
-    this.boardStack = this.buildBoard(props.height,props.width,props.mines)
+    this.boardStack = this.buildBoard(props.height, props.width, props.mines);
     this.state = {
       alertMessage: "",
       win: false,
@@ -120,7 +125,7 @@ class Game extends React.Component {
       var startSlice = width * i;
       var endSlice = width * (i + 1);
       var row = oneDimBoard.slice(startSlice, endSlice);
-      console.log("row", i, row)
+      console.log("row", i, row);
       for (var j = 0; j < row.length; j++) {
         row[j].row = i;
         row[j].col = j;
@@ -159,9 +164,7 @@ class Game extends React.Component {
       [1, 1]
     ];
     var absNeighbors = relNeighbors.map(s =>
-      s.map((c, i) =>
-        i === 0 ? c + square.col : c + square.row
-      )
+      s.map((c, i) => (i === 0 ? c + square.col : c + square.row))
     );
     //return absNeighbors;
     for (var i in absNeighbors) {
@@ -294,7 +297,7 @@ class Game extends React.Component {
   }
 
   undo() {
-    fetch("/undo", {method: 'POST'})
+    fetch("/undo", { method: "POST" })
       .then(response => response.json())
       .then(data => this.setState({ undoAttempts: data.undoAttempts }))
       .then(() => {
