@@ -5,12 +5,19 @@ const { bindAll, cloneDeep, merge } = require("lodash");
 /* Import Components */
 const Board = require("./Board");
 const Alert = require("./Alert");
-const WinDialog = require("./dialogs/Win")
+const WinDialog = require("./dialogs/Win");
+const LoseDialog = require("./dialogs/Lose");
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ["resize", "updateSquare", "handleCloseAlert", "undo", "reset"]);
+    bindAll(this, [
+      "resize",
+      "updateSquare",
+      "handleCloseAlert",
+      "undo",
+      "reset"
+    ]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
@@ -27,9 +34,9 @@ class Game extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ undoAttempts: data.undoAttempts }));
   }
-  
+
   reset() {
-    const {height, width, mines} = this.props;
+    const { height, width, mines } = this.props;
     this.boardStack = [this.buildBoard(height, width, mines)];
     this.setState({
       alertMessage: "",
@@ -222,7 +229,6 @@ class Game extends React.Component {
     var nextState = { board: nextBoard };
     if (mineTriggered) {
       merge(nextState, {
-        alertMessage: "You took an L. Sorry.",
         lose: true
       });
       this.showAllMines(nextBoard, false);
@@ -288,16 +294,15 @@ class Game extends React.Component {
     return (
       <div>
         <div id="game-container">
-          <Alert
-            message={this.state.alertMessage}
-            close={this.handleCloseAlert}
+          <LoseDialog
+            open={this.state.lose}
+            canUndo={this.canUndo()}
+            onClose={this.reset}
+            onUndo={this.undo}
           />
           <WinDialog open={this.state.win} onClose={this.reset} />
           <div id="undo-section">
-            Undo attempts: <span>{this.state.undoAttempts}</span>
-            <Button onClick={this.undo} disabled={!this.canUndo()}>
-              Undo
-            </Button>
+            Lives remaining: <span>{this.state.undoAttempts}</span>
           </div>
           <Board
             board={this.state.board}

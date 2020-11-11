@@ -12,12 +12,8 @@ const {
 const Win = function(props) {
   const { onClose, open } = props;
 
-  const handleClose = () => {
-    onClose();
-  };
-
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog onClose={onClose} open={open}>
       <DialogTitle>Great job!</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -25,7 +21,7 @@ const Win = function(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary" autoFocus>
+        <Button onClick={onClose} color="primary" autoFocus>
           Let's do it
         </Button>
       </DialogActions>
