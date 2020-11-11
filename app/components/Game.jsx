@@ -1,6 +1,6 @@
 const React = require("react");
 const { Button } = require("@material-ui/core");
-const { bindAll, cloneDeep } = require("lodash");
+const { bindAll, cloneDeep, merge } = require("lodash");
 
 /* Import Components */
 const Board = require("./Board");
@@ -23,7 +23,6 @@ class Game extends React.Component {
       win: false,
       lose: false,
       revealed: false,
-      flagCount: props.mines,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -206,67 +205,49 @@ class Game extends React.Component {
       var r = boardIndexNeighbors[i].row;
       var c = boardIndexNeighbors[i].col;
       if (!board[r][c].clicked) {
-        this.updateSquare(board[r][c], "autoReveal");
+        this.updateSquareInternal(board, board[r][c], "autoReveal");
       }
     }
   }
 
-  updateSquare(square, type) {
+  updateSquareInternal(board, square, type) {
     if (type === "reveal" || type === "autoReveal") {
       if (!square.clicked && !square.flagged) {
-        // If square clicked is a mine neighbor do nothing except reveal
-        var callback = () => {};
+        square.clicked = true;
         if (square.hasMine) {
           // If square clicked is a mine trigger lose game
           square.mineTriggered = true;
-          callback = this.clickMine;
+          return {mineTriggered: true}
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
-          callback = board => this.revealNeighbors(square, board);
+          // No need to worry about triggering a mine in this branch
+          this.revealNeighbors(square, board);
         }
-        var updatedBoard;
-        this.setState(
-          (prevState, props) => {
-            updatedBoard = prevState.board;
-            updatedBoard[square.row][square.col].clicked = true;
-            return {
-              board: updatedBoard
-            };
-          },
-          () => callback(updatedBoard)
-        );
       }
     } else {
       if (!square.clicked) {
-        var flagged = true;
-        var flagChange = -1;
-        if (square.flagged) {
-          flagged = false;
-          flagChange = 1;
-        }
-        this.setState((prevState, props) => {
-          updatedBoard = prevState.board;
-          updatedBoard[square.row][square.col].flagged = flagged;
-          return {
-            board: updatedBoard,
-            flagCount: prevState.flagCount + flagChange
-          };
-        });
+        board[square.row][square.col].flagged = !board[square.row][square.col].flagged;
       }
     }
+    return {mineTriggered: false}
   }
 
-  clickMine() {
-    //alert("You Lose");
-    setTimeout(
-      function() {
-        this.setState({
+  updateSquare(square, type) {
+    if (type !== "reveal" && type !== "flag") {
+      throw new Error(`unknown type ${type}`);
+    }
+    const nextBoard = cloneDeep(this.boardStack[this.boardStack.length - 1])
+    this.boardStack.push(nextBoard)
+    const nextSquare = nextBoard[square.row][square.col];
+    const {mineTriggered} = this.updateSquareInternal(nextBoard, nextSquare, type)
+    var nextState = {board: nextBoard};
+    if (mineTriggered) {
+      merge(nextState,{
           alertMessage: "You took an L. Sorry.",
           lose: true
-        });
-      }.bind(this),
-      300
-    );
+      });
+    }
+    this.setState(nextState)
   }
 
   checkWin() {

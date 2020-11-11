@@ -21,14 +21,14 @@ app.use(express.static("public"));
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(request, response) {
   if (request.session.undoAttempts == null) {
-    request.session.undoAttempts = 1;
+    request.session.undoAttempts = 1000;
   }
   response.sendFile(__dirname + "/app/index.html");
 });
 
 app.get("/undoAttempts", function(request, response) {
   if (request.session.undoAttempts == null) {
-    request.session.undoAttempts = 1;
+    request.session.undoAttempts = 1000;
   }
   response.json({undoAttempts: request.session.undoAttempts});
 });
