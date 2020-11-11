@@ -17,7 +17,7 @@ const Row = function(props) {
 };
 
 function Board(props) {
-  const rowElements = props.board.map(rowArray => {}
+  const rowElements = props.board.map(rowArray => {
     console.log("rowArray", rowArray)
     return (<li key={`${rowArray[0].row}`}>
       <Row
