@@ -10,7 +10,7 @@ const WinDialog = require("./dialogs/Win")
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ["resize", "updateSquare", "handleCloseAlert", "undo"]);
+    bindAll(this, ["resize", "updateSquare", "handleCloseAlert", "undo", "reset"]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
@@ -227,9 +227,7 @@ class Game extends React.Component {
       });
       this.showAllMines(nextBoard, false);
     } else if (this.checkWin(nextBoard)) {
-      console.log("You Win!!");
       merge(nextState, {
-        alertMessage: "That's a wrap! Play again?",
         win: true
       });
       this.showAllMines(nextBoard, true);
@@ -294,7 +292,7 @@ class Game extends React.Component {
             message={this.state.alertMessage}
             close={this.handleCloseAlert}
           />
-          <WinDialog open={this.state.win} onClose={this.reset()} />
+          <WinDialog open={this.state.win} onClose={this.reset} />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
             <Button onClick={this.undo} disabled={!this.canUndo()}>

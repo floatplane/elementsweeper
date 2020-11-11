@@ -11,7 +11,6 @@ const theme = createMuiTheme({
 
 /* Import Components */
 const Game = require("./components/Game");
-debugger;
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
