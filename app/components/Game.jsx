@@ -16,7 +16,8 @@ class Game extends React.Component {
       "updateSquare",
       "handleCloseAlert",
       "undo",
-      "reset"
+      "reset",
+      "buy"
     ]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
@@ -288,6 +289,10 @@ class Game extends React.Component {
         .then(response => response.json())
         .then(data => this.setState({ undoAttempts: data.undoAttempts }));
     }
+  }
+  
+  buy() {
+     console.log('sell something') 
   }
 
   render() {
