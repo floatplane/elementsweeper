@@ -260,7 +260,7 @@ class Game extends React.Component {
   }
 
   undo() {
-    if (this.undoAttempts >= 1 && this.boardStack.length > 1) {
+    if (this.state.undoAttempts >= 1 && this.boardStack.length > 1) {
       this.boardStack.pop();
       this.setState({
         undoAttempts: this.state.undoAttempts - 1,
