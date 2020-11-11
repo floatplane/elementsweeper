@@ -17,9 +17,8 @@ const Row = function(props) {
 };
 
 function Board(props) {
-  const rowElements = props.board.map(rowArray => {
-    console.log("rowArray", rowArray)
-    return (<li key={`${rowArray[0].row}`}>
+  const rowElements = props.board.map(rowArray => (
+    <li key={`${rowArray[0].row}`}>
       <Row
         squares={rowArray}
         updateSquare={props.updateSquare}
@@ -27,8 +26,7 @@ function Board(props) {
         width={props.width}
       />
     </li>
-  )
-});
+  ));
 
   return (
     <div id="board_container">
