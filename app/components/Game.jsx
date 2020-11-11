@@ -5,6 +5,7 @@ const { bindAll, cloneDeep, merge } = require("lodash");
 /* Import Components */
 const Board = require("./Board");
 const TitleBar = require("./TitleBar");
+const BuyDialog = require("./dialogs/Buy");
 const WinDialog = require("./dialogs/Win");
 const LoseDialog = require("./dialogs/Lose");
 
@@ -14,7 +15,6 @@ class Game extends React.Component {
     bindAll(this, [
       "resize",
       "updateSquare",
-      "handleCloseAlert",
       "undo",
       "reset",
       "buy"
@@ -22,9 +22,9 @@ class Game extends React.Component {
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
-      alertMessage: "",
       win: false,
       lose: false,
+      selling: false,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -40,7 +40,6 @@ class Game extends React.Component {
     const { height, width, mines } = this.props;
     this.boardStack = [this.buildBoard(height, width, mines)];
     this.setState({
-      alertMessage: "",
       win: false,
       lose: false,
       board: this.boardStack[0]
@@ -265,12 +264,6 @@ class Game extends React.Component {
     });
   }
 
-  handleCloseAlert() {
-    this.setState({
-      alertMessage: ""
-    });
-  }
-
   canUndo() {
     return this.state.undoAttempts >= 1 && this.boardStack.length > 1;
   }
@@ -282,17 +275,17 @@ class Game extends React.Component {
         undoAttempts: this.state.undoAttempts - 1,
         board: this.boardStack[this.boardStack.length - 1],
         win: false,
-        lose: false,
-        alertMessage: ""
+        lose: false
       });
       fetch("/undo", { method: "POST" })
         .then(response => response.json())
         .then(data => this.setState({ undoAttempts: data.undoAttempts }));
     }
   }
-  
+
   buy() {
-     console.log('sell something') 
+    console.log("sell something");
+    this.setState({ selling: true });
   }
 
   render() {
@@ -309,6 +302,10 @@ class Game extends React.Component {
               onBuy={this.buy}
             />
             <WinDialog open={this.state.win} onClose={this.reset} />
+            <BuyDialog
+              open={this.state.selling}
+              onClose={() => this.setState({ selling: false })}
+            />
             <Board
               board={this.state.board}
               updateSquare={this.updateSquare}

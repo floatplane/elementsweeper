@@ -23,11 +23,11 @@ const Lose = function(props) {
         <DialogContentText>You lost 😵. Try again?</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onBuy}>Buy more lives</Button>
-        <Button onClick={onUndo} enabled={canUndo}>
+        <Button onClick={onBuy} variant="contained">Buy more lives</Button>
+        <Button onClick={onUndo} enabled={canUndo} variant="contained">
           Use 1 life
         </Button>
-        <Button onClick={onClose} color="primary" autoFocus>
+        <Button onClick={onClose} color="primary" variant="contained" autoFocus>
           New game
         </Button>
       </DialogActions>

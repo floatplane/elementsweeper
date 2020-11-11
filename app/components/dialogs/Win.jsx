@@ -21,8 +21,8 @@ const Win = function(props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary" autoFocus>
-          Let's do it
+        <Button onClick={onClose} color="primary" variant="contained" autoFocus>
+          New game
         </Button>
       </DialogActions>
     </Dialog>

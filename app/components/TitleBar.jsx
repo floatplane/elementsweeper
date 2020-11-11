@@ -33,10 +33,10 @@ function TitleBar(props) {
           <Typography variant="h4" className={classes.title}>
             Elementsweeper
           </Typography>
-          <Typography variant="title" className={classes.livesRemaining}>
+          <Typography variant="button" className={classes.livesRemaining}>
             Lives: {livesRemaining}
           </Typography>
-          <Button color="secondary" variant="contained" click={onBuy}>
+          <Button color="secondary" variant="contained" onClick={onBuy}>
             Buy more lives
           </Button>
         </Toolbar>
