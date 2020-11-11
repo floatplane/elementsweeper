@@ -26,6 +26,23 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + "/app/index.html");
 });
 
+app.get("/undoAttempts", function(request, response) {
+  if (request.session.undoAttempts == null) {
+    request.session.undoAttempts = 1;
+  }
+  response.json({undoAttempts: request.session.undoAttempts});
+});
+
+app.post("/undo", function(request, response) {
+  if (request.session.undoAttempts == null) {
+    request.session.undoAttempts = 0;
+  } else {
+    request.session.undoAttempts = Math.max(0, request.session.undoAttempts - 1);
+  }
+  response.json({undoAttempts: request.session.undoAttempts});
+});
+
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);

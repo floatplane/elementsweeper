@@ -25,6 +25,11 @@ class Game extends React.Component {
       board: this.buildBoard(props.height,props.width,props.mines),
     };
     console.log(this.state);
+    
+    fetch('/undoAttempts')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .then(data => this.setState({undoAttempts: data.undoAttempts}));
   }
 
   resize() {
