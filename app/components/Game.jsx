@@ -162,7 +162,7 @@ class Game extends React.Component {
     ];
     var absNeighbors = relNeighbors.map(s =>
       s.map((c, i) =>
-        i === 0 ? c + parseInt(square.colIndex) : c + parseInt(square.rowIndex)
+        i === 0 ? c + square.colIndex : c + square.rowIndex
       )
     );
     //return absNeighbors;

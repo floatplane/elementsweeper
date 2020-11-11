@@ -1,48 +1,38 @@
-const React = require('react');
+const React = require("react");
 
-const Square = require('./Square');
-
+const Square = require("./Square");
 
 const Row = function(props) {
-  
-  const squares = props.squares.map((square) => 
+  const squares = props.squares.map(square => (
     <Square
-      key={square.position.toString()}
+      key={`${square.rowIndex},${square.colIndex}`}
       square={square}
       click={props.clickSquare}
       height={props.height}
       width={props.width}
     />
-  );
-  
-  return (
-    <ul class="row">
-      {squares}
-    </ul>
-  );
-}
+  ));
 
+  return <ul className="row">{squares}</ul>;
+};
 
 function Board(props) {
-  const rows = props.board.map((row) =>
-    <li>
+  const rows = props.board.map(row => (
+    <li key={row[0].position.toString()}>
       <Row
-        key={row[0].position.toString()}
         squares={row}
         clickSquare={props.clickSquare}
         height={props.height}
         width={props.width}
-      />                             
+      />
     </li>
-  );
+  ));
 
-  
   return (
     <div id="board_container">
       <ul id="board">{rows}</ul>
     </div>
   );
 }
-
 
 module.exports = Board;
