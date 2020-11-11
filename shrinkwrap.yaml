@@ -4,6 +4,7 @@ dependencies:
   express: 4.16.3
   express-session: 1.17.1
   jsx-loader: 0.13.2
+  lodash: 4.17.20
   react: 16.14.0
   react-dom: 16.14.0
   sqlite3: 5.0.0
@@ -3688,6 +3689,10 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-K1aLJl7slExtnA3pw9u7ygNUzY4=
+  /lodash/4.17.20:
+    dev: false
+    resolution:
+      integrity: sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
   /lodash/4.17.5:
     dev: false
     resolution:
@@ -6473,6 +6478,7 @@ specifiers:
   express: ^4.16.3
   express-session: ^1.17.1
   jsx-loader: ^0.13.2
+  lodash: ^4.17.20
   react: ^16.8.0
   react-dom: ^16.8.0
   sqlite3: ^5.0.0
