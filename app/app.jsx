@@ -1,7 +1,7 @@
 const React = require("react");
 const ReactDOM = require("react-dom");
 const { ThemeProvider, createMuiTheme } = require("@material-ui/core/styles");
-const CssBaseline = require("@material-ui/core/CssBaseline");
+const CssBaseline = require("@material-ui/core/CssBaseline").default;
 
 const theme = createMuiTheme({
   palette: {
@@ -11,6 +11,7 @@ const theme = createMuiTheme({
 
 /* Import Components */
 const Game = require("./components/Game");
+debugger;
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
