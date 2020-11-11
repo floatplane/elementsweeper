@@ -214,14 +214,14 @@ class Game extends React.Component {
           alertMessage: "You took an L. Sorry.",
           lose: true
       });
-      showAllMines(nextBoard, false)
-    } else if (checkWin()) {
+      this.showAllMines(nextBoard, false)
+    } else if (this.checkWin()) {
       console.log("You Win!!");
       merge(nextState,{
         alertMessage: "That's a wrap! Play again?",
         win: true
       });
-      showAllMines(nextBoard, true)
+      this.showAllMines(nextBoard, true)
     }
     this.setState(nextState)
   }
@@ -243,7 +243,7 @@ class Game extends React.Component {
   }
 
   showAllMines(board, win) {
-    updatedBoard.forEach(row => {
+    board.forEach(row => {
       row.forEach(square => {
         if (square.hasMine) {
           square.clicked = true;
