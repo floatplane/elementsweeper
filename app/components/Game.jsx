@@ -127,8 +127,8 @@ class Game extends React.Component {
       var row = oneDimBoard.slice(startSlice, endSlice);
       console.log("row", i, row);
       for (var j = 0; j < row.length; j++) {
-        row[j].row = i;
-        row[j].col = j;
+        row[j].row = row[j];
+        row[j].col = i;
         row[j].clicked = false;
         row[j].flagged = false;
         row[j].mineTriggered = false;
