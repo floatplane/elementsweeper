@@ -17,7 +17,7 @@ class Game extends React.Component {
       "undo"
     ]);
 
-    this.boardStack = this.buildBoard(props.height, props.width, props.mines);
+    this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
       alertMessage: "",
       win: false,
@@ -127,8 +127,8 @@ class Game extends React.Component {
       var row = oneDimBoard.slice(startSlice, endSlice);
       // console.log("row", i, row);
       for (var j = 0; j < row.length; j++) {
-        row[j].row = j;
-        row[j].col = i;
+        row[j].row = i;
+        row[j].col = j;
         row[j].clicked = false;
         row[j].flagged = false;
         row[j].mineTriggered = false;
