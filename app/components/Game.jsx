@@ -260,12 +260,19 @@ class Game extends React.Component {
   }
 
   undo() {
+    if (this.undoAttempts >= 1 && this.boardStack.length > 1) {
+      this.boardStack.pop();
+      this.setState({
+        undoAttempts: this.state.undoAttempts - 1,
+        board: this.boardStack[this.boardStack.length - 1],
+        win: false,
+        lose: false,
+        alertMessage: "",
+      });
+    }
     fetch("/undo", { method: "POST" })
       .then(response => response.json())
       .then(data => this.setState({ undoAttempts: data.undoAttempts }))
-      .then(() => {
-        console.log("actually undo");
-      });
   }
 
   render() {
