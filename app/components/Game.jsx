@@ -5,6 +5,7 @@ const { bindAll, cloneDeep, merge } = require("lodash");
 /* Import Components */
 const Board = require("./Board");
 const Alert = require("./Alert");
+const WinDialog = require("./dialogs/Win")
 
 class Game extends React.Component {
   constructor(props) {
@@ -21,11 +22,21 @@ class Game extends React.Component {
       mines: props.mines,
       board: this.boardStack[0]
     };
-    // console.log(this.state);
 
     fetch("/undoAttempts")
       .then(response => response.json())
       .then(data => this.setState({ undoAttempts: data.undoAttempts }));
+  }
+  
+  reset() {
+    const {height, width, mines} = this.props;
+    this.boardStack = [this.buildBoard(height, width, mines)];
+    this.setState({
+      alertMessage: "",
+      win: false,
+      lose: false,
+      board: this.boardStack[0]
+    });
   }
 
   resize() {
@@ -283,6 +294,7 @@ class Game extends React.Component {
             message={this.state.alertMessage}
             close={this.handleCloseAlert}
           />
+          <WinDialog open={this.state.win} onClose={this.reset()} />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
             <Button onClick={this.undo} disabled={!this.canUndo()}>
