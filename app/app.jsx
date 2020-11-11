@@ -3,17 +3,18 @@ const ReactDOM = require("react-dom");
 const { ThemeProvider, createMuiTheme } = require("@material-ui/core/styles");
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 
-const theme = createMuiTheme({
+const darkTheme = createMuiTheme({
   palette: {
     type: "dark"
   }
 });
+const lightTheme = createMuiTheme();
 
 /* Import Components */
 const Game = require("./components/Game");
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={lightTheme}>
     <CssBaseline />
     <Game width={9} height={9} mines={10} />
   </ThemeProvider>,

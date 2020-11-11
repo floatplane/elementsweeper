@@ -18,7 +18,9 @@
     "express-session": "^1.17.1",
     "connect-sqlite3": "^0.9.11",
     "@material-ui/core": "^4.11.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "stripe": "^8.120.0",
+    "react-stripe-elements": "^6.1.2"
   },
   "engines": {
     "node": "8.x"
