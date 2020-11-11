@@ -17,21 +17,22 @@ const Row = function(props) {
 };
 
 function Board(props) {
-  props.board.map(console.log)
-  const rows = props.board.map(row => (
-    <li key={`${row.row}`}>
+  const rowElements = props.board.map(rowArray => {}
+    console.log("rowArray", rowArray)
+    return (<li key={`${rowArray[0].row}`}>
       <Row
-        squares={row}
+        squares={rowArray}
         updateSquare={props.updateSquare}
         height={props.height}
         width={props.width}
       />
     </li>
-  ));
+  )
+});
 
   return (
     <div id="board_container">
-      <ul id="board">{rows}</ul>
+      <ul id="board">{rowElements}</ul>
     </div>
   );
 }

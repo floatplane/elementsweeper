@@ -29,7 +29,7 @@ class Game extends React.Component {
       mines: props.mines,
       board: this.boardStack[0]
     };
-    console.log(this.state);
+    // console.log(this.state);
 
     fetch("/undoAttempts")
       .then(response => response.json())
@@ -125,9 +125,9 @@ class Game extends React.Component {
       var startSlice = width * i;
       var endSlice = width * (i + 1);
       var row = oneDimBoard.slice(startSlice, endSlice);
-      console.log("row", i, row);
+      // console.log("row", i, row);
       for (var j = 0; j < row.length; j++) {
-        row[j].row = row[j];
+        row[j].row = j;
         row[j].col = i;
         row[j].clicked = false;
         row[j].flagged = false;
