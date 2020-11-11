@@ -5,7 +5,7 @@ const Square = require("./Square");
 const Row = function(props) {
   const squares = props.squares.map(square => (
     <Square
-      key={`${square.rowIndex},${square.colIndex}`}
+      key={`${square.row},${square.col}`}
       square={square}
       click={props.clickSquare}
       height={props.height}
@@ -18,7 +18,7 @@ const Row = function(props) {
 
 function Board(props) {
   const rows = props.board.map(row => (
-    <li key={row[0].position.toString()}>
+    <li key={`${row[0].row}`}>
       <Row
         squares={row}
         clickSquare={props.clickSquare}

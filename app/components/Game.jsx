@@ -110,7 +110,6 @@ class Game extends React.Component {
       }
       // Create square object
       var square = {
-        position: i,
         hasMine: hasMine
       };
       // Add square to one dimensional array
@@ -124,8 +123,8 @@ class Game extends React.Component {
       var row = oneDimBoard.slice(startSlice, endSlice);
       console.log("row", i, row)
       for (var j = 0; j < row.length; j++) {
-        row[j].rowIndex = i;
-        row[j].colIndex = j;
+        row[j].row = i;
+        row[j].col = j;
         row[j].clicked = false;
         row[j].flagged = false;
         row[j].mineTriggered = false;
@@ -162,7 +161,7 @@ class Game extends React.Component {
     ];
     var absNeighbors = relNeighbors.map(s =>
       s.map((c, i) =>
-        i === 0 ? c + square.colIndex : c + square.rowIndex
+        i === 0 ? c + square.col : c + square.row
       )
     );
     //return absNeighbors;
@@ -170,7 +169,7 @@ class Game extends React.Component {
       var n = absNeighbors[i];
       if (n[0] >= 0 && n[1] >= 0 && n[0] < width && n[1] < height) {
         // row, column are reversed order as array indexes
-        boardIndexNeighbors.push({ colIndex: n[0], rowIndex: n[1] });
+        boardIndexNeighbors.push({ col: n[0], row: n[1] });
       }
     }
     return boardIndexNeighbors;
@@ -180,8 +179,8 @@ class Game extends React.Component {
     var neighboringMines = 0;
     var boardIndexNeighbors = this.getNeighbors(square, width, height);
     for (var i in boardIndexNeighbors) {
-      var r = boardIndexNeighbors[i].rowIndex;
-      var c = boardIndexNeighbors[i].colIndex;
+      var r = boardIndexNeighbors[i].row;
+      var c = boardIndexNeighbors[i].col;
       var nSq = board[r][c];
       if (nSq.hasMine) {
         neighboringMines++;
@@ -202,8 +201,8 @@ class Game extends React.Component {
       this.state.height
     );
     for (var i in boardIndexNeighbors) {
-      var r = boardIndexNeighbors[i].rowIndex;
-      var c = boardIndexNeighbors[i].colIndex;
+      var r = boardIndexNeighbors[i].row;
+      var c = boardIndexNeighbors[i].col;
       if (!board[r][c].clicked) {
         this.handleClick(false, board[r][c], "autoReveal");
       }
@@ -230,7 +229,7 @@ class Game extends React.Component {
         this.setState(
           (prevState, props) => {
             updatedBoard = prevState.board;
-            updatedBoard[square.rowIndex][square.colIndex].clicked = true;
+            updatedBoard[square.row][square.col].clicked = true;
             return {
               board: updatedBoard
             };
@@ -248,7 +247,7 @@ class Game extends React.Component {
         }
         this.setState((prevState, props) => {
           updatedBoard = prevState.board;
-          updatedBoard[square.rowIndex][square.colIndex].flagged = flagged;
+          updatedBoard[square.row][square.col].flagged = flagged;
           return {
             board: updatedBoard,
             flagCount: prevState.flagCount + flagChange
