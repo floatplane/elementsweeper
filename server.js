@@ -1,27 +1,32 @@
 // server.js
 
 // init project
-var express = require('express');
+var express = require("express");
 var app = express();
 
-// init sqlite db
-const dbFile = "./.data/sqlite.db";
-const fs = require("fs");
-const exists = fs.existsSync(dbFile);
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database(dbFile);
+const session = require("express-session");
+const SQLiteStore = require("connect-sqlite3")(session);
 
-
+app.use(
+  session({
+    store: new SQLiteStore({ dir: ".data" }),
+    secret: "so top secret",
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // 1 week
+  })
+);
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(request, response) {
-  response.sendFile(__dirname + '/app/index.html');
+  if (request.session.undoAttempts == null) {
+    request.session.undoAttempts = 1;
+  }
+  response.sendFile(__dirname + "/app/index.html");
 });
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(process.env.PORT, function() {
+  console.log("Your app is listening on port " + listener.address().port);
 });
