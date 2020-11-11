@@ -1,11 +1,24 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+const React = require("react");
+const ReactDOM = require("react-dom");
+const { ThemeProvider, createMuiTheme } = require("@material-ui/core/styles");
+const CssBaseline = require("@material-ui/core/CssBaseline");
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
 
 /* Import Components */
-const Game = require('./components/Game');
+const Game = require("./components/Game");
 
-ReactDOM.render(<Game width={9} height={9} mines={10} />, document.getElementById('main'));
-
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <Game width={9} height={9} mines={10} />
+  </ThemeProvider>,
+  document.getElementById("main")
+);
 
 /*
 
