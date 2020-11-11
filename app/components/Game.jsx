@@ -1,5 +1,7 @@
 const React = require("react");
 const { Button } = require('@material-ui/core');
+const cloneDeep = require('lodash.clonedeep');
+const bindAll = require('lodash.bindall');
 
 /* Import Components */
 const Board = require("./Board");
@@ -8,23 +10,19 @@ const Alert = require("./Alert");
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.resize = this.resize.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.clickMine = this.clickMine.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleCloseAlert = this.handleCloseAlert.bind(this);
-    this.undo = this.undo.bind(this);
+    bindAll(this, ['resize', 'updateSquare', 'clickMine', 'handleCloseAlert', 'undo']);
+
+    this.boardStack = this.buildBoard(props.height,props.width,props.mines)
     this.state = {
       alertMessage: "",
       win: false,
       lose: false,
       revealed: false,
-      flagClick: false,
       flagCount: props.mines,
       height: props.height,
       width: props.width,
       mines: props.mines,
-      board: this.buildBoard(props.height, props.width, props.mines)
+      board: this.boardStack[0]
     };
     console.log(this.state);
 
@@ -205,16 +203,13 @@ class Game extends React.Component {
       var r = boardIndexNeighbors[i].row;
       var c = boardIndexNeighbors[i].col;
       if (!board[r][c].clicked) {
-        this.handleClick(false, board[r][c], "autoReveal");
+        this.updateSquare(board[r][c], "autoReveal");
       }
     }
   }
 
-  handleClick(e, square, type) {
-    if (e) {
-      e.preventDefault();
-    }
-    if ((type === "reveal" && !this.state.flagClick) || type === "autoReveal") {
+  updateSquare(square, type) {
+    if (type === "reveal" || type === "autoReveal") {
       if (!square.clicked && !square.flagged) {
         // If square clicked is a mine neighbor do nothing except reveal
         var callback = () => {};
@@ -292,14 +287,6 @@ class Game extends React.Component {
     }
   }
 
-  handleToggle() {
-    this.setState((prevState, props) => {
-      return {
-        flagClick: !prevState.flagClick
-      };
-    });
-  }
-
   handleCloseAlert() {
     this.setState({
       alertMessage: ""
@@ -331,7 +318,7 @@ class Game extends React.Component {
           </div>
           <Board
             board={this.state.board}
-            clickSquare={this.handleClick}
+            updateSquare={this.updateSquare}
             height={this.state.height}
             width={this.state.width}
           />

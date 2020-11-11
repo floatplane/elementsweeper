@@ -68,8 +68,14 @@ const Square = function(props) {
 
   return (
     <li
-      onClick={e => props.click(e, props.square, "reveal")}
-      onContextMenu={e => props.click(e, props.square, "flag")}
+      onClick={(e) => {
+          e.preventDefault();
+          props.update(props.square, "reveal");
+      }}
+      onContextMenu={(e) => {
+          e.preventDefault();
+          props.update(props.square, "flag");
+      }}
       style={getStyle()}
     >
       <div

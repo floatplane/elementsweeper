@@ -7,7 +7,7 @@ const Row = function(props) {
     <Square
       key={`${square.row},${square.col}`}
       square={square}
-      click={props.clickSquare}
+      update={props.updateSquare}
       height={props.height}
       width={props.width}
     />
@@ -21,7 +21,7 @@ function Board(props) {
     <li key={`${row[0].row}`}>
       <Row
         squares={row}
-        clickSquare={props.clickSquare}
+        updateSquare={props.updateSquare}
         height={props.height}
         width={props.width}
       />
