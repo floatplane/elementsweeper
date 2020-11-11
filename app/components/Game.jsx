@@ -9,12 +9,7 @@ const Alert = require("./Alert");
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, [
-      "resize",
-      "updateSquare",
-      "handleCloseAlert",
-      "undo"
-    ]);
+    bindAll(this, ["resize", "updateSquare", "handleCloseAlert", "undo"]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
@@ -179,7 +174,7 @@ class Game extends React.Component {
         if (square.hasMine) {
           // If square clicked is a mine trigger lose game
           square.mineTriggered = true;
-          return {mineTriggered: true}
+          return { mineTriggered: true };
         } else if (!square.neighboringMines) {
           // If square clicked is not a mine neighbor start recursive reveal
           // No need to worry about triggering a mine in this branch
@@ -188,10 +183,11 @@ class Game extends React.Component {
       }
     } else {
       if (!square.clicked) {
-        board[square.row][square.col].flagged = !board[square.row][square.col].flagged;
+        board[square.row][square.col].flagged = !board[square.row][square.col]
+          .flagged;
       }
     }
-    return {mineTriggered: false}
+    return { mineTriggered: false };
   }
 
   updateSquare(square, type) {
@@ -204,42 +200,42 @@ class Game extends React.Component {
       return;
     }
 
-    const nextBoard = cloneDeep(this.boardStack[this.boardStack.length - 1])
-    this.boardStack.push(nextBoard)
+    const nextBoard = cloneDeep(this.boardStack[this.boardStack.length - 1]);
+    this.boardStack.push(nextBoard);
     const nextSquare = nextBoard[square.row][square.col];
-    const {mineTriggered} = this.updateSquareInternal(nextBoard, nextSquare, type)
-    var nextState = {board: nextBoard};
+    const { mineTriggered } = this.updateSquareInternal(
+      nextBoard,
+      nextSquare,
+      type
+    );
+    var nextState = { board: nextBoard };
     if (mineTriggered) {
-      merge(nextState,{
-          alertMessage: "You took an L. Sorry.",
-          lose: true
+      merge(nextState, {
+        alertMessage: "You took an L. Sorry.",
+        lose: true
       });
-      this.showAllMines(nextBoard, false)
-    } else if (this.checkWin()) {
+      this.showAllMines(nextBoard, false);
+    } else if (this.checkWin(nextBoard)) {
       console.log("You Win!!");
-      merge(nextState,{
+      merge(nextState, {
         alertMessage: "That's a wrap! Play again?",
         win: true
       });
-      this.showAllMines(nextBoard, true)
+      this.showAllMines(nextBoard, true);
     }
-    this.setState(nextState)
+    this.setState(nextState);
   }
 
-  checkWin() {
-    if (!this.state.lose) {
-      for (var row in this.state.board) {
-        for (var col in this.state.board[row]) {
-          var square = this.state.board[row][col];
-          if (!square.clicked && !square.hasMine) {
-            return false;
-          }
+  checkWin(board) {
+    for (var row in board) {
+      for (var col in board[row]) {
+        var square = board[row][col];
+        if (!square.clicked && !square.hasMine) {
+          return false;
         }
       }
-      return true;
-    } else {
-      return false;
     }
+    return true;
   }
 
   showAllMines(board, win) {
@@ -259,20 +255,24 @@ class Game extends React.Component {
     });
   }
 
+  canUndo() {
+    return this.state.undoAttempts >= 1 && this.boardStack.length > 1;
+  }
+
   undo() {
-    if (this.state.undoAttempts >= 1 && this.boardStack.length > 1) {
+    if (this.canUndo()) {
       this.boardStack.pop();
       this.setState({
         undoAttempts: this.state.undoAttempts - 1,
         board: this.boardStack[this.boardStack.length - 1],
         win: false,
         lose: false,
-        alertMessage: "",
+        alertMessage: ""
       });
+      fetch("/undo", { method: "POST" })
+        .then(response => response.json())
+        .then(data => this.setState({ undoAttempts: data.undoAttempts }));
     }
-    fetch("/undo", { method: "POST" })
-      .then(response => response.json())
-      .then(data => this.setState({ undoAttempts: data.undoAttempts }))
   }
 
   render() {
@@ -285,7 +285,7 @@ class Game extends React.Component {
           />
           <div id="undo-section">
             Undo attempts: <span>{this.state.undoAttempts}</span>
-            <Button onClick={this.undo} disabled={this.state.undoAttempts <= 0}>
+            <Button onClick={this.undo} disabled={!this.canUndo()}>
               Undo
             </Button>
           </div>
