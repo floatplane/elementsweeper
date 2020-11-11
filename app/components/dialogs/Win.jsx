@@ -1,22 +1,34 @@
 const React = require('react');
 
-const Alert = function(props) {
-  
-  const hideStatus = props.message ? "" : "hide-alert";
+const Button = require('@material-ui/core/Button');
+const Dialog = require('@material-ui/core/Dialog');
+const DialogActions = require('@material-ui/core/DialogActions');
+const DialogContent = require('@material-ui/core/DialogContent');
+const DialogContentText = require('@material-ui/core/DialogContentText');
+const DialogTitle = require('@material-ui/core/DialogTitle');
+
+function Win(props) {
+  const { onClose, open } = props;
+
+  const handleClose = () => {
+    onClose();
+  };
 
   return (
-    <div className={hideStatus + " alert-container"}>
-      <div className="alert">
-        <div
-          className="close-alert"
-          onClick={props.close}
-        >
-          x
-        </div>
-        {props.message}
-      </div>
-    </div>
+    <Dialog onClose={handleClose} open={open}>
+      <DialogTitle>Great job!</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+            Congratulations! You won. Play again?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary" autoFocus>
+            Let's do it
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 
-module.exports = Alert;
+module.exports = Win;
