@@ -21,7 +21,6 @@ class Game extends React.Component {
       alertMessage: "",
       win: false,
       lose: false,
-      revealed: false,
       height: props.height,
       width: props.width,
       mines: props.mines,
@@ -44,42 +43,6 @@ class Game extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.resize);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    var updatedBoard = prevState.board;
-    var newWinState = false;
-    var newBoardState = false;
-
-    if (!this.state.win) {
-      var win = this.checkWin();
-      if (win) {
-        console.log("You Win!!");
-        newWinState = {
-          alertMessage: "That's a wrap! Play again?",
-          win: true
-        };
-      }
-    }
-
-    if ((this.state.win || this.state.lose) && !this.state.revealed) {
-      updatedBoard.forEach(row => {
-        row.forEach(square => {
-          if (square.hasMine) {
-            square.clicked = true;
-          }
-        });
-      });
-
-      newBoardState = {
-        board: updatedBoard,
-        revealed: true
-      };
-    }
-
-    if (newWinState || newBoardState) {
-      this.setState(Object.assign({}, newWinState, newBoardState));
-    }
   }
 
   buildBoard(height, width, mines) {
@@ -233,8 +196,14 @@ class Game extends React.Component {
 
   updateSquare(square, type) {
     if (type !== "reveal" && type !== "flag") {
-      throw new Error(`unknown type ${type}`);
+      throw new Error(`unknown update type ${type}`);
     }
+
+    if (this.state.win || this.state.lose) {
+      console.log("game is over, ignoring");
+      return;
+    }
+
     const nextBoard = cloneDeep(this.boardStack[this.boardStack.length - 1])
     this.boardStack.push(nextBoard)
     const nextSquare = nextBoard[square.row][square.col];
@@ -245,29 +214,43 @@ class Game extends React.Component {
           alertMessage: "You took an L. Sorry.",
           lose: true
       });
+      showAllMines(nextBoard, false)
+    } else if (checkWin()) {
+      console.log("You Win!!");
+      merge(nextState,{
+        alertMessage: "That's a wrap! Play again?",
+        win: true
+      });
+      showAllMines(nextBoard, true)
     }
     this.setState(nextState)
   }
 
   checkWin() {
     if (!this.state.lose) {
-      var win = true;
-      for (var i in this.state.board) {
-        for (var j in this.state.board[i]) {
-          var square = this.state.board[i][j];
+      for (var row in this.state.board) {
+        for (var col in this.state.board[row]) {
+          var square = this.state.board[row][col];
           if (!square.clicked && !square.hasMine) {
-            win = false;
-            break;
+            return false;
           }
         }
-        if (!win) {
-          break;
-        }
       }
-      return win;
+      return true;
     } else {
       return false;
     }
+  }
+
+  showAllMines(board, win) {
+    updatedBoard.forEach(row => {
+      row.forEach(square => {
+        if (square.hasMine) {
+          square.clicked = true;
+          square.flagged = win;
+        }
+      });
+    });
   }
 
   handleCloseAlert() {
