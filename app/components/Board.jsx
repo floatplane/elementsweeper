@@ -18,7 +18,7 @@ const Row = function(props) {
 
 function Board(props) {
   const rowElements = props.board.map(rowArray => (
-    <li key={`${rowArray[0].row}`}>
+    <li className="row" key={`${rowArray[0].row}`}>
       <Row
         squares={rowArray}
         updateSquare={props.updateSquare}

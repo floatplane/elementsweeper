@@ -4,7 +4,6 @@ const { bindAll, cloneDeep, merge } = require("lodash");
 
 /* Import Components */
 const Board = require("./Board");
-const Alert = require("./Alert");
 const WinDialog = require("./dialogs/Win");
 const LoseDialog = require("./dialogs/Lose");
 

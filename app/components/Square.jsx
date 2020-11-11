@@ -51,7 +51,7 @@ const Square = function(props) {
   }
 
   var label = getLabel();
-  const labelHeader = label ? <h4 style={positionLabel()}>{label}</h4> : false;
+  const labelHeader = label ? <h4 className="label" style={positionLabel()}>{label}</h4> : false;
   const {square} = props;
   const {clicked, flagged, mineTriggered} = square;
   var className = "square-inner";
@@ -67,7 +67,7 @@ const Square = function(props) {
   }
 
   return (
-    <li
+    <li className="square"
       onClick={(e) => {
           e.preventDefault();
           props.update(props.square, "reveal");

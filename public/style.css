@@ -6,36 +6,20 @@ body {
   margin: 0 !important;
   font-family: "Open Sans", sans-serif;
   text-align: center;
-  background-image: url("https://cdn.glitch.com/dc55d74f-06b7-4368-8aad-3501d6227285%2Fbackground.png?v=1605032323221");
-  background-repeat: repeat;
-  background-size: 150px 150px;
 }
 
 
-h1, h2, h3, h4 {
+h1.label, h2.label, h3.label, h4.label {
+}
+
+h4.label {
   text-align: center;
   margin: 0 auto;
   display: inline-block;
   width: 100%;
   color: black !important;
-}
-
-h1 {
-  margin: 1em auto .25em;
-  width: auto;
-  padding: 5px 15px;
-  background: rgba(255, 255, 255, .9);
-  border-radius: 5px;
-}
-
-h4 {
   padding: 0;
   text-align: center;
-}
-
-h5 {
-  font-weight: normal;
-  font-size: 100%;
 }
 
 ul {
