@@ -28,7 +28,6 @@ class Game extends React.Component {
     
     fetch('/undoAttempts')
       .then(response => response.json())
-      .then(data => console.log(data))
       .then(data => this.setState({undoAttempts: data.undoAttempts}));
   }
 
@@ -303,6 +302,9 @@ class Game extends React.Component {
             message={this.state.alertMessage}
             close={this.handleCloseAlert}
           />
+          <div id="undo-section">
+            Undo attempts: <span>{this.state.undoAttempts}</span>
+          </div>
           <Board
             board={this.state.board}
             clickSquare={this.handleClick}
