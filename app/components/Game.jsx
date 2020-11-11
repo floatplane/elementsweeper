@@ -4,6 +4,7 @@ const { bindAll, cloneDeep, merge } = require("lodash");
 
 /* Import Components */
 const Board = require("./Board");
+const TitleBar = require("./TitleBar");
 const WinDialog = require("./dialogs/Win");
 const LoseDialog = require("./dialogs/Lose");
 
@@ -292,6 +293,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <TitleBar />
         <div id="game-container">
           <LoseDialog
             open={this.state.lose}
