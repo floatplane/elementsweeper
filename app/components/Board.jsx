@@ -2,8 +2,8 @@ const React = require("react");
 
 const Square = require("./Square");
 
-const Row = function(props) {
-  const squares = props.squares.map(square => (
+const Row = function (props) {
+  const squares = props.squares.map((square) => (
     <Square
       key={`${square.row},${square.col}`}
       square={square}
@@ -17,7 +17,7 @@ const Row = function(props) {
 };
 
 function Board(props) {
-  const rowElements = props.board.map(rowArray => (
+  const rowElements = props.board.map((rowArray) => (
     <li className="row" key={`${rowArray[0].row}`}>
       <Row
         squares={rowArray}

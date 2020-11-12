@@ -3,19 +3,26 @@ const React = require("react");
 const {
   CardElement,
   useStripe,
-  useElements
+  useElements,
 } = require("@stripe/react-stripe-js");
 
 const {
+  Box,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
+  TextField,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  InputLabel,
+  Input,
 } = require("@material-ui/core");
 
-const Buy = function(props) {
+const Buy = function (props) {
   const { onClose, open, onPaymentSucceeded } = props;
   const [succeeded, setSucceeded] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -30,14 +37,14 @@ const Buy = function(props) {
     fetch("/create-payment-intent", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ items: [{ lives: 3 }] })
+      body: JSON.stringify({ items: [{ lives: 3 }] }),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setClientSecret(data.clientSecret);
       });
   }, []);
@@ -50,28 +57,28 @@ const Buy = function(props) {
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-          color: "#32325d"
-        }
+          color: "#32325d",
+        },
       },
       invalid: {
         color: "#fa755a",
-        iconColor: "#fa755a"
-      }
-    }
+        iconColor: "#fa755a",
+      },
+    },
   };
-  const handleChange = async event => {
+  const handleChange = async (event) => {
     // Listen for changes in the CardElement
     // and display any errors as the customer types their card details
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
-  const handleSubmit = async ev => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
     setProcessing(true);
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement)
-      }
+        card: elements.getElement(CardElement),
+      },
     });
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
@@ -85,24 +92,26 @@ const Buy = function(props) {
   };
 
   return (
-    <Dialog onClose={onClose} open={open}>
+    <Dialog onClose={onClose} open={open} fullWidth maxWidth={"xs"}>
       <DialogTitle>Buy more lives</DialogTitle>
-      <DialogContent>
-        <form id="payment-form" onSubmit={handleSubmit}>
-          <CardElement
-            id="card-element"
-            options={cardStyle}
-            onChange={handleChange}
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <DialogContent>
+          <TextField
+            id="email"
+            label="Email address"
+            variant="outlined"
+            fullWidth
           />
-          <Button disabled={processing || disabled || succeeded} id="submit">
-            <span id="button-text">
-              {processing ? (
-                <div className="spinner" id="spinner"></div>
-              ) : (
-                "Pay"
-              )}
-            </span>
-          </Button>
+          <FormControl fullWidth variant="outlined">
+            <FormLabel>Payment details</FormLabel>
+            <Box mt={2} mb={2}>
+              <CardElement
+                id="card-element"
+                options={cardStyle}
+                onChange={handleChange}
+              />
+            </Box>
+          </FormControl>
           {/* Show any error that happens when processing the payment */}
           {error && (
             <div className="card-error" role="alert">
@@ -119,13 +128,29 @@ const Buy = function(props) {
               </a>{" "}
             </p>
           )}
-        </form>{" "}
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose} color="primary" variant="contained" autoFocus>
-          Forget it
-        </Button>
-      </DialogActions>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose} variant="contained">
+            Cancel
+          </Button>
+          <Button
+            disabled={processing || disabled || succeeded}
+            id="submit"
+            type="submit"
+            color="primary"
+            variant="contained"
+            autoFocus
+          >
+            <span id="button-text">
+              {processing ? (
+                <div className="spinner" id="spinner"></div>
+              ) : (
+                "Pay"
+              )}
+            </span>
+          </Button>
+        </DialogActions>
+      </form>
     </Dialog>
   );
 };

@@ -5,21 +5,21 @@ const {
   Button,
   Toolbar,
   Typography,
-  IconButton
+  IconButton,
 } = require("@material-ui/core");
 
 const { makeStyles } = require("@material-ui/core/styles");
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   livesRemaining: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 }));
 
 function TitleBar(props) {

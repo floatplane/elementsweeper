@@ -6,10 +6,10 @@ const {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
 } = require("@material-ui/core");
 
-const Win = function(props) {
+const Win = function (props) {
   const { onClose, open } = props;
 
   return (

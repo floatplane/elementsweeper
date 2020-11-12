@@ -1,0 +1,9 @@
+public/bundle.js
+.data
+.env
+node_modules
+*.md
+*.html
+*.yaml
+*.json
+*.config.js

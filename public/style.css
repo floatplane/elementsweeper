@@ -33,9 +33,9 @@ li {
 
 .instructions {
   text-align: left;
-  margin: .5em auto 1em;
+  margin: 0.5em auto 1em;
   padding: 5px 15px;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
   max-width: 500px;
 }

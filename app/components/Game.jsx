@@ -19,7 +19,14 @@ const stripeLoadPromise = loadStripe("pk_test_4ecaXEp3ioNREv9EGB5osFxx");
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ["resize", "updateSquare", "undo", "reset", "buy", "onPaymentSucceeded"]);
+    bindAll(this, [
+      "resize",
+      "updateSquare",
+      "undo",
+      "reset",
+      "buy",
+      "onPaymentSucceeded",
+    ]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
@@ -29,12 +36,12 @@ class Game extends React.Component {
       height: props.height,
       width: props.width,
       mines: props.mines,
-      board: this.boardStack[0]
+      board: this.boardStack[0],
     };
 
     fetch("/undoAttempts")
-      .then(response => response.json())
-      .then(data => this.setState({ undoAttempts: data.undoAttempts }));
+      .then((response) => response.json())
+      .then((data) => this.setState({ undoAttempts: data.undoAttempts }));
   }
 
   reset() {
@@ -43,7 +50,7 @@ class Game extends React.Component {
     this.setState({
       win: false,
       lose: false,
-      board: this.boardStack[0]
+      board: this.boardStack[0],
     });
   }
 
@@ -89,7 +96,7 @@ class Game extends React.Component {
       }
       // Create square object
       var square = {
-        hasMine: hasMine
+        hasMine: hasMine,
       };
       // Add square to one dimensional array
       oneDimBoard.push(square);
@@ -136,9 +143,9 @@ class Game extends React.Component {
       [1, 0],
       [-1, 1],
       [0, 1],
-      [1, 1]
+      [1, 1],
     ];
-    var absNeighbors = relNeighbors.map(s =>
+    var absNeighbors = relNeighbors.map((s) =>
       s.map((c, i) => (i === 0 ? c + square.col : c + square.row))
     );
     //return absNeighbors;
@@ -230,12 +237,12 @@ class Game extends React.Component {
     var nextState = { board: nextBoard };
     if (mineTriggered) {
       merge(nextState, {
-        lose: true
+        lose: true,
       });
       this.showAllMines(nextBoard, false);
     } else if (this.checkWin(nextBoard)) {
       merge(nextState, {
-        win: true
+        win: true,
       });
       this.showAllMines(nextBoard, true);
     }
@@ -255,8 +262,8 @@ class Game extends React.Component {
   }
 
   showAllMines(board, win) {
-    board.forEach(row => {
-      row.forEach(square => {
+    board.forEach((row) => {
+      row.forEach((square) => {
         if (square.hasMine) {
           square.clicked = true;
           square.flagged = win;
@@ -276,11 +283,11 @@ class Game extends React.Component {
         undoAttempts: this.state.undoAttempts - 1,
         board: this.boardStack[this.boardStack.length - 1],
         win: false,
-        lose: false
+        lose: false,
       });
       fetch("/undo", { method: "POST" })
-        .then(response => response.json())
-        .then(data => this.setState({ undoAttempts: data.undoAttempts }));
+        .then((response) => response.json())
+        .then((data) => this.setState({ undoAttempts: data.undoAttempts }));
     }
   }
 
@@ -288,7 +295,7 @@ class Game extends React.Component {
     console.log("bought something");
     // optimistically update life count in memory
     this.setState({
-      undoAttempts: this.state.undoAttempts + 1
+      undoAttempts: this.state.undoAttempts + 1,
     });
   }
 

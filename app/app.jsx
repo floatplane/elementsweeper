@@ -5,8 +5,8 @@ const CssBaseline = require("@material-ui/core/CssBaseline").default;
 
 const darkTheme = createMuiTheme({
   palette: {
-    type: "dark"
-  }
+    type: "dark",
+  },
 });
 const lightTheme = createMuiTheme();
 

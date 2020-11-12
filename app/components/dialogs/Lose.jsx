@@ -6,10 +6,10 @@ const {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
 } = require("@material-ui/core");
 
-const Lose = function(props) {
+const Lose = function (props) {
   const { onClose, onUndo, onBuy, canUndo, open } = props;
 
   const handleClose = () => {
@@ -23,7 +23,9 @@ const Lose = function(props) {
         <DialogContentText>You lost 😵. Try again?</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onBuy} variant="contained">Buy more lives</Button>
+        <Button onClick={onBuy} variant="contained">
+          Buy more lives
+        </Button>
         <Button onClick={onUndo} disabled={!canUndo} variant="contained">
           Use 1 life
         </Button>

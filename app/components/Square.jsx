@@ -1,6 +1,6 @@
 const React = require("react");
 
-const Square = function(props) {
+const Square = function (props) {
   function getLabel() {
     if (props.square.flagged) {
       if (props.square.clicked) {
@@ -37,7 +37,7 @@ const Square = function(props) {
     var size = gridSize();
     return {
       height: size + "px",
-      width: size + "px"
+      width: size + "px",
     };
   }
 
@@ -46,14 +46,20 @@ const Square = function(props) {
     return {
       lineHeight: size / 2 + "px",
       fontSize: size / 2 + "px",
-      margin: size / 4 - 2 + "px auto"
+      margin: size / 4 - 2 + "px auto",
     };
   }
 
   var label = getLabel();
-  const labelHeader = label ? <h4 className="label" style={positionLabel()}>{label}</h4> : false;
-  const {square} = props;
-  const {clicked, flagged, mineTriggered} = square;
+  const labelHeader = label ? (
+    <h4 className="label" style={positionLabel()}>
+      {label}
+    </h4>
+  ) : (
+    false
+  );
+  const { square } = props;
+  const { clicked, flagged, mineTriggered } = square;
   var className = "square-inner";
   if (clicked) {
     if (flagged) {
@@ -67,22 +73,19 @@ const Square = function(props) {
   }
 
   return (
-    <li className="square"
+    <li
+      className="square"
       onClick={(e) => {
-          e.preventDefault();
-          props.update(props.square, "reveal");
+        e.preventDefault();
+        props.update(props.square, "reveal");
       }}
       onContextMenu={(e) => {
-          e.preventDefault();
-          props.update(props.square, "flag");
+        e.preventDefault();
+        props.update(props.square, "flag");
       }}
       style={getStyle()}
     >
-      <div
-        className={className}
-      >
-        {labelHeader}
-      </div>
+      <div className={className}>{labelHeader}</div>
     </li>
   );
 };
