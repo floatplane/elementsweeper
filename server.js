@@ -8,12 +8,12 @@ const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
 
 // This is your real test secret API key.
-const stripe = require("stripe")("sk_test_kxhFCArNyjFTLqYZLACDBfls");
+const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
 app.use(
   session({
     store: new SQLiteStore({ dir: ".data" }),
-    secret: "so top secret",
+    secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // 1 week
   })
 );
@@ -53,21 +53,21 @@ const calculateOrderAmount = items => {
   return 1400;
 };
 
-app.post("/create-payment-intent", async (req, res) => {
-  const { items } = req.body;
+app.post("/create-payment-intent", async (request, response) => {
+  const { items } = request.body;
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
     currency: "usd"
   });
-  res.send({
+  response.send({
     clientSecret: paymentIntent.client_secret
   });
 });
 
 // Match the raw body to content type application/json
 app.post('/webhook', (request, response) => {
-  const event = req.body;
+  const event = request.body;
 
   // Handle the event
   switch (event.type) {
