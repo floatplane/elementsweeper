@@ -19,7 +19,7 @@ const stripeLoadPromise = loadStripe("pk_test_4ecaXEp3ioNREv9EGB5osFxx");
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, ["resize", "updateSquare", "undo", "reset", "buy"]);
+    bindAll(this, ["resize", "updateSquare", "undo", "reset", "buy", "onPaymentSucceeded"]);
 
     this.boardStack = [this.buildBoard(props.height, props.width, props.mines)];
     this.state = {
@@ -284,6 +284,14 @@ class Game extends React.Component {
     }
   }
 
+  onPaymentSucceeded() {
+    console.log("bought something");
+    // optimistically update life count in memory
+    this.setState({
+      undoAttempts: this.state.undoAttempts + 1
+    });
+  }
+
   buy() {
     console.log("sell something");
     this.setState({ selling: true });
@@ -308,6 +316,7 @@ class Game extends React.Component {
                 <BuyDialog
                   open={this.state.selling}
                   onClose={() => this.setState({ selling: false })}
+                  onPaymentSucceeded={this.onPaymentSucceeded}
                 />
               </Elements>
             )}

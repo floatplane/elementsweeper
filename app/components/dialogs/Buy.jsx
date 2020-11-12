@@ -16,7 +16,7 @@ const {
 } = require("@material-ui/core");
 
 const Buy = function(props) {
-  const { onClose, open } = props;
+  const { onClose, open, onPaymentSucceeded } = props;
   const [succeeded, setSucceeded] = React.useState(false);
   const [error, setError] = React.useState(null);
   const [processing, setProcessing] = React.useState("");
@@ -80,6 +80,7 @@ const Buy = function(props) {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      onPaymentSucceeded();
     }
   };
 
@@ -93,7 +94,7 @@ const Buy = function(props) {
             options={cardStyle}
             onChange={handleChange}
           />
-          <button disabled={processing || disabled || succeeded} id="submit">
+          <Button disabled={processing || disabled || succeeded} id="submit">
             <span id="button-text">
               {processing ? (
                 <div className="spinner" id="spinner"></div>
@@ -101,7 +102,7 @@ const Buy = function(props) {
                 "Pay"
               )}
             </span>
-          </button>
+          </Button>
           {/* Show any error that happens when processing the payment */}
           {error && (
             <div className="card-error" role="alert">
@@ -116,7 +117,6 @@ const Buy = function(props) {
                 {" "}
                 Stripe dashboard.
               </a>{" "}
-              Refresh the page to pay again.
             </p>
           )}
         </form>{" "}

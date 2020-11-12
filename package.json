@@ -5,23 +5,25 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack && node server.js"
+    "watch": "webpack --watch",
+    "start": "webpack && nodemon server.js"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
+    "connect-sqlite3": "^0.9.11",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
+    "express-session": "^1.17.1",
     "jsx-loader": "^0.13.2",
+    "lodash": "^4.17.20",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "sqlite3": "^5.0.0",
-    "express-session": "^1.17.1",
-    "connect-sqlite3": "^0.9.11",
-    "@material-ui/core": "^4.11.0",
-    "lodash": "^4.17.20",
     "stripe": "^8.120.0",
     "webpack": "^4.1.1",
-    "webpack-cli": "^4.1.0",
-    "@stripe/stripe-js": "^1.11.0",
-    "@stripe/react-stripe-js": "^1.1.2"
+    "webpack-cli": "^4.1.0"
   },
   "engines": {
     "node": "10.x"
