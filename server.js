@@ -3,7 +3,6 @@
 // init project
 var express = require("express");
 var app = express();
-var bodyParser = require('body-parser')
 
 const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
@@ -55,15 +54,12 @@ const calculateOrderAmount = items => {
 };
 
 app.post("/create-payment-intent", async (req, res) => {
-  console.log("inside create payment intent", req.body)
-  const { items } = req.json;
+  const { items } = req.body;
   // Create a PaymentIntent with the order amount and currency
-  console.log("about to create payment intent")
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
     currency: "usd"
   });
-  console.log("payment intent created", paymentIntent)
   res.send({
     clientSecret: paymentIntent.client_secret
   });
