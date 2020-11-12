@@ -3,6 +3,7 @@
 // init project
 var express = require("express");
 var app = express();
+var bodyParser = require('body-parser')
 
 const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
@@ -20,7 +21,7 @@ app.use(
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
-app.use(express.bodyParser());
+app.use(express.json());
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(request, response) {
