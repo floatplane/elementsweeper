@@ -53,8 +53,8 @@ const calculateOrderAmount = items => {
 };
 
 app.post("/create-payment-intent", async (req, res) => {
-  console.log("inside create payment intent", req)
-  const { items } = req.body;
+  console.log("inside create payment intent", req.body)
+  const { items } = req.json;
   // Create a PaymentIntent with the order amount and currency
   console.log("about to create payment intent")
   const paymentIntent = await stripe.paymentIntents.create({

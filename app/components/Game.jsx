@@ -303,12 +303,14 @@ class Game extends React.Component {
               onBuy={this.buy}
             />
             <WinDialog open={this.state.win} onClose={this.reset} />
-            <Elements stripe={stripeLoadPromise}>
-              <BuyDialog
-                open={this.state.selling}
-                onClose={() => this.setState({ selling: false })}
-              />
-            </Elements>
+            {selling && (
+              <Elements stripe={stripeLoadPromise}>
+                <BuyDialog
+                  open={this.state.selling}
+                  onClose={() => this.setState({ selling: false })}
+                />
+              </Elements>
+            )}
             <Board
               board={this.state.board}
               updateSquare={this.updateSquare}
