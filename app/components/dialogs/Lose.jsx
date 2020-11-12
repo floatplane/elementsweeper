@@ -24,7 +24,7 @@ const Lose = function(props) {
       </DialogContent>
       <DialogActions>
         <Button onClick={onBuy} variant="contained">Buy more lives</Button>
-        <Button onClick={onUndo} enabled={canUndo} variant="contained">
+        <Button onClick={onUndo} disabled={!canUndo} variant="contained">
           Use 1 life
         </Button>
         <Button onClick={onClose} color="primary" variant="contained" autoFocus>
