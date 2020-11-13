@@ -1,7 +1,7 @@
 {
-  "name": "pay-to-win",
+  "name": "elementsweeper",
   "version": "1.0.0",
-  "description": "A minesweeper game you can't lose, if you've got money",
+  "description": "Minesweeper + Stripe Elements. A minesweeper game you can't lose, if you've got money.",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
@@ -37,13 +37,14 @@
     "node": "10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/pay-to-win"
+    "url": "https://glitch.com/edit/#!/elementsweeper"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "glitch",
-    "express"
+    "express",
+    "babel"
   ],
   "devDependencies": {
     "@babel/core": "^7.12.3",
