@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 
 import {
   CardElement,
@@ -7,21 +7,22 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  TextField,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  InputLabel,
-  Input,
-} from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormLabel from "@material-ui/core/FormLabel";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 import { CardElementWrapper } from "./CardElementWrapper";
 
@@ -63,7 +64,7 @@ export default function Buy(props) {
         currency: "usd",
         total: {
           label: "Demo total",
-          amount: 1400,
+          amount: 599,
         },
         requestPayerName: true,
         requestPayerEmail: true,
@@ -79,6 +80,8 @@ export default function Buy(props) {
             const success = await completePayment(ev.paymentMethod.id);
             ev.complete(success ? "success" : "fail");
           });
+        } else {
+          setPaymentRequest(false);
         }
       });
     }
@@ -117,15 +120,21 @@ export default function Buy(props) {
     });
   };
 
+  const ready = paymentRequest !== null;
+
   return (
     <Dialog onClose={onClose} open={open} fullWidth maxWidth={"xs"}>
       <DialogTitle>Buy more lives</DialogTitle>
       <form id="payment-form" onSubmit={handleSubmit}>
         <DialogContent>
+          <Typography paragraph variant="subtitle2" color="secondary">
+            Special offer!
+          </Typography>
+          <Typography paragraph>Buy one more life for a mere $5.99.</Typography>
           {paymentRequest ? (
             <PaymentRequestButtonElement options={{ paymentRequest }} />
-          ) : (
-            <React.Fragment>
+          ) : paymentRequest === false ? (
+            <Fragment>
               <TextField
                 id="email"
                 label="Email address"
@@ -139,7 +148,18 @@ export default function Buy(props) {
                 onChange={handleChange}
                 margin="normal"
               />
-            </React.Fragment>
+            </Fragment>
+          ) : (
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              mb={2}
+            >
+              {" "}
+              <CircularProgress size={24} />
+            </Grid>
           )}
           {/* Show any error that happens when processing the payment */}
           {error && (
@@ -148,36 +168,32 @@ export default function Buy(props) {
             </div>
           )}
           {/* Show a success message upon completion */}
-          {succeeded && (
-            <p className="result-message">
-              Payment succeeded, see the result in your
-              <a href={`https://dashboard.stripe.com/test/payments`}>
-                {" "}
-                Stripe dashboard.
-              </a>{" "}
-            </p>
-          )}
+          {succeeded && <p className="result-message">Payment succeeded!</p>}
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose} variant="contained">
-            Cancel
-          </Button>
-          <Button
-            disabled={processing || disabled || succeeded}
-            id="submit"
-            type="submit"
-            color="primary"
-            variant="contained"
-            autoFocus
-          >
-            <span id="button-text">
-              {processing ? (
-                <div className="spinner" id="spinner"></div>
-              ) : (
-                "Pay"
+          {succeeded ? (
+            <Button onClick={onClose} variant="contained">
+              Done
+            </Button>
+          ) : (
+            <Fragment>
+              <Button onClick={onClose} variant="contained">
+                Cancel
+              </Button>
+              {!paymentRequest && (
+                <Button
+                  disabled={processing || disabled || succeeded}
+                  id="submit"
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  autoFocus
+                >
+                  Pay
+                </Button>
               )}
-            </span>
-          </Button>
+            </Fragment>
+          )}
         </DialogActions>
       </form>
     </Dialog>
