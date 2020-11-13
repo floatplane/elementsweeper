@@ -1,7 +1,9 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
-const { ThemeProvider, createMuiTheme } = require("@material-ui/core/styles");
-const CssBaseline = require("@material-ui/core/CssBaseline").default;
+import "react-app-polyfill/stable";
+
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -11,7 +13,7 @@ const darkTheme = createMuiTheme({
 const lightTheme = createMuiTheme();
 
 /* Import Components */
-const Game = require("./components/Game");
+import Game from "./components/Game";
 
 ReactDOM.render(
   <ThemeProvider theme={lightTheme}>
@@ -42,7 +44,7 @@ x Draw Board
     x Click Status
 x Better notifications
   x DOM notifications
-  x Style notifications  
+  x Style notifications
 x Recursive show on click empty
 x Flexbox or CSS Grid for layout
 x Visible/Invisible style

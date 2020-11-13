@@ -1,12 +1,8 @@
-const React = require("react");
+import React from "react";
 
-const {
-  CardElement,
-  useStripe,
-  useElements,
-} = require("@stripe/react-stripe-js");
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-const {
+import {
   Box,
   Button,
   Dialog,
@@ -20,9 +16,9 @@ const {
   FormHelperText,
   InputLabel,
   Input,
-} = require("@material-ui/core");
+} from "@material-ui/core";
 
-const Buy = function (props) {
+export default function Buy(props) {
   const { onClose, open, onPaymentSucceeded } = props;
   const [succeeded, setSucceeded] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -153,6 +149,4 @@ const Buy = function (props) {
       </form>
     </Dialog>
   );
-};
-
-module.exports = Buy;
+}

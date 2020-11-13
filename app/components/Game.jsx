@@ -7,7 +7,7 @@ const { Elements } = require("@stripe/react-stripe-js");
 /* Import Components */
 const Board = require("./Board");
 const TitleBar = require("./TitleBar");
-const BuyDialog = require("./dialogs/Buy");
+import BuyDialog from "./dialogs/Buy";
 const WinDialog = require("./dialogs/Win");
 const LoseDialog = require("./dialogs/Lose");
 
@@ -340,4 +340,4 @@ class Game extends React.Component {
   }
 }
 
-module.exports = Game;
+export default Game;
