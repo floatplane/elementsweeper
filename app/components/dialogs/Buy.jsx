@@ -148,6 +148,13 @@ export default function Buy(props) {
                 onChange={handleChange}
                 margin="normal"
               />
+              <Typography paragraph variant="caption">
+                P.S. use a{" "}
+                <a href="https://stripe.com/docs/testing#cards" target="_new">
+                  test card
+                </a>{" "}
+                here.
+              </Typography>
             </Fragment>
           ) : (
             <Grid
