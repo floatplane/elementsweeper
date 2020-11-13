@@ -18,6 +18,8 @@ import {
   Input,
 } from "@material-ui/core";
 
+import { CardElementWrapper } from "./CardElementWrapper";
+
 export default function Buy(props) {
   const { onClose, open, onPaymentSucceeded } = props;
   const [succeeded, setSucceeded] = React.useState(false);
@@ -95,19 +97,16 @@ export default function Buy(props) {
           <TextField
             id="email"
             label="Email address"
-            variant="outlined"
             fullWidth
+            autoFocus
+            margin="normal"
+            InputLabelProps={{ shrink: true }}
           />
-          <FormControl fullWidth variant="outlined">
-            <FormLabel>Payment details</FormLabel>
-            <Box mt={2} mb={2}>
-              <CardElement
-                id="card-element"
-                options={cardStyle}
-                onChange={handleChange}
-              />
-            </Box>
-          </FormControl>
+          <CardElementWrapper
+            label="Payment details"
+            onChange={handleChange}
+            margin="normal"
+          />
           {/* Show any error that happens when processing the payment */}
           {error && (
             <div className="card-error" role="alert">
