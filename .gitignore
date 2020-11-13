@@ -3,3 +3,4 @@ public/bundle.js
 .env
 node_modules
 package-lock.json
+.#*
