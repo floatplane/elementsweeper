@@ -38,7 +38,7 @@ export default function Buy(props) {
   const elements = useElements();
 
   useEffect(() => {
-    console.log("fetching PI");
+    // console.log("fetching PI");
     // Create PaymentIntent as soon as the page loads
     fetch("/create-payment-intent", {
       method: "POST",
@@ -51,7 +51,7 @@ export default function Buy(props) {
         return res.json();
       })
       .then((data) => {
-        console.log("setting client secret", data.clientSecret);
+        // console.log("setting client secret", data.clientSecret);
         setClientSecret(data.clientSecret);
       });
   }, []);
@@ -71,11 +71,11 @@ export default function Buy(props) {
 
       // Check the availability of the Payment Request API.
       pr.canMakePayment().then((result) => {
-        console.log("canMakePayment", result, clientSecret);
+        // console.log("canMakePayment", result, clientSecret);
         if (result) {
           setPaymentRequest(pr);
           pr.on("paymentmethod", async (ev) => {
-            console.log("paymentmethod", ev, clientSecret);
+            // console.log("paymentmethod", ev, clientSecret);
             const success = await completePayment(ev.paymentMethod.id);
             ev.complete(success ? "success" : "fail");
           });
@@ -83,24 +83,6 @@ export default function Buy(props) {
       });
     }
   }, [stripe, clientSecret]);
-
-  const cardStyle = {
-    style: {
-      base: {
-        color: "#32325d",
-        fontFamily: "Arial, sans-serif",
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#32325d",
-        },
-      },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
-      },
-    },
-  };
 
   const handleChange = async (event) => {
     // Listen for changes in the CardElement
@@ -110,11 +92,11 @@ export default function Buy(props) {
   };
 
   const completePayment = async (paymentMethod) => {
-    console.log("inside completePayment", this, paymentMethod, clientSecret);
+    // console.log("inside completePayment", this, paymentMethod, clientSecret);
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: paymentMethod,
     });
-    console.log("confirmCardPayment", payload);
+    // console.log("confirmCardPayment", payload);
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);
