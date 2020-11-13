@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "start": "webpack && nodemon server.js"
+    "dev": "webpack && nodemon server.js",
+    "start": "webpack && node server.js"
   },
   "babel": {
     "presets": [
