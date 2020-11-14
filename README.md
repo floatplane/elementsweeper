@@ -21,3 +21,9 @@ To run locally:
   1. `npm install` to get the packages
   1. `npm run dev` to launch the dev server on http://localhost:3000 (or whatever port you specify in .env)
   1. `npm run watch` to rebuild your JS bundle on changes
+
+## Notes
+- this is a test mode app, you can't spend real money
+- your purchase is stored in a session cookie, so if you clear cookies you'll lose your lives
+- stored credit cards / Payment Request button doesn't work in Chrome/Edge because you can only store live cards, and you can't make testmode purchases with them
+
