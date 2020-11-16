@@ -16,7 +16,7 @@ const lightTheme = createMuiTheme();
 import Game from "./components/Game";
 
 ReactDOM.render(
-  <ThemeProvider theme={lightTheme}>
+  <ThemeProvider theme={darkTheme}>
     <CssBaseline />
     <Game width={9} height={9} mines={10} />
   </ThemeProvider>,
